@@ -245,7 +245,7 @@ end
 
 local update_pvp = function()
 	GUILDLAUNCH_SVARS.pvp_stats = {}
-	GUILDLAUNCH_SVARS.pvp_stats.rank = UnitPVPRank("player")
+	GUILDLAUNCH_SVARS.pvp_stats.rank = 0
 	GUILDLAUNCH_SVARS.pvp_stats.yesterday_hks, GUILDLAUNCH_SVARS.pvp_stats.yesterday_contribution = GetPVPYesterdayStats()	
 	GUILDLAUNCH_SVARS.pvp_stats.hk,	GUILDLAUNCH_SVARS.pvp_stats.highest_rank = GetPVPLifetimeStats()
 	GUILDLAUNCH_SVARS.pvp_stats.honor_currency = 0; --GetHonorCurrency()
