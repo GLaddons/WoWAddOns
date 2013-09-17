@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: DKPmon_FCZS
 ## Author: Eraslin - now maintained by Guild Launch
-## Version: 4.2.4
+## Version: 4.4.0
 ## Notes: Addon for adding the fixed cost zero-sum DKP system to DKPmon
 ## X-eMail: support@guildlaunch.com
 ## X-Category: Raid

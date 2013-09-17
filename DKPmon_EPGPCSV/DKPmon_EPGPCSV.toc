@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: DKPmon_EPGPCSV
 ## Author: Vlorn - now maintained by Guild Launch
-## Version: 4.2.4
+## Version: 4.4.0
 ## Notes: Module for DKPmon to add import/export to/from an EPGP points database via  CSV format
 ## X-Category: Raid
 ## X-Website: http://glmods.guildlaunch.com

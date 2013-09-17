@@ -2,7 +2,7 @@
 ## Title: DKPmon_BossAuction
 ## Author: Javek
 ## X-Credits: Eraslin - now maintained by Guild Launch
-## Version: 4.2.4
+## Version: 4.4.0
 ## Notes: Boss points & timed dkp module for DKPmon, open and silent bidding.
 ## X-Notes: Updated for WoTLK by Guild Launch
 ## X-eMail: support@guildlaunch.com

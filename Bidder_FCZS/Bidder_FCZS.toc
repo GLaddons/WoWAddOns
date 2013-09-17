@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: Bidder_FCZS
 ## Author: Eraslin - now maintaind by Guild Launch
-## Version: 4.2.4
+## Version: 4.4.0
 ## Notes: Addon for adding the fixed cost zero-sum DKP system to Bidder
 ## X-eMail: support@guildlaunch.com
 ## X-Category: Raid

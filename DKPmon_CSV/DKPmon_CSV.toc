@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: DKPmon_CSV
 ## Author: Eraslin - now maintained by Guild Launch
-## Version: 4.2.4
+## Version: 4.4.0
 ## Notes: Module for DKPmon to add import/export to/from the points database via  CSV format
 ## X-eMail: support@guildlaunch.com
 ## X-Category: Raid
