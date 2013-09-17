@@ -1,0 +1,28 @@
+## Interface: 50400
+## Title: DKPmon_BossAuction
+## Author: Javek
+## X-Credits: Eraslin - now maintained by Guild Launch
+## Version: 4.2.4
+## Notes: Boss points & timed dkp module for DKPmon, open and silent bidding.
+## X-Notes: Updated for WoTLK by Guild Launch
+## X-eMail: support@guildlaunch.com
+## X-Category: Raid
+## X-Website: http://glmods.guildlaunch.com
+## X-License: GPL v2.0
+## RequiredDeps: DKPmon
+## OptionalDeps: Deformat-2.0
+## X-Embeds: Deformat-2.0
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+Libs\Deformat-2.0\Deformat-2.0.lua
+Libs\AceHook-2.1\AceHook-2.1.lua
+
+locale\localization.enUS.lua
+common\common_base.lua
+common\common_custom.lua
+openbid\openbid.lua
+silentbid\silentbid.lua
+common\constructor.lua
+custom.lua
+example.lua

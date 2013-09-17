@@ -1,0 +1,1807 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">    
+    <Script file="CT_RaidTrackerOptions.lua"/>
+    <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+		<Scripts>
+			<OnClick>
+				CT_RaidTracker_OptionsFrame_TabClick(self:GetName());
+			</OnClick>
+		</Scripts>
+	</Button>
+   <Button name="CT_RaidTrackerOptionsHelpButtonTemplate" inherits="UIPanelButtonTemplate" text="?" virtual="true">
+        <Size>
+            <AbsDimension x="20" y="15"/>
+        </Size>
+        <Anchors>
+            <Anchor point="LEFT" relativePoint="LEFT">
+                <Offset>
+                    <AbsDimension x="-25" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnEnter>
+            	CT_RaidTracker_OptionsFrame_ShowItemHelp(self:GetName());						    
+            </OnEnter>				                   
+            <OnLeave>
+            	CT_RaidTracker_OptionsFrame_HideItemHelp();							    
+            </OnLeave>		                    
+        </Scripts>
+    </Button>	
+    <Frame
+       name="CT_RaidTrackerOptionsFrame"
+       toplevel="true"
+       frameStrata="DIALOG"
+       movable="true"
+       enableMouse="true"
+       hidden="true"
+       parent="UIParent">
+       <Size>
+           <AbsDimension x="550" y="450"/>
+       </Size>
+       <Anchors>
+           <Anchor point="CENTER">
+               <Offset><AbsDimension x="-200" y="200"/></Offset>
+           </Anchor>
+       </Anchors>
+       <Backdrop
+           bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+           edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+           tile="true">
+           <BackgroundInsets>
+               <AbsInset left="11" right="12" top="12" bottom="11"/>
+           </BackgroundInsets>
+           <TileSize>
+               <AbsValue val="32"/>
+           </TileSize>
+           <EdgeSize>
+               <AbsValue val="32"/>
+           </EdgeSize>
+       </Backdrop>
+       <Layers>
+           <Layer level="ARTWORK">
+               <Texture name="myFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+                   <Size>
+                       <AbsDimension x="540" y="64"/>
+                   </Size>
+                   <Anchors>
+                       <Anchor point="TOP">
+                           <Offset>
+                               <AbsDimension x="0" y="12"/>
+                           </Offset>
+                       </Anchor>
+                   </Anchors>
+               </Texture>
+               <FontString inherits="GameFontNormal" text="Guild Launch CT_RaidTracker Options">
+                   <Anchors>
+                       <Anchor point="TOP" relativeTo="myFrameHeader">
+                           <Offset>
+                               <AbsDimension x="0" y="-14"/>
+                           </Offset>
+                       </Anchor>
+                   </Anchors>
+               </FontString>
+               <FontString name="$parentHelpHeader" inherits="GameFontNormal" text="Tab Help">
+                   <Anchors>
+                       <Anchor point="TOPLEFT" relativeTo="$parent">
+                           <Offset>
+                               <AbsDimension x="20" y="-200"/>
+                           </Offset>
+                       </Anchor>
+                   </Anchors>
+               </FontString>               
+                <FontString name="$parentHelpString" inherits="SystemFont_Small" text="" justifyH="LEFT" nonspacewrap="true">
+                    <Anchors>
+                        <Anchor point="TOPLEFT"  relativeTo="$parentHelpHeader">
+                            <Offset>
+                                <AbsDimension x="-20" y="-20" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString> 
+                <FontString name="$parentExtendedHelpString" inherits="SystemFont_Small" text="" justifyH="LEFT" nonspacewrap="true">
+                    <Anchors>
+                       <Anchor point="TOPLEFT" relativeTo="$parent">
+                           <Offset>
+                               <AbsDimension x="5" y="-50"/>
+                           </Offset>
+                       </Anchor>
+                    </Anchors>
+                </FontString>                                
+           </Layer>
+       </Layers>
+       <Frames>
+           <Frame name="$parentTabPage1" hidden="false">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Standard Configurations">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+					   <FontString inherits="GameFontNormal" text="Standalone">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="40" y="-50"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>                       
+						<FontString inherits="GameFontNormal" text="DKPmon Integration">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="40" y="-130"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>                                              
+                   </Layer>
+               </Layers>
+               <Frames>
+               		<!-- tab 1 contents -->
+               		<Button name="$parentStandaloneDefault" inherits="UIPanelButtonTemplate" text="Load Default Settings">
+		                <Size>
+		                    <AbsDimension x="190" y="21"/>
+		                </Size>
+		                <Anchors>
+		                    <Anchor point="TOPLEFT" relativeTo="$parent">
+		                        <Offset>
+		                            <AbsDimension x="60" y="-70"/>
+		                        </Offset>
+		                    </Anchor>
+		                </Anchors>
+		                <Scripts>
+		                    <OnClick>
+		                            CT_RaidTrackerLoadDefaultOptions();
+    								CT_RaidTracker_Print("Standalone Raid Tracking Options Loaded", 1, 1, 0);
+    								self:GetParent():GetParent():Hide();
+		                    </OnClick>
+		                </Scripts>
+		            </Button>
+               		<Button name="$parentStandaloneDefault" inherits="UIPanelButtonTemplate" text="Load EPGP Settings">
+		                <Size>
+		                    <AbsDimension x="190" y="21"/>
+		                </Size>
+		                <Anchors>
+		                    <Anchor point="BOTTOMLEFT" relativeTo="$parentStandaloneDefault">
+		                        <Offset>
+		                            <AbsDimension x="0" y="-30"/>
+		                        </Offset>
+		                    </Anchor>
+		                </Anchors>
+		                <Scripts>
+		                    <OnClick>		                           
+    								CT_RaidTrackerLoadDefaultEPGPOptions();
+    								CT_RaidTracker_Print("Standalone Raid Tracking w/ EPGP Options Loaded", 1, 1, 0);
+    								self:GetParent():GetParent():Hide();
+		                    </OnClick>
+		                </Scripts>
+		            </Button> 
+               		<Button name="$parentStandaloneDefault" inherits="UIPanelButtonTemplate" text="Load DKPmon Settings">
+		                <Size>
+		                    <AbsDimension x="190" y="21"/>
+		                </Size>
+		                <Anchors>
+		                    <Anchor point="TOPLEFT" relativeTo="$parent">
+		                        <Offset>
+		                            <AbsDimension x="60" y="-150"/>
+		                        </Offset>
+		                    </Anchor>
+		                </Anchors>
+		                <Scripts>
+		                    <OnClick>
+							    CT_RaidTrackerLoadDefaultDKPmonOptions();
+							    CT_RaidTracker_Print("DKPmon Integration Options Loaded", 1, 1, 0);
+							    CT_RaidTracker_Print("Ensure that DKPmon is loaded and set to log to Raid Tracker", 1, 1, 0);
+							    self:GetParent():GetParent():Hide();
+		                    </OnClick>
+		                </Scripts>
+		            </Button> 		            		            		             
+               		<!-- end tab 1 contents -->                                  
+               </Frames> 
+           </Frame>   
+           <Frame name="$parentTabPage2" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Zone Tracking Options">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>
+               	<!-- tab 2 contents -->
+               		<CheckButton name="$parentAutoZoneCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativeTo="$parent">
+			                    <Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+			                </Anchor>
+			            </Anchors>		            
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto zone:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>			                    
+			                </Layer>		                
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>
+			        </CheckButton>				        	        
+			        <CheckButton name="$parentNewRaidOnNewZoneCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoZoneCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="New Raid on New Zone:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>			                   
+			                </Layer>		                
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>				            
+			        </CheckButton>
+					<CheckButton name="$parentAutoCreateRaidCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentNewRaidOnNewZoneCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto create raid:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			        
+					<CheckButton name="$parentLogGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoCreateRaidCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Log Groups:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			        
+					<CheckButton name="$parentAutoGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentLogGroupCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto create Groups:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>					      
+			        <CheckButton name="$parentLogBattlefieldCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoGroupCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Log Battlefields:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			           	<Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>
+			        </CheckButton>				       
+               </Frames> 
+           </Frame>         
+ 			<Frame name="$parentTabPage3" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Boss Tracking Options">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>	
+               	<!-- tab 3 contents -->
+               			<CheckButton name="$parentAskWipeCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativeTo="$parent">
+			              		<Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Ask for wipe:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>
+			        
+			        <Slider name="$parentAskWipeSlider" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.8" valueStep=".01" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskWipeCB">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Percent to ask for wipe:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()*100));
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>   
+					<CheckButton name="$parentAskNextBossCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskWipeSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Ask for next boss:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			                    
+                	<CheckButton name="$parentSaveExtendedPlayerInfoCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskNextBossCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Save player extended info:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			
+					<Slider name="$parentAutoBossSlider" enableMouse="true" minValue="0" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentSaveExtendedPlayerInfoCB">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto boss:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffOff",
+			                    "|c00ffffffOn mouseover",
+			                    "|c00ffffffOn boss kill",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>
+			
+			        <Slider name="$parentAutoBossChangeMinTimeSlider" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.120" valueStep=".001" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto Boss Cooldown Time:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()*1000));
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>            			      		        
+			        <Slider name="$parentLogAttendeesSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="3" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossChangeMinTimeSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Log attendees:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local text = {
+			                    "|c00ffffffOff",
+			                    "|c00ffffffOn boss kill",
+			                    "|c00ffffffOn loot",
+			                    "|c00ffffffOn boss kill (same Zone)",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(text[self:GetValue()+1]);
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>		        		        
+               </Frames> 
+           </Frame>
+           <Frame name="$parentTabPage4" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Item Tracking Options">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>	
+               		<!-- tab 4 contents -->
+					<Slider name="$parentMinQualitySlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+                        <Size>
+                            <AbsDimension x="128" y="20"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parent">
+			              		<Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+                            </Anchor>
+                        </Anchors>              
+                        <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+                            <BackgroundInsets>
+                                <AbsInset left="3" right="3" top="6" bottom="6" />
+                            </BackgroundInsets>
+                            <TileSize>
+                                <AbsValue val="8" />
+                            </TileSize>
+                            <EdgeSize>
+                                <AbsValue val="8" />
+                            </EdgeSize>
+                        </Backdrop>
+                        <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+                            <Size>
+                                <AbsDimension x="32" y="32" />
+                            </Size>
+                        </ThumbTexture>
+                        <Layers>
+                            <Layer>
+                                <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Min item quality to log:">
+                                    <Anchors>
+                                        <Anchor point="RIGHT" relativePoint="LEFT">
+                                            <Offset>
+                                                <AbsDimension x="-30" y="0"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="10" />
+                                    </FontHeight>
+                                </FontString>
+                                <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+                                    <Anchors>
+                                        <Anchor point="LEFT" relativePoint="RIGHT">
+                                            <Offset>
+                                                <AbsDimension x="10" y="0"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="10" />
+                                    </FontHeight>
+                                </FontString>
+                            </Layer>                   
+                        </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>                        
+                        <Scripts>                
+                            <OnUpdate>
+                                local colors = {
+                                "|c00ffffffOff",
+                                "|c009d9d9dPoor",
+                                "|c00ffffffCommon",
+                                "|c001eff00Uncommon",
+                                "|c000070ddRare",
+                                "|c00a335eeEpic",
+                                "|c00ff8000Legendary",
+                                "|c00e6cc80Artifact",
+                                };
+                                getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+                            </OnUpdate>
+                        </Scripts>
+                    </Slider>
+                    <Slider name="$parentAskCostSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+                        <Size>
+                            <AbsDimension x="128" y="20"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentMinQualitySlider">
+                            </Anchor>
+                        </Anchors>
+                        <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+                            <BackgroundInsets>
+                                <AbsInset left="3" right="3" top="6" bottom="6" />
+                            </BackgroundInsets>
+                            <TileSize>
+                                <AbsValue val="8" />
+                            </TileSize>
+                            <EdgeSize>
+                                <AbsValue val="8" />
+                            </EdgeSize>
+                        </Backdrop>
+                        <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+                            <Size>
+                                <AbsDimension x="32" y="32" />
+                            </Size>
+                        </ThumbTexture>
+                        <Layers>
+                            <Layer>
+                                <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Min item quality to ask cost for:">
+                                    <Anchors>
+                                        <Anchor point="RIGHT" relativePoint="LEFT">
+                                            <Offset>
+                                                <AbsDimension x="-30" y="0"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="10" />
+                                    </FontHeight>
+                                </FontString>
+                                <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+                                    <Anchors>
+                                        <Anchor point="LEFT" relativePoint="RIGHT">
+                                            <Offset>
+                                                <AbsDimension x="10" y="0"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="10" />
+                                    </FontHeight>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>                         
+                        <Scripts>
+                            <OnUpdate>
+                                local colors = {
+                                "|c00ffffffOff",
+                                "|c009d9d9dPoor",
+                                "|c00ffffffCommon",
+                                "|c001eff00Uncommon",
+                                "|c000070ddRare",
+                                "|c00a335eeEpic",
+                                "|c00ff8000Legendary",
+                                "|c00e6cc80Artifact",
+                                };
+                                getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+                            </OnUpdate>
+                        </Scripts>
+                    </Slider> 
+					<Slider name="$parentGetDKPValueSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskCostSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Min item quality to get cost for:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames> 			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffOff",
+			                    "|c009d9d9dPoor",
+			                    "|c00ffffffCommon",
+			                    "|c001eff00Uncommon",
+			                    "|c000070ddRare",
+			                    "|c00a335eeEpic",
+			                    "|c00ff8000Legendary",
+			                    "|c00e6cc80Artifact",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>
+			        <Slider name="$parentGroupItemsSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGetDKPValueSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Max item quality to group:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffOff",
+			                    "|c009d9d9dPoor",
+			                    "|c00ffffffCommon",
+			                    "|c001eff00Uncommon",
+			                    "|c000070ddRare",
+			                    "|c00a335eeEpic",
+			                    "|c00ff8000Legendary",
+			                    "|c00e6cc80Artifact",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider> 	
+					<CheckButton name="$parentSaveTooltipsCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGroupItemsSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Save item tooltips:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			        				         
+					<!-- oberan added to auto record epgp costs -->
+			        <CheckButton name="$parentAutoSetEPGPCost" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentSaveTooltipsCB">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto set epgp costs:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>			       
+			        <!-- end oberan added to auto record epgp costs -->                	
+               	<!-- end tab 4 contents -->		                     
+               </Frames> 
+           </Frame>
+           <!-- ATTENDANCE -->
+			<Frame name="$parentTabPage8" hidden="false">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Attendance Tracking Options">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>                                           
+                   </Layer>
+               </Layers>
+               <Frames>	
+               	<!-- tab 3 contents -->
+               		<CheckButton name="$parentEnableListme" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativeTo="$parent">
+			              		<Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Enable Listme Whisper:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>
+					<Slider name="$parentWaitlistAttendanceType" enableMouse="true" minValue="1" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentEnableListme">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Waitlist Attendance Type:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffCombined",
+			                    "|c00ffffffSeperate Event",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()]);
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider> 			        
+				</Frames>               		 
+           </Frame>           
+           <Frame name="$parentTabPage5" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="DKPMon Logging Options">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>
+               	<!-- tab 5 contents --> 
+					<!-- Guild Launch "logging" mode for DKPmon -->
+			        <CheckButton name="$parentDKPmonLoggingMode" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativeTo="$parent">
+			              		<Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Enable DKPmon Logging:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>
+        			<!-- end Guild Launch "logging" mode for DKPmon -->               	
+               	<!-- end tab 5 contents -->
+               </Frames> 
+           </Frame>
+           <Frame name="$parentTabPage6" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Misc.">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>
+               		<!-- tab 6 contents -->
+					<CheckButton name="$parentTimeSyncCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativeTo="$parent">
+			               		<Offset>
+                                    <AbsDimension x="200" y="-50" />
+                                </Offset>
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Use server time:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>			                		                
+			            </Layers>			            
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>				            
+			        </CheckButton>
+			        <Slider name="$parentTimeZoneSlider" enableMouse="true" minValue="-24" maxValue="24" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentTimeSyncCB">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Time zone:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>
+			        <CheckButton name="$parentUse24hFormat" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentTimeZoneSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Use 24h time format:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>			                
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			        </CheckButton>
+			        <Slider name="$parentMaxLevelSlider" enableMouse="true" minValue="0" maxValue="70" defaultValue="70" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentUse24hFormat">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Max Level:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+			            <Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
+			                </OnUpdate>
+			            </Scripts>
+			        </Slider>			     			
+               		<CheckButton name="$parentGuildSnapshotCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			            <Size>
+			                <AbsDimension x="20" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentMaxLevelSlider">
+			                </Anchor>
+			            </Anchors>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Log Guild Roster on Bosskill:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>	
+		          		<Frames>
+		               		<Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+		            	</Frames>			            		            
+			        </CheckButton>
+					<!-- ExportFormat Silder -->
+			        <Slider name="$parentExportFormatSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="1" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGuildSnapshotCB">
+			                </Anchor>
+			            </Anchors>
+			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			                <BackgroundInsets>
+			                    <AbsInset left="3" right="3" top="6" bottom="6" />
+			                </BackgroundInsets>
+			                <TileSize>
+			                    <AbsValue val="8" />
+			                </TileSize>
+			                <EdgeSize>
+			                    <AbsValue val="8" />
+			                </EdgeSize>
+			            </Backdrop>
+			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			                <Size>
+			                    <AbsDimension x="32" y="32" />
+			                </Size>
+			            </ThumbTexture>
+			            <Layers>
+			                <Layer>
+			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Export Format:">
+			                        <Anchors>
+			                            <Anchor point="RIGHT" relativePoint="LEFT">
+			                                <Offset>
+			                                    <AbsDimension x="-30" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                    <FontString name="$parentValue" inherits="GameFontNormalSmall" text="">
+			                        <Anchors>
+			                            <Anchor point="LEFT" relativePoint="RIGHT">
+			                                <Offset>
+			                                    <AbsDimension x="10" y="0"/>
+			                                </Offset>
+			                            </Anchor>
+			                        </Anchors>
+			                        <FontHeight>
+			                            <AbsValue val="10" />
+			                        </FontHeight>
+			                    </FontString>
+			                </Layer>
+			            </Layers>
+		            	<Frames>
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			            </Frames>			            
+			            <Scripts>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffMLdkp 1.1/EQdkp Plugin",
+			                    "|c00ffffffEQdkp Unknown",
+			                    "|c00ffffffMLdkp 1.5",
+			                    "|c00ffffffGuild Launch",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			            </Scripts>                
+			        </Slider>
+					<!-- ExportFormat Slider end --> 			                       		
+               		<!-- end tab 6 contents -->
+               </Frames> 
+           </Frame>   
+           <Frame name="$parentTabPage7" hidden="true">
+               <Anchors>
+                   <Anchor point="TOPLEFT"/>
+                   <Anchor point="BOTTOMRIGHT"/>
+               </Anchors>
+               <Layers>
+                   <Layer level="ARTWORK">
+                       <FontString inherits="GameFontNormal" text="Help">
+                           <Anchors>
+                               <Anchor point="TOPLEFT" relativeTo="$parent">
+                                   <Offset>
+                                       <AbsDimension x="20" y="-30"/>
+                                   </Offset>
+                               </Anchor>
+                           </Anchors>
+                       </FontString>
+                   </Layer>
+               </Layers>
+               <Frames>
+               </Frames> 
+           </Frame>                                                  
+           <Button name="$parentTab1" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="1" text="Auto Config">
+               <Anchors>
+                   <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
+                       <Offset>
+                           <AbsDimension x="60" y="-10"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>           
+           <Button name="$parentTab2" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="2" text="Zone">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>            
+           <Button name="$parentTab3" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="3" text="Boss">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab2" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>
+            <Button name="$parentTab4" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="4" text="Item">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab3" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>
+            <Button name="$parentTab8" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="8" text="Attendance">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab4" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>           
+            <Button name="$parentTab5" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="5" text="DKPmon">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab8" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button> 
+            <Button name="$parentTab6" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="6" text="Misc.">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab5" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>                 
+            <Button name="$parentTab7" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="7" text="Help">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab6" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>                          
+            <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-6" y="-6"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentCancelButton" inherits="UIPanelButtonTemplate" text="Cancel">
+                <Size>
+                    <AbsDimension x="77" y="21"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="-12" y="16"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        self:GetParent():Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentSaveButton" inherits="UIPanelButtonTemplate" text="Save">
+                <Size>
+                    <AbsDimension x="77" y="21"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="RIGHT" relativeTo="$parentCancelButton" relativePoint="LEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        self:GetParent():Hide();
+                        CT_RaidTracker_OptionsFrame_Save();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentToggleHelpButton" inherits="UIPanelButtonTemplate" text="?: On">
+                <Size>
+                    <AbsDimension x="45" y="21"/>
+                </Size>
+                <Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentCloseButton" relativePoint="LEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        CT_RaidTracker_OptionsFrame_ToggleHelp();
+                    </OnClick>
+                </Scripts>
+            </Button>                       
+       </Frames>
+       <Scripts>
+            <OnLoad>
+                <!--self.elapsed = 0;-->
+                PanelTemplates_SetNumTabs(CT_RaidTrackerOptionsFrame, 8);
+                PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
+            </OnLoad>
+            <OnShow>
+                PlaySound("UChatScrollButton");                
+                CT_RaidTracker_OptionsFrame_OnShow();                
+                PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
+                CT_RaidTracker_OptionsFrame_ShowTabHelp(1)
+                CT_RaidTrackerOptionsFrameTabPage1:Show()
+                CT_RaidTrackerOptionsFrameTabPage2:Hide()              
+                CT_RaidTrackerOptionsFrameTabPage8:Hide() 
+                CT_RaidTrackerOptionsFrameTabPage3:Hide()
+                CT_RaidTrackerOptionsFrameTabPage4:Hide()
+                CT_RaidTrackerOptionsFrameTabPage5:Hide()
+                CT_RaidTrackerOptionsFrameTabPage6:Hide()
+                CT_RaidTrackerOptionsFrameTabPage7:Hide()            
+            </OnShow>
+            <OnHide>
+                PlaySound("UChatScrollButton");
+            </OnHide>
+            <OnMouseDown>
+                if ( arg1 == "LeftButton" ) then
+                    self:StartMoving();
+                end
+             </OnMouseDown>
+             <OnMouseUp>
+                if ( arg1 == "LeftButton" ) then
+                    self:StopMovingOrSizing();
+                end
+             </OnMouseUp>         
+       </Scripts>
+   </Frame>
+</Ui>

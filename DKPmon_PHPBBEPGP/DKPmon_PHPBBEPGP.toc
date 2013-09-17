@@ -1,0 +1,16 @@
+## Interface: 50400
+## Title: DKPmon_PHPBBEPGP
+## Author: Xerophyte
+## Version: 4.2.4
+## Notes: Module for DKPmon to add export from the points database in PHPBB format, EPGP version
+## X-eMail: xerofyt@gmail.com
+## X-Category: Raid
+## X-Website: http://dkpmon.googlepages.com
+## X-AceForum: http://www.wowace.com/forums/index.php?topic=4046.0
+## X-License: GPL v2.0
+## RequiredDeps: DKPmon
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+localization.enUS.lua
+exportmod.lua

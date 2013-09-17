@@ -1,0 +1,8 @@
+## Interface: 50400
+## Title: Guild Launch Rapid Raid
+## Version: ALPHA 18
+## Notes: Rapid Raid
+GL_Data_DKP.lua
+GL_Data_SIGNUPS.lua
+GL_MembersDkpFrame.xml
+GuildLaunchRapidRaid.lua

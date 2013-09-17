@@ -1,0 +1,20 @@
+## Interface: 50400
+## Title: DKPmon_FCZS
+## Author: Eraslin - now maintained by Guild Launch
+## Version: 4.2.4
+## Notes: Addon for adding the fixed cost zero-sum DKP system to DKPmon
+## X-eMail: support@guildlaunch.com
+## X-Category: Raid
+## X-Website: http://glmods.guildlaunch.com
+## X-License: GPL v2.0
+## RequiredDeps: DKPmon
+## OptionalDeps:
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+localization.enUS.lua
+localization.deDE.lua
+
+fczs.lua
+custom.lua
+example.lua

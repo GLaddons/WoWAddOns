@@ -1,0 +1,5 @@
+#################
+## Ignore Blizzard Default Addons
+#################
+
+Blizzard_*

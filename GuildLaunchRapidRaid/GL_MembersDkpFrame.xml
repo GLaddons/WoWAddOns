@@ -1,0 +1,801 @@
+<Ui>
+  <Script file="GL_MembersDkpFrame.lua"/>
+  <Button name = "ModEntryTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="150" y="16" />
+    </Size>
+    <Layers>
+      <Layer level="BORDER">
+        <FontString name="$parent_Text" inherits="GameFontHighlight" wraponspaces="false" justifyH="LEFT" text="TestModEntry"/>
+      </Layer>
+    </Layers>
+  </Button>
+  <Button name = "DkpEntryTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="100" y="16" />
+    </Size>
+    <Layers>
+      <Layer level="BORDER">
+        <FontString name="$parent_Text" inherits="GameFontHighlight" wraponspaces="false" justifyH="RIGHT" text="TestModEntry2"/>
+      </Layer>
+    </Layers>
+  </Button>
+
+  <Frame name="GL_MembersDkpFrame" parent="UIParent" enableMouse="true" movable="true"  hidden="true">
+   <TitleRegion>
+  <Size>
+   <AbsDimension x="400" y="60"/>
+  </Size>
+  <Anchors>
+   <Anchor point="TOP"/>
+  </Anchors>
+ </TitleRegion>
+
+    <Size>
+      <AbsDimension x="545" y="375"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER"/>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+      <BackgroundInsets>
+        <AbsInset left="4" right="4" top="4" bottom="4" />
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="16" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="16" />
+      </EdgeSize>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+        			<Texture name="$parentTitle" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="400" y="64" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				
+				<!-- Frame header label -->
+				<FontString inherits="GameFontNormalSmall" text="Guild Launch Rapid Raid Snapshot">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-3" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+                
+            <FontString inherits="GameFontNormalSmall" text="Name">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="8" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+            <FontString name="EarnedHeader" inherits="GameFontNormalSmall" justifyH="RIGHT" text="Earned">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="172" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+            <FontString name="SpentHeader" inherits="GameFontNormalSmall" text="Spent">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="277" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="CurrentHeader" inherits="GameFontNormalSmall" text="Current">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="375" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+                <FontString inherits="GameFontNormalSmall" text="Att. 30">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="422" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+            <FontString inherits="GameFontNormalSmall" text="Att. 60">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="472" y="-33"/>
+                    </Offset>
+                   </Anchor>
+                </Anchors>
+              </FontString>
+          </Layer>
+    </Layers>
+    <Frames>
+      <ScrollFrame name="MyModScrollBar" inherits="FauxScrollFrameTemplate" hidden="true">
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-8"/>
+            </Offset>
+          </Anchor>
+          <Anchor point="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="-30" y="8"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnVerticalScroll>
+            FauxScrollFrame_OnVerticalScroll(self, offset, 16, MyModScrollBar_Update);
+          </OnVerticalScroll>
+          <OnShow>
+            MyModScrollBar_Update()
+          </OnShow>
+        </Scripts>
+      </ScrollFrame>
+      
+        <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+            <Anchors>
+                <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+                    <Offset>
+                        <AbsDimension x="-20" y="-1"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </Button>
+    <!-- header buttons -->
+      <Button name="CharacterName1" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="8" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP1" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="108" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP1" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="208" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP1" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="308" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="Attendance301" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="358" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="Attendance601" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="408" y="-38"/>
+            </Offset>
+           </Anchor>
+        </Anchors>
+      </Button>
+      
+      <!-- actual buttons -->
+      <Button name="CharacterName2" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName1" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName3" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName2" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="CharacterName4" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName3" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName5" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName4" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName6" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName5" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName7" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName6" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName8" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName7" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName9" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName8" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName10" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName9" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName11" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName10" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName12" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName11" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName13" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName12" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName14" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName13" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName15" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName14" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName16" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName15" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName17" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName16" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName18" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName17" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName19" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName18" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CharacterName20" inherits="ModEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CharacterName19" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <!-- earned DKP -->
+     <Button name="EarnedDKP2" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP1" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP3" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP2" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="EarnedDKP4" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP3" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP5" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP4" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP6" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP5" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP7" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP6" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP8" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP7" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP9" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP8" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP10" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP9" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP11" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP10" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP12" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP11" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP13" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP12" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP14" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP13" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP15" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP14" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP16" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP15" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP17" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP16" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP18" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP17" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP19" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP18" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="EarnedDKP20" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="EarnedDKP19" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <!-- spent DKP -->
+     <Button name="SpentDKP2" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP1" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP3" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP2" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="SpentDKP4" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP3" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP5" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP4" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP6" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP5" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP7" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP6" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP8" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP7" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP9" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP8" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP10" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP9" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP11" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP10" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP12" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP11" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP13" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP12" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP14" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP13" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP15" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP14" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP16" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP15" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP17" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP16" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP18" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP17" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP19" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP18" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="SpentDKP20" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="SpentDKP19" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+     <!-- current DKP --> 
+     <Button name="CurrentDKP2" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP1" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP3" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP2" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="CurrentDKP4" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP3" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP5" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP4" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP6" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP5" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP7" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP6" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP8" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP7" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP9" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP8" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP10" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP9" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP11" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP10" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP12" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP11" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP13" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP12" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP14" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP13" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP15" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP14" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP16" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP15" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP17" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP16" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP18" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP17" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP19" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP18" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="CurrentDKP20" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="CurrentDKP19" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <!-- attendance 30 -->
+           <Button name="Attendance302" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance301" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance303" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance302" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="Attendance304" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance303" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance305" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance304" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance306" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance305" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance307" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance306" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance308" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance307" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance309" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance308" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3010" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance309" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3011" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3010" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3012" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3011" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3013" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3012" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3014" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3013" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3015" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3014" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3016" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3015" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3017" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3016" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3018" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3017" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3019" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3018" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance3020" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance3019" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+        <!-- attendance 60 -->
+     <Button name="Attendance602" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance601" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance603" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance602" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>  
+      <Button name="Attendance604" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance603" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance605" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance604" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance606" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance605" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance607" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance606" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance608" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance607" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance609" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance608" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6010" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance609" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6011" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6010" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6012" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6011" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6013" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6012" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6014" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6013" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6015" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6014" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6016" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6015" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6017" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6016" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6018" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6017" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6019" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6018" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+      <Button name="Attendance6020" inherits="DkpEntryTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="Attendance6019" relativePoint="BOTTOMLEFT"/>
+        </Anchors>
+      </Button>
+
+    </Frames>
+  </Frame>
+</Ui>

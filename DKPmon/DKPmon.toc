@@ -1,0 +1,51 @@
+## Interface: 50400
+## Title: DKPmon
+## Author: Eraslin - Now maintained by Guild Launch
+## Version: 4.2.4
+## Notes: Addon for managing DKP and bidding
+## X-eMail: support@guildlaunch.com
+## X-Category: Raid
+## X-Website: http://glmods.guildlaunch.com
+## X-License: GPL v2.0
+## X-DkpMonLoaded: 1
+## RequiredDeps: Bidder
+## OptionalDeps: Ace2, DewdropLib, Metrognome, Skinner, FuBarPlugin-2.0, TabletLib
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: DKPmonDB
+
+Localization\enUS.lua
+Localization\deDE.lua
+
+main.lua
+utils.lua
+Options\options.lua
+Options\optionfuncs.lua
+Skinning\frameskinning.lua
+Dialogs\dialogs.lua
+Comm\comm.lua
+
+PointsDB\pointsdb.lua
+PointsDB\syncing.lua
+
+Looting\lootframe.lua
+Looting\lootitem.lua
+Looting\looting.lua
+
+Logging\log.lua
+Logging\logviewer.lua
+
+Awarding\awardframe.lua
+
+Custom\registry.lua
+
+Roster\raid.lua
+
+DKPSystems\registry.lua
+DKPSystems\baseclass.lua
+DKPSystems\fixeddkp.lua
+
+ImpExpModules\registry.lua
+
+Custom\fixeddkp.lua
+Custom\fixeddkp_example.lua

@@ -1,0 +1,10 @@
+## Interface: 50400
+## Title: GuildLaunch Profiler
+## Author: Stephen Johnston
+## Version: 01.06.00
+## X-ExportVersion: 2.2
+## Notes: Guild Launch Profiler
+## SavedVariablesPerCharacter: GUILDLAUNCH_SVARS
+## X-Website: http://www.guildlaunch.com
+localization.lua
+GuildLaunchProfiler.lua
