@@ -155,7 +155,7 @@ CT_RaidTracker_lang_ReceivesLootYou = "You";
 CT_RaidTracker_ZoneTriggers = {
 	-- MoP
 	["Siege of Orgrimmar"] = "Siege of Orgrimmar",
-    	["Throne of Thunder"] = "Throne of Thunder",
+    ["Throne of Thunder"] = "Throne of Thunder",
 	["Mogu'shan Vaults"] = "Mogu'shan Vaults",
 	["Terrace of Endless Spring"] = "Terrace of Endless Spring",
 	["Heart of Fear"] = "Heart of Fear",
@@ -174,20 +174,20 @@ CT_RaidTracker_ZoneTriggers = {
 
 CT_RaidTracker_BossUnitTriggers = {
 	-- siege of orgrimmar
-	["Immerseus"] = "Immerseus",
-	["The Fallen Protectors"] = "The Fallen Protectors",
-	["Norushen"] = "Norushen",
-	["Sha of Pride"] = "Sha of Pride",
-	["Galakras"] = "Galakras",
-	["Iron Juggernaut"] = "Iron Juggernaut",
-	["Kor'kron Dark Shaman"] = "Kor'kron Dark Shaman",
-	["General Nazgrim"] = "General Nazgrim",
-	["Malkorok"] = "Malkorok",
-	["Spoils of Pandaria"] = "Spoils of Pandaria",
-	["Thok the Bloodthirsty"] = "Thok the Bloodthirsty",
-	["Siegecrafter Blackfuse"] = "Siegecrafter Blackfuse",
-	["Paragons of the Klaxxi"] = "Paragons of the Klaxxi",
-	["Garrosh Hellscream"] = "Garrosh Hellscream",	
+	["Immerseus"] 					= "Immerseus",
+	["The Fallen Protectors"]		= "The Fallen Protectors", -- ? about death
+	["Amalgam of Corruption"] 		= "Norushen",
+	["Sha of Pride"] 				= "Sha of Pride",
+	["Galakras"] 					= "Galakras",
+	["Iron Juggernaut"] 			= "Iron Juggernaut",
+	["Earthbreaker Haromm"] 		= "Kor'kron Dark Shaman",
+	["General Nazgrim"] 			= "General Nazgrim",
+	["Malkorok"] 					= "Malkorok",
+	["Spoils of Pandaria"] 			= "Spoils of Pandaria",
+	["Thok the Bloodthirsty"] 		= "Thok the Bloodthirsty",
+	["Siegecrafter Blackfuse"] 		= "Siegecrafter Blackfuse",
+	["Paragons of the Klaxxi"] 		= "Paragons of the Klaxxi", -- ? multiple mob death
+	["Garrosh Hellscream"] 			= "Garrosh Hellscream",	
 	-- Throne of Thunder
 	["Jin'rokh the Breaker"] 		=	"Jin'rokh the Breaker",
 	["Horridon"] 			        =	"Horridon",
@@ -315,12 +315,14 @@ CT_RaidTracker_lang_BossKills_LeiShi_BossName = "Lei Shi";
 CT_RaidTracker_lang_BossKills_Tsulong_Yell = "I thank you, strangers. I have been freed.";
 CT_RaidTracker_lang_BossKills_Tsulong_BossName = "Tsulong";
 
-CT_RaidTracker_lang_BossKills_Spoils_Yell = "Have a great day and don't let the door hit you on the way out.";
-CT_RaidTracker_lang_BossKills_Spoils_BossName = "Spoils of Pandaria";
-
 CT_RaidTracker_lang_BossKills_FallenProtectors_Yell = "May your souls become one with the land you gave your life to protect.";
 CT_RaidTracker_lang_BossKills_FallenProtectors_BossName = "The Fallen Protectors";
 
+CT_RaidTracker_lang_BossKills_Immerseus_Yell = "Ah, you have done it. The waters are pure once more!";
+CT_RaidTracker_lang_BossKills_Immerseus_BossName = "Immerseus";
+
+CT_RaidTracker_lang_BossKills_Spoils_Yell = "System resetting. Don't turn the power off, or the whole thing will probably explode."
+CT_RaidTracker_lang_BossKills_Spoils_BossName = "Spoils of Pandaria";
 -- Translations
 
 if (GetLocale() == "deDE") then
