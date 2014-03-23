@@ -318,8 +318,17 @@ CT_RaidTracker_lang_BossKills_Tsulong_BossName = "Tsulong";
 CT_RaidTracker_lang_BossKills_FallenProtectors_Yell = "May your souls become one with the land you gave your life to protect.";
 CT_RaidTracker_lang_BossKills_FallenProtectors_BossName = "The Fallen Protectors";
 
-CT_RaidTracker_lang_BossKills_Immerseus_Yell = "Ah, you have done it. The waters are pure once more!";
+CT_RaidTracker_lang_BossKills_Immerseus_Yell = "Ah, you have done it! The waters are pure once more.";
 CT_RaidTracker_lang_BossKills_Immerseus_BossName = "Immerseus";
+
+CT_RaidTracker_lang_BossKills_Immerseus_Yell2 = "Ah, you have done it. The waters are pure once more!";
+CT_RaidTracker_lang_BossKills_Immerseus_BossName2 = "Immerseus";
+
+CT_RaidTracker_lang_BossKills_Immerseus_Yell3 = "Can you feel their life-giving energies flow through you?";
+CT_RaidTracker_lang_BossKills_Immerseus_BossName3 = "Immerseus";
+
+CT_RaidTracker_lang_BossKills_Immerseus_Yell4 = "It will take much time for the Vale to heal, but you have given us hope!";
+CT_RaidTracker_lang_BossKills_Immerseus_BossName4 = "Immerseus";
 
 CT_RaidTracker_lang_BossKills_Spoils_Yell = "System resetting. Don't turn the power off, or the whole thing will probably explode."
 CT_RaidTracker_lang_BossKills_Spoils_BossName = "Spoils of Pandaria";

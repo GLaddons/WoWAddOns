@@ -1856,6 +1856,21 @@ function CT_RaidTracker_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg6,
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_Immerseus_Yell2) then
+            CT_RaidTracker_Debug("New Immerseus2 Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName2;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_Immerseus_Yell3) then
+            CT_RaidTracker_Debug("New Immerseus3 Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName3;                       
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_Immerseus_Yell4) then
+            CT_RaidTracker_Debug("New Immerseus4 Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName4;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Spoils_Yell) then
             CT_RaidTracker_Debug("New Spoils of Pandaria Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
