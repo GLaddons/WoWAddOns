@@ -105,6 +105,22 @@ CT_RaidTracker_Options =
     ["WaitlistAttendanceType"] = 1; -- indicates the style of waitlitst tracking. Current options are whether waitlisted players form the "listme" functionality are included in the boss kill or entered as a seperate "waitlist" event. 1 = include 2 = seperate
 };
 
+CT_RaidTracker_Klaxxi_Yells =
+{
+    ["The hunter... becomes... the hunted..."]                              = 1, -- Hisek the Swarmkeeper
+    ["Perhaps I could have used... some enhancements... of my own..."]      = 2, -- Rik'kal the Dissector
+    ["Avenge me, brothers!"]                                                = 4, -- Skeer the Bloodseeker
+    ["Curse this chitinous shell, I was not fast enough!"]                  = 8, -- Ka'roz the Locust
+    ["Return me to the amber..."]                                           = 16, -- Korven the Prime
+    ["My calculations, incorrect? Perhaps another 800 years..."]            = 32, -- Iyyokuk the Lucid
+    ["I never discovered... how to put a stopper... in death..."]           = 64, -- Xaril the Poisoned Mind
+    ["Kovok... Come to me... I need..."]                                    = 128, -- Kaz'tik the Manipulator
+    ["Well fought Wakener. We will meet again..."]                          = 256, -- Kaz'tik the Manipulator
+};
+
+CT_RaidTracker_Klaxxi_Status = 0;
+CT_RaidTracker_Klaxxi_Dead = 511;
+
 CT_RaidTracker_QuickLooter = {"disenchanted", "bank"};
 
 CT_RaidTracker_ExpansionLevel = 3;
@@ -1798,7 +1814,8 @@ function CT_RaidTracker_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg6,
     if ( event == "" and arg7 == CT_RaidTracker_lang_BossKills_Julianne_BossName) then
 
     end;
-    if ( event == "CHAT_MSG_MONSTER_YELL" or event == "CHAT_MSG_MONSTER_EMOTE" ) then
+    if ( event == "CHAT_MSG_MONSTER_YELL" 
+            or event == "CHAT_MSG_MONSTER_EMOTE") then
         CT_RaidTracker_Debug("Boss Yell "..arg1)
         -- Cata Yells
         if(arg1 == CT_RaidTracker_lang_BossKills_Conclave_of_Wind_Yell) then
@@ -1876,6 +1893,18 @@ function CT_RaidTracker_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg6,
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_Spoils_BossName;                                                                          
+        end
+
+        if (CT_RaidTracker_Klaxxi_Yells[arg1]) then            
+            CT_RaidTracker_Klaxxi_Status = CT_RaidTracker_Klaxxi_Status + CT_RaidTracker_Klaxxi_Yells[arg1];    
+            CT_RaidTracker_Debug("Got one of the Klaxxi " .. CT_RaidTracker_Klaxxi_Status);
+            if (CT_RaidTracker_Klaxxi_Status == CT_RaidTracker_Klaxxi_Dead) then
+                CT_RaidTracker_Debug("Got ALL of the Klaxxi");
+                event   = "COMBAT_LOG_EVENT_UNFILTERED";
+                arg2    = "UNIT_DIED";
+                arg9    = CT_RaidTracker_lang_BossKills_Paragons_BossName;   
+                CT_RaidTracker_Klaxxi_Status = 0; 
+            end            
         end
         --[[
         -- yell sample
@@ -2819,6 +2848,9 @@ function CT_RaidTracker_AddWipe()
                             ["attendees"] = tAttendees
                         }
                         );
+
+    CT_RaidTracker_Klaxxi_Status = 0;
+
     CT_RaidTracker_Print("Wipe has been recorded!", 1, 1, 0);
 end;
 

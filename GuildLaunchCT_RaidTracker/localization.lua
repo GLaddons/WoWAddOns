@@ -332,6 +332,9 @@ CT_RaidTracker_lang_BossKills_Immerseus_BossName4 = "Immerseus";
 
 CT_RaidTracker_lang_BossKills_Spoils_Yell = "System resetting. Don't turn the power off, or the whole thing will probably explode."
 CT_RaidTracker_lang_BossKills_Spoils_BossName = "Spoils of Pandaria";
+
+CT_RaidTracker_lang_BossKills_Paragons_BossName = "Paragons of the Klaxxi";
+
 -- Translations
 
 if (GetLocale() == "deDE") then
