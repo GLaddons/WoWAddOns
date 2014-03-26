@@ -708,7 +708,7 @@ local function createAboutFrame()
 	})
 	aboutFrame:SetBackdropColor(0,0,0,1)
 
-	local donateButton = CreateFrame("Button", "AceAddon20AboutFrameDonateButton", aboutFrame, "UIPanelButtonTemplate2")
+	local donateButton = CreateFrame("Button", "AceAddon20AboutFrameDonateButton", aboutFrame, "UIPanelButtonTemplate")
 	aboutFrame.donateButton = donateButton
 	donateButton:SetPoint("BOTTOMRIGHT", -20, 20)
 	_G.AceAddon20AboutFrameDonateButtonText:SetText(DONATE)

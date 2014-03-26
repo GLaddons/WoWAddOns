@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: DKPmon
 ## Author: Eraslin - Now maintained by Guild Launch
-## Version: 4.4.0
+## Version: 4.4.1
 ## Notes: Addon for managing DKP and bidding
 ## X-eMail: support@guildlaunch.com
 ## X-Category: Raid
