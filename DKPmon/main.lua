@@ -205,12 +205,17 @@ function DKPmon:CheckLeader()
    end
 end
 function DKPmon:ReceiveLeaderClaim(sender)
---self:Print("Got claim leader from "..sender)
+    --DKPmon:Print("Debug "..sender)
+   local name_split = strsplit("%-", sender )
+   sender = name_split
    self.lastLeaderClaim = GetTime()
+   --DKPmon:Print("Debug LeadNA"..self.leadername)
    if sender ~= self.leadername then
       self.leadername = sender
       DKPmon:Print(L["DKP leader changed to "]..sender)
-   end
+   end   
+   --DKPmon:Print("Debug Sender"..sender)
+   --DKPmon:Print("Debug Player"..UnitName("player"))
    if sender ~= UnitName("player") then
       self:SetLeader(false)
    end
