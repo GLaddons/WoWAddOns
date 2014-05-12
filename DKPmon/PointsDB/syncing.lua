@@ -173,7 +173,7 @@ Output:
   boolean -- true if we are going to try to process the info, false to requeue it for later
 ]]
 function PointsDB:ReceiveBroadcast(sender, params)
-   if sender == UnitName("player") then return true end
+   if sender == Bidder:GetFixedUpUnitName("player") then return true end
    -- We already have a broadcast waiting to be processed. Put this receive back on the queue
    if self.bcaststr ~= nil then return false end
    if params.pw ~= DKPmon.db.realm.password then return true end
@@ -220,7 +220,7 @@ Output:
   true
 ]]
 function PointsDB:ReceiveSyncRequest(sender, params)
-   if sender == UnitName("player") then return true end
+   if sender == Bidder:GetFixedUpUnitName("player") then return true end
    if params ~= DKPmon.db.realm.password then return true end
    if DKPmon.db.realm.alwayssync then 
       self:SendBroadcast()

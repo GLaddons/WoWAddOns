@@ -104,9 +104,10 @@ Output:
 function Comm:SendToDKPmon(command, parameters, target, channel)
    if target == nil then target = "~all" end
    if channel == nil then channel = "GROUP" end
+   local unitName = Bidder:GetFixedUpUnitName("player")
    local sent = DKPmon:SendCommMessage(channel, self.DKPmonCommVer, target, command, parameters)
-   if sent == true and (target == "~all" or target == UnitName("player")) then
-      self:OnCommReceive(self.DKPmonCommPrefix, UnitName("player"), channel, self.DKPmonCommVer, target, command, parameters)
+   if sent == true and (target == "~all" or target == unitName) then
+      self:OnCommReceive(self.DKPmonCommPrefix, unitName, channel, self.DKPmonCommVer, target, command, parameters)
    end
 end
 
@@ -124,10 +125,11 @@ Output:
 ]]
 function Comm:SendToBidder(command, parameters, target, channel)
    if target == nil then target = "~all" end
-   if channel == nil then channel = "GROUP" end
+   if channel == nil then channel = "GROUP" end   
+   local unitName = Bidder:GetFixedUpUnitName("player")
    local sent = DKPmon:SendCommMessage(channel, self.BidderCommVer, target, command, parameters)
-   if sent == true and (target == "~all" or target == UnitName("player")) then
-      Bidder.Comm:OnCommReceive(self.DKPmonCommPrefix, UnitName("player"), channel, self.BidderCommVer, target, command, parameters)
+   if sent == true and (target == "~all" or target == unitName) then
+      Bidder.Comm:OnCommReceive(self.DKPmonCommPrefix, unitName, channel, self.BidderCommVer, target, command, parameters)
    end
 end
 
@@ -171,7 +173,7 @@ AceComm-2.0 message receiving callback
 function Comm:OnCommReceive(prefix, sender, distribution, ver, target, command, parameters)
    --DKPmon:Print("Got message to "..target.." from "..sender.." with command "..command.." and parameter type "..type(parameters))
    -- Check the target
-   if target ~= "~all" and target ~= UnitName("player") then return end
+   if target ~= "~all" and target ~= Bidder:GetFixedUpUnitName("player") then return end
    -- Queue the message if the communication protocol's compatible
    if (prefix == self.DKPmonCommPrefix and ver == self.DKPmonCommVer) or
       (prefix == self.BidderCommPrefix and ver == self.BidderCommVer) then

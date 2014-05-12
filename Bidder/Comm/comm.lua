@@ -108,10 +108,10 @@ function Comm:SendToDKPmon(command, parameters, target, channel)
    if sent == true then
      --Bidder:Print("We are Sent") 
   end
-   if sent == true and (target == "~all" or target == UnitName("player")) then
+   if sent == true and (target == "~all" or target == Bidder:GetFixedUpUnitName("player")) then
       if DKPmon ~= nil then
           --Bidder:Print("Have DKPMon Sending Message")
-	       DKPmon:OnCommReceive(self.DKPmonCommPrefix, UnitName("player"), channel, self.DKPmonCommVer, target, command, parameters)
+	       DKPmon:OnCommReceive(self.DKPmonCommPrefix, Bidder:GetFixedUpUnitName("player"), channel, self.DKPmonCommVer, target, command, parameters)
       else
         --Bidder:Print("No Send 1")
       end
@@ -137,8 +137,8 @@ function Comm:SendToBidder(command, parameters, target, channel)
    if target == nil then target = "~all" end
    if channel == nil then channel = "GROUP" end
    local sent = Bidder:SendCommMessage(channel, self.BidderCommVer, target, command, parameters)
-   if sent == true and (target == "~all" or target == UnitName("player")) then
-      self:OnCommReceive(self.DKPmonCommPrefix, UnitName("player"), channel, self.BidderCommVer, target, command, parameters)
+   if sent == true and (target == "~all" or target == GetUnitName("player", true)) then
+      self:OnCommReceive(self.DKPmonCommPrefix, GetUnitName("player",true), channel, self.BidderCommVer, target, command, parameters)
    end
 end
 
@@ -188,7 +188,7 @@ AceComm-2.0 message receiving callback
 function Comm:OnCommReceive(prefix, sender, distribution, ver, target, command, parameters)
    --Bidder:Print("Got message to "..target.." from "..sender.." with command "..command.." and parameter type "..type(parameters))
    -- Check the target
-   if target ~= "~all" and target ~= UnitName("player") then return end
+   if target ~= "~all" and target ~= Bidder:GetFixedUpUnitName("player") then return end
    -- Queue the message if the communication protocol's compatible
    if (prefix == self.DKPmonCommPrefix and ver == self.DKPmonCommVer) then
       -- (prefix == self.BidderCommPrefix and ver == self.BidderCommVer) then (Bidder doesn't care about Bidder messages)

@@ -394,6 +394,7 @@ function LootFrame:OpenBidding()
       -- This is the non-hack version of this loop's internals
       table.insert(tab.iteminfo, { link = self.itembuttons[i].iteminfo.link, dkp = self.itembuttons[i].iteminfo.dkpinfo } )
    end
+   DKPmon:Print('Leader OpenBidding',val)
    DKPmon:SetLeader(true)
    DKPmon.Comm:SendToBidder("OB", tab)
    self:SetBidState(1) -- move to open bidding

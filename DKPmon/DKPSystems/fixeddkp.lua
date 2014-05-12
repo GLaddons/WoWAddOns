@@ -293,6 +293,7 @@ Returns:
   String -- message to be displayed to the person who did the query
 ]]
 function FDKP.prototype:ProcessQueryConsole(bidname)
+    --DKPmon.Print('Debug:','In Query Console '..bidname)
    local cInfo = DKPmon.CustomInfo:Get("FDKP")
    local tab = DKPmon.PointsDB:GetTable(bidname)
    if tab == nil then

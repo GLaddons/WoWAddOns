@@ -65,7 +65,7 @@ end
 function Bidder:OnEnable()
    -- Determine whether this character is in the namelist yet.
    --  If it's not, add it.
-   local charname, _ = UnitName("player")
+   local charname = Bidder:GetFixedUpUnitName("player")
 --   if self.db.realm.namelist[charname] == nil then
    local _, classname = UnitClass("player")
    local level = UnitLevel("player")
@@ -96,7 +96,7 @@ function Bidder:OnDisable()
 end
 
 function Bidder:UpdatePlayerInfo()
-   local charname, _ = UnitName("player")
+   local charname = Bidder:GetFixedUpUnitName("player")
 --   if self.db.realm.namelist[charname] == nil then
    local _, classname = UnitClass("player")
    local level = UnitLevel("player")
@@ -172,4 +172,14 @@ function Bidder:OnClick()
 	else
 		Bidder.Comm:SendToDKPmon("RPDB", Bidder.DKPBrowser.dkpcache.checksum)
 	end
+end
+
+function Bidder:GetFixedUpUnitName(unitname)
+  local fixedUpUnitName = GetUnitName(unitname,true)
+  if string.match(fixedUpUnitName, "-") then
+    return fixedUpUnitName 
+  else
+    local realmName = GetRealmName()
+    return fixedUpUnitName.."-"..realmName
+  end
 end

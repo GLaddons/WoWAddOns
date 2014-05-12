@@ -42,6 +42,7 @@ function RaidRoster:BuildRoster()
    local rostertab = self:GetTable()
    local haveLevelZeros = false
    if numMembers == 0 or IsInRaid() == false then
+      --DKPmon:Print('Leader BuildRoster',val)
       DKPmon:SetLeader(false) -- Can't be running a raid if you're not in one.
       rostertab.list = {}
       rostertab.left = {}
@@ -50,6 +51,8 @@ function RaidRoster:BuildRoster()
    local i
    for i = 1, numMembers do
       local name, _, _, level, _, class = GetRaidRosterInfo(i)
+      name = Bidder:GetFixedUpUnitName(name)
+      --DKPmon.Print('Raid Roster Build', name)
       if level == 0 then -- player's offline
 	 level = UnitLevel("raid"..i)
 	 haveLevelZeros = haveLevelZeros or (level == 0)
@@ -91,6 +94,7 @@ function RaidRoster:UpdateRoster()
    local i
    for i = 1, numMembers do
       local name = GetRaidRosterInfo(i)
+      name = Bidder:GetFixedUpUnitName(name)
       if rostertab.list[name] == nil then
 	 self:AddMember(name, i)
       end
@@ -140,6 +144,7 @@ function RaidRoster:UpdateLevelZeros()
    local i
    for i = 1, numMembers do
       local name, _, _, level, _, class = GetRaidRosterInfo(i)
+      name = Bidder:GetFixedUpUnitName(name)
       if level ~= 0 and rostertab.list[name].char.level == 0 then
 	 local race = UnitRace("raid"..i)
 	 local hex = DKPmon:getClassHex(class)
@@ -171,6 +176,7 @@ function RaidRoster:AddMember(name, i)
       rostertab.left[name] = nil
    else
       local name, _, _, level, _, class = GetRaidRosterInfo(i)
+      name = Bidder:GetFixedUpUnitName(name)
       local raidID = "raid"..i
       local level = UnitLevel(raidID)
       --local guild = GetGuildInfo(raidID)
@@ -208,8 +214,9 @@ Input:
 Returns:
 ]]
 function RaidRoster:SetBidname(name, charInfo)
+    --DKPmon:Print(name)
    local rostertab = self:GetTable()
-   local tab = rostertab.list[name] or rostertab.left[name]
+   local tab = rostertab.list[name] or rostertab.left[name]   
    if tab == nil then
       error(string.format(L["%s not present in the raid roster. This is -bad-"], name))
       return

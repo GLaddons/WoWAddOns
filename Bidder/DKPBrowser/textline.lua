@@ -22,7 +22,7 @@
 local TextLine = {}
 Bidder.DKPBrowser.TextLine = TextLine
 
-local NameStrWidth = 125
+local NameStrWidth = 175
 local DKPStrWidth = 75
 
 local NumDKPStrings = 5

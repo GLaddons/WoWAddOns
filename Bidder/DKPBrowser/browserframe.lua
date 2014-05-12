@@ -77,7 +77,7 @@ local dewOptions = {
 	       end,
 	 set = function(v)
 		  BrowserFrame.sortkeys[1] = v
-		  BrowserFrame:ResortDKP()
+		  BrowserFrame:ResortDKP(self)
 	       end,
 	 validate = validSorts,
 	 order = 1
@@ -90,7 +90,7 @@ local dewOptions = {
 	       end,
 	 set = function(v)
 		  BrowserFrame.sortkeys[2] = v
-		  BrowserFrame:ResortDKP()
+		  BrowserFrame:ResortDKP(self)
 	       end,
 	 validate = validSorts,
 	 order = 2
@@ -280,7 +280,7 @@ function BrowserFrame:Create()
    t2:SetJustifyH("CENTER")
    t2:SetJustifyV("TOP")
    t2:SetFontObject(GameFontNormalSmall)
-   t2:SetText(L["right-click for options"])
+  -- t2:SetText(L["right-click for options"])
 
    -- Create the close-window button
    local b = CreateFrame("Button", nil, f, "UIPanelCloseButton")
@@ -320,7 +320,7 @@ function BrowserFrame:Create()
 	 edgeFile = "Interface\\Buttons\\UI-SliderBar-Border", tile = true, tileSize = 8, edgeSize = 8, 
 	 insets = { left = 3, right = 3, top = 6, bottom = 6 }
    })     
-   slider:SetScript("OnValueChanged", function() self:VerticalScrollChanged() end)
+   slider:SetScript("OnValueChanged", function() self:VerticalScrollChanged(self, value) end)
    slider:Show()
    f.vSlider=slider
    
@@ -351,7 +351,7 @@ end
 function BrowserFrame:Show()
    if self.frame == nil then self:Create() end
    self.frame:Hide()
-   self:SetLinesText()
+   self:SetLinesText(self)
    
    local width, height
    width = self.headerline:GetWidth() + 20 + 16
@@ -382,9 +382,9 @@ function BrowserFrame:Hide()
    self.frame:Hide()
 end
 
-function BrowserFrame:VerticalScrollChanged()
+function BrowserFrame:VerticalScrollChanged(self, value)
    self.udscrollpos = self.frame.vSlider:GetValue()
-   self:SetLinesText()
+   self:SetLinesText(self)
 end
 
 function BrowserFrame:ScrollLeft()
@@ -403,13 +403,13 @@ function BrowserFrame:ScrollRight()
    end
 end
 
-function BrowserFrame:SetLinesText()
+function BrowserFrame:SetLinesText(self)
    -- Set the header's text
    self.headerline:SetInfo(self.headertext)
    local i
    local cache = self.dkpinfo.db
    for i = 1, self.nshowing do
-      self.dkplines[i]:SetInfo(cache[i+self.udscrollpos])
+      self.dkplines[i]:SetInfo(cache[i+math.floor(self.udscrollpos)])
    end
 end
 
@@ -448,7 +448,7 @@ Description:
 function BrowserFrame:ResortDKP()
    if self.dkpinfo.db == nil then return end
    table.sort(self.dkpinfo.db, CompareFunc)
-   self:SetLinesText()
+   self:SetLinesText(self)
    if self.frame:IsVisible() then self.frame:Show() end
 end
 
@@ -506,7 +506,7 @@ function BrowserFrame:ReceiveShowBrowserFrame(sender, params)
    --Bidder:Print("DKP Browser not yet implemented")
    if self.frame == nil then self:Create() end
    self:CopyDKPInfo()
-   self:ResortDKP()
+   self:ResortDKP(self)
    self:Show()
    return true
 end
@@ -547,7 +547,7 @@ function BrowserFrame:ReceiveDKPInfo(sender, params)
 
    if self.frame and self.frame:IsVisible() then
       self:CopyDKPInfo()
-      self:ResortDKP()
+      self:ResortDKP(self)
       self:Show()
    end
  

@@ -125,6 +125,7 @@ Output:
   None
 ]]
 function PointsDB:AddDBEntry(charInfo)
+  DKPmon.Print('CharInfo AddDBEntry',charInfo.name)
    DKPmon.db.realm.DKP.db[charInfo.name] = { 
       info = {
 	 name = charInfo.name, class = charInfo.class, level = charInfo.level, race = charInfo.race,

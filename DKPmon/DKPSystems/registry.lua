@@ -244,6 +244,7 @@ Returns:
 function Registry:ProcessPointsQuery(sender, params)
    if DKPmon.db.realm.amLeader ~= true then return true end
    local charInfo = DKPmon:StringToCharInfo(params)
+   DKPmon.Print('In ProcessPoints')
    DKPmon.RaidRoster:SetBidname(sender, charInfo)
    local tab = {}
    local dkpsys = self.CurrentDKP.obj

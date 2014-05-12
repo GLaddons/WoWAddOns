@@ -121,7 +121,17 @@ local hooksecurefunc = _G.hooksecurefunc
 local GetFramerate = _G.GetFramerate
 local IsInInstance = _G.IsInInstance
 
-local player = UnitName("player")
+local function ACEGetFixedUpUnitName(unitname)
+  local fixedUpUnitName = GetUnitName("player",true)
+  if string.match(fixedUpUnitName, "-") then
+    return fixedUpUnitName 
+  else
+    local realmName = GetRealmName()
+    return fixedUpUnitName.."-"..realmName
+  end
+end
+
+local player = ACEGetFixedUpUnitName("player")
 
 local new, del
 do

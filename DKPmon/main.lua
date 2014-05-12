@@ -124,6 +124,7 @@ function DKPmon:OnEnable()
    self.ImpExpModules:InitializeModules()
    
    self.lastLeaderClaim = GetTime()
+   --DKPmon:Print('Leader OnEnable',val)
    self:SetLeader(false)
    
    self:ChangeMetroRate("DKPmonLeader", 17) -- Call every 17 seconds
@@ -170,6 +171,8 @@ end
 --[[ Function for checking the whether the raid has a DKPmon leader set ]]
 function DKPmon:SetLeader(val)
    -- Never allowed to be leader if you're not in a raid
+   --DKPmon:Print('Leader Incoming VAL',val)
+   --DKPmon:Print('Leader Start',self.db.realm.amLeader)
    if IsInRaid() == false then self.db.realm.amLeader = false; return end
    if (val and not self.db.realm.amLeader) then
       DKPmon:Print(L["I'm now the DKP lead."])
@@ -183,6 +186,7 @@ function DKPmon:SetLeader(val)
       self:SetIcon("Interface\\AddOns\\DKPmon\\DKPmon_icon.tga")
       self:UpdateDisplay()
    end
+   --DKPmon:Print('Leader End',self.db.realm.amLeader)
 end
 function DKPmon:GetLeaderState()
    return self.db.realm.amLeader
@@ -200,23 +204,22 @@ function DKPmon:CheckLeader()
       -- claim leader, then claim leader for ourself.
       local currTime = GetTime()
       if (currTime - self.lastLeaderClaim) > 45.0 then
+          DKPmon:Print('Leader Checkleader',val)
          self:SetLeader(true)
       end
    end
 end
 function DKPmon:ReceiveLeaderClaim(sender)
-    --DKPmon:Print("Debug "..sender)
-   local name_split = strsplit("%-", sender )
-   sender = name_split
+   --self:Print("Got claim leader from "..sender.."--"..self.leadername)
    self.lastLeaderClaim = GetTime()
-   --DKPmon:Print("Debug LeadNA"..self.leadername)
    if sender ~= self.leadername then
       self.leadername = sender
       DKPmon:Print(L["DKP leader changed to "]..sender)
-   end   
-   --DKPmon:Print("Debug Sender"..sender)
-   --DKPmon:Print("Debug Player"..UnitName("player"))
-   if sender ~= UnitName("player") then
+   end
+   --DKPmon:Print('Leader RceiveClaim Sender',sender)
+   --DKPmon:Print('Leader RceiveClaim Player',Bidder:GetFixedUpUnitName("player"))
+   if sender ~= Bidder:GetFixedUpUnitName("player") then
+      --DKPmon:Print('Leader RceiveClaim Here is the Bug',val)
       self:SetLeader(false)
    end
    return true

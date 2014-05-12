@@ -707,6 +707,7 @@ Returns:
 ]]
 function AwardFrame:ReceiveRaidQueryReply(sender, params)
    local charInfo = DKPmon:StringToCharInfo(params)
+   DKPmon.Print('In ReceiveRaidQueryReply',sender)
    DKPmon.RaidRoster:SetBidname(sender, charInfo)
    local T = DKPmon.RaidRoster:GetPlayerInfo(sender)
    T.onlist = true

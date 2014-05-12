@@ -40,6 +40,7 @@ function DKPmon:BuildRaidmemberList()
    local i = 1
    while i ~= 41 do
       local name = GetRaidRosterInfo(i)
+      name = Bidder:GetFixedUpUnitName(name)
       if name ~= nil then
 	 tab[name] = 0
       end

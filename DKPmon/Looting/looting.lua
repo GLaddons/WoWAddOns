@@ -34,7 +34,7 @@ Output:
 function Looting:OnLootEvent()
    local nadded = 0
    if self:GetBidState() == 0 and GetNumGroupMembers() > 0 then
-      local mobname = UnitName("target")
+      local mobname = Bidder:GetFixedUpUnitName("target")
       if mobname == nil then
 	 mobname = L["Unknown mob"]
       else

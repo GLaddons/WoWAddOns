@@ -339,6 +339,17 @@ local function inheritDefaults(t, defaults)
 	return t
 end
 
+local function ACEGetFixedUpUnitName(unitname)
+  local fixedUpUnitName = GetUnitName("player",true)
+  if string.match(fixedUpUnitName, "-") then
+    return fixedUpUnitName 
+  else
+    local realmName = GetRealmName()
+    return fixedUpUnitName.."-"..realmName
+  end
+end
+
+
 local _,race = UnitRace("player")
 local faction
 if race == "Orc" or race == "Scourge" or race == "Troll" or race == "Tauren" or race == "BloodElf" then
@@ -347,7 +358,7 @@ else
 	faction = FACTION_ALLIANCE
 end
 local server = GetRealmName():trim()
-local charID = UnitName("player") .. " - " .. server
+local charID = ACEGetFixedUpUnitName("player")
 local realmID = server .. " - " .. faction
 local classID = UnitClass("player")
 
@@ -357,7 +368,7 @@ AceDB.CLASS_ID = classID
 
 AceDB.FACTION = faction
 AceDB.REALM = server
-AceDB.NAME = UnitName("player")
+AceDB.NAME = ACEGetFixedUpUnitName("player")
 
 local new, del
 do
@@ -594,7 +605,7 @@ local function RecalculateAceDBProfileList(target)
 	for k,v in pairs(t) do
 		t[k] = nil
 	end
-	t.char = CHARACTER_COLON .. PLAYER_OF_REALM:format(UnitName("player"), server)
+	t.char = CHARACTER_COLON .. ACEGetFixedUpUnitName("player")
 	t.realm = REALM_COLON .. realmID
 	t.class = CLASS_COLON .. classID
 	t.Default = DEFAULT
