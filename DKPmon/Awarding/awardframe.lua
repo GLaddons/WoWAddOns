@@ -705,11 +705,43 @@ Input:
 Returns:
   true
 ]]
+
+function table_dump(t,indent)
+    local names = {}
+    if not indent then indent = "" end
+    for n,g in pairs(t) do
+        table.insert(names,n)
+    end
+    table.sort(names)
+    for i,n in pairs(names) do
+        local v = t[n]
+        if type(v) == "table" then
+            if(v==t) then -- prevent endless loop if table contains reference to itself
+                print(indent..tostring(n)..": <-")
+            else
+                print(indent..tostring(n)..":")
+                table_dump(v,indent.."   ")
+            end
+        else
+            if type(v) == "function" then
+                print(indent..tostring(n).."()")
+            else
+                print(indent..tostring(n)..": "..tostring(v))
+            end
+        end
+    end
+end
+
 function AwardFrame:ReceiveRaidQueryReply(sender, params)
    local charInfo = DKPmon:StringToCharInfo(params)
-   DKPmon.Print('In ReceiveRaidQueryReply',sender)
+   --DKPmon.Print('In ReceiveRaidQueryReply',sender)
    DKPmon.RaidRoster:SetBidname(sender, charInfo)
+   --if DKPmon.RaidRoster:GetPlayerInfo(sender) ~= nil then
    local T = DKPmon.RaidRoster:GetPlayerInfo(sender)
+   if T == nil then
+	DKPmon.Print('DKPmon','You are not in a raid')
+	return true
+   end
    T.onlist = true
    if dewdrop:IsOpen(self.topframe.selectbutton) then
       dewdrop:Refresh(2)
@@ -717,6 +749,7 @@ function AwardFrame:ReceiveRaidQueryReply(sender, params)
    self:UpdateRaidText()
    return true
 end
+--end
 DKPmon.Comm:RegisterCommand("RQR", AwardFrame.ReceiveRaidQueryReply, AwardFrame)
 
 --[[

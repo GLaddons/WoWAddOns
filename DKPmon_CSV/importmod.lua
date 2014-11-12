@@ -20,7 +20,7 @@
 
 
 -- Only works with dbversion 2.0
-if DKPmon.DBDefaults.dbversion ~= 2.0 then return end
+if DKPmon.DBDefaults.dbversion ~= 2.5 then return end
 
 local AceOO = AceLibrary("AceOO-2.0")
 local Import = AceOO.Class(DKPmon_ImportBaseClass)
@@ -88,7 +88,8 @@ function Import:PerformImport()
    local classnames = { 
       ["WARRIOR"] = 0, ["MAGE"] = 0, ["HUNTER"] = 0, 
       ["PRIEST"] = 0, ["PALADIN"] = 0, ["SHAMAN"] = 0,
-      ["ROGUE"] = 0, ["DRUID"] = 0, ["WARLOCK"] = 0, ["DEATHKNIGHT"] = 0, ["MONK"] = 0
+      ["ROGUE"] = 0, ["DRUID"] = 0, ["WARLOCK"] = 0,
+	  ["DEATHKNIGHT"] = 0, ["MONK"] = 0
    }
     
    -- Go through each string in DKPmon_CSV_Import_Data, and perform the import.
@@ -98,17 +99,17 @@ function Import:PerformImport()
 
       local parse = { strsplit(":", str) }
       local name, class, level, race = parse[1], parse[2], tonumber(parse[3]), parse[4]
-      -- if the leve is blank then force them to 80
+      -- if the level is blank then force them to 100
       if (level == nil) then
-      	level = 80
+      	level = 100
       end
-      --DKPmon:Print(name)
-      local cap_char = string.upper(string.sub(name, 1, 1));
+     --DKPmon:Print(name)
+      --local cap_char = string.upper(string.sub(name, 1, 1));
       --DKPmon:Print("blank-"..cap_char.."-blank?");
-      if (cap_char == "") then      	
-      	cap_char = string.sub(name, 1, 2)
+      if (name == "") then      	
+      	name = string.sub(name, 1, 2)
       end
-      name = cap_char..string.lower(string.sub(name, 2))
+     -- name = cap_char..string.lower(string.sub(name, 2))
       --DKPmon:Print(name)
       class = string.upper(class)
       level = tonumber(level)
@@ -120,7 +121,7 @@ function Import:PerformImport()
 ]]
       -- Validate all the character information
       if name == "" or classnames[class] == nil or level == nil or race == "" then
-      --DKPmon:Print(name .. "<->" .. classnames[class] .. "<->" .. level .. "<->" .. race)
+     -- DKPmon:Print(name .. "<->" .. classnames[class] .. "<->" .. level .. "<->" .. race)
 	 DKPmon:Print(string.format(L["CSV Import -- string %d is invalid; skipping"], line))
       else
 	 local charInfo = {

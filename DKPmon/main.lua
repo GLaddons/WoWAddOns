@@ -22,7 +22,7 @@ DKPmon = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceDB-2.0", "AceComm-
 local L = AceLibrary("AceLocale-2.2"):new("DKPmon")
 local tablet = AceLibrary("Tablet-2.0")
 
-local DKPmonDBver = 2.0
+local DKPmonDBver = 2.5
 
 DKPmon.DBDefaults = {
    dbversion = DKPmonDBver, -- Structure version of the SavedVariables DB
@@ -57,6 +57,32 @@ DKPmon.hasIcon = "Interface\\Addons\\DKPmon\\DKPmon_icon.tga"
 DKPmon.cannotDetachTooltip = true
 DKPmon.cannotHideText = false
 
+function table_dump(t,indent)
+    local names = {}
+    if not indent then indent = "" end
+    for n,g in pairs(t) do
+        table.insert(names,n)
+    end
+    table.sort(names)
+    for i,n in pairs(names) do
+        local v = t[n]
+        if type(v) == "table" then
+            if(v==t) then -- prevent endless loop if table contains reference to itself
+                print(indent..tostring(n)..": <-")
+            else
+                print(indent..tostring(n)..":")
+                table_dump(v,indent.."   ")
+            end
+        else
+            if type(v) == "function" then
+                print(indent..tostring(n).."()")
+            else
+                print(indent..tostring(n)..": "..tostring(v))
+            end
+        end
+    end
+end
+
 function DKPmon:OnInitialize()
    self.OnMenuRequest = self.Options.fubar
    
@@ -66,7 +92,6 @@ function DKPmon:OnInitialize()
    -- Called when the addon is loaded
    self:RegisterDB("DKPmonDB")
    self:RegisterDefaults('realm', self.DBDefaults)
-   
    -- Ensure the database is up to date.
    if self.db.realm.dbversion < DKPmonDBver then
       -- Database is from a previous version of DKPmon
@@ -130,7 +155,7 @@ function DKPmon:OnEnable()
    self:ChangeMetroRate("DKPmonLeader", 17) -- Call every 17 seconds
    self:StartMetro("DKPmonLeader")
    self:RegisterEvent("LOOT_OPENED", function() DKPmon.Looting:OnLootEvent() end)
-   self:RegisterEvent("RAID_ROSTER_UPDATE", 
+   self:RegisterEvent("GROUP_ROSTER_UPDATE", 
        function() 
           if IsInRaid() == false or GetNumGroupMembers() == 0 then 
              -- Turn off the log if one's going
@@ -186,6 +211,9 @@ function DKPmon:SetLeader(val)
       self:SetIcon("Interface\\AddOns\\DKPmon\\DKPmon_icon.tga")
       self:UpdateDisplay()
    end
+   --print(IsInRaid())
+  -- print(self.db.realm.amLeader)
+  -- print(val)
    --DKPmon:Print('Leader End',self.db.realm.amLeader)
 end
 function DKPmon:GetLeaderState()
@@ -204,7 +232,7 @@ function DKPmon:CheckLeader()
       -- claim leader, then claim leader for ourself.
       local currTime = GetTime()
       if (currTime - self.lastLeaderClaim) > 45.0 then
-          DKPmon:Print('Leader Checkleader',val)
+          --DKPmon:Print('Leader Checkleader',val)
          self:SetLeader(true)
       end
    end

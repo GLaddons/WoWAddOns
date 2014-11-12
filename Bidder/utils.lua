@@ -39,7 +39,7 @@ function Bidder:NameInRaid(name)
    while i ~= 41 do
       local raidID = "raid"..i
       local rname = GetRaidRosterInfo(i)
-      rname = Bidder:GetFixedUpUnitName(name)
+      rname = Bidder:GetFixedUpUnitName("player", true)
       if rname == name then return true; end
       i = i + 1
    end

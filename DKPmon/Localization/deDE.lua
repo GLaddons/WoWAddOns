@@ -108,10 +108,10 @@ local translations = {
    ['raidsetup'] = 'raidsetup',
    ['Configure settings for the raid.'] = 'Einstellungen f\195\188r den Schlachtzug konfigurieren.',
    ['setde'] = 'setde',
-   ["Set the name of the raid's disenchanter"] = 'Den Namen f\195\188r den Entzauberer im Schlachtzug festlegen.',
-   ['<name>'] = '<name>',
+   ["Set the name of the raid's disenchanter. Case sensative! Remove spaces!"] = 'Den Namen f\195\188r den Entzauberer im Schlachtzug festlegen. Fall sensative! Leerzeichen entfernen!',
+   ['<Name-Server>'] = '<Name-Server>',
    ['setbank'] = 'setbank',
-   ["Set the name of the player to give all bankables to"] = 'Den Namen f\195\188r den Banker des Schlachtzugs festlegen',
+   ["Set the name of the player to give all bankables to. Case sensative! Remove spaces!"] = 'Den Namen f\195\188r den Banker des Schlachtzugs festlegen. Fall sensative! Leerzeichen entfernen!',
    
    -- Options table: Fubar items
    ['Points database'] = "Punkte-Datenbank",

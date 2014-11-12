@@ -907,8 +907,10 @@ local function activate(self, oldLib, oldDeactivate)
 			inPlw = true
 		end
 		if event and (not inPlw or not blacklist[event]) then
-			self:TriggerEvent(event, ...)
-		end
+			if not(not inPlw and event == "GROUP_ROSTER_UPDATE") then -- brian and i had a good laugh, deal with the double negatives! the not nots are stronk
+				self:TriggerEvent(event, ...)
+			end
+		end	
 	end)
 	if self.delayRegistry then
 		delayRegistry = self.delayRegistry

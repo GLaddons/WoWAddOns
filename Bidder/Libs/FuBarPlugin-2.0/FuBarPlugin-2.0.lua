@@ -1653,6 +1653,7 @@ end
 
 function MinimapContainer:ReadjustLocation(plugin)
 	local frame = plugin.minimapFrame
+	frame:SetFrameStrata("TOOLTIP")
 	if plugin.db and plugin.db.profile.minimapPositionWild then
 		frame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", plugin.db.profile.minimapPositionX, plugin.db.profile.minimapPositionY)
 	elseif not plugin.db and plugin.minimapPositionWild then

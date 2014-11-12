@@ -1,4 +1,4 @@
-## Interface: 50400
+## Interface: 60000
 ## Title: Bidder_EPGP
 ## Author: Xerophyte - now maintained by Guild Launch
 ## Version: 4.4.0

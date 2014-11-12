@@ -352,7 +352,7 @@ end
 
 local _,race = UnitRace("player")
 local faction
-if race == "Orc" or race == "Scourge" or race == "Troll" or race == "Tauren" or race == "BloodElf" then
+if race == "Orc" or race == "Scourge" or race == "Troll" or race == "Tauren" or race == "BloodElf" or race == "Goblin" then
 	faction = FACTION_HORDE
 else
 	faction = FACTION_ALLIANCE
@@ -1021,7 +1021,6 @@ function AceDB:RegisterDB(name, charName, defaultProfile)
 end
 
 function AceDB:RegisterDefaults(kind, defaults, a3)
-	local name
 	if a3 then
 		name, kind, defaults = kind, defaults, a3
 		AceDB:argCheck(name, 2, "string")

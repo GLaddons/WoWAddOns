@@ -119,6 +119,7 @@ Output:
    <playerstr>&<playerstr>&<playerstr>&...
    where <playerstr> is as returned from GeneratePlayerSyncStr
 ]]
+
 function PointsDB:BuildBCastStr()
    local name
    local pointsdb = self:GetTable()

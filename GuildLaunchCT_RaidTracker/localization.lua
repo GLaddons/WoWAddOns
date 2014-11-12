@@ -5,24 +5,50 @@ CT_ITEMREG = "(|c(%x+)|Hitem:([-%d:]+)|h%[(.-)%]|h|r)%";
 CT_ITEMREG_MULTI = "(|c(%x+)|Hitem:([-%d:]+)|h%[(.-)%]|h|r)x(%d+)%";
 
 CT_RaidTracker_Zones = {
+	"----WoD----",
+	"Highmaul",
+	"Blackrock Foundry",
+	"----MoP----",
 	"Siege of Orgrimmar",
+	"Throne of Thunder",
 	"Mogu'shan Vaults",
 	"Terrace of Endless Spring",
 	"Heart of Fear",
-	"---- WoTLK -----------------",
-	"Battle of Mount Hyjal",
-	"Baradin Hold",
-	"Blackwing Descent",
-	"Throne of the Four Winds",
-	"The Bastion of Twilight",
-	"Firelands",
+	"----Cata----",
 	"Dragon Soul",
-	"---- Test -----------------",
-    "Ragefire Chasm",
-    "The Stockade",
+	"Firelands",
+	"The Bastion of Twilight",
+	"Throne of the Four Winds",
+	"Blackwing Descent",
+	"Baradin Hold",
+	"----WotLK----",
+	"Battle of Mount Hyjal",
 };
 
 CT_RaidTracker_Bosses = {
+	--WoD
+		--6.0.3
+	["Highmaul"] = {
+		"Kargath Bladefist",
+		"The Butcher",
+		"Tectus",
+		"Brackenspore",
+		"Twin Orgron",
+		"Ko'ragh",
+		"Imperator Mar'gok"
+	},
+	["Blackrock Foundry"] = {
+		"Gruul",
+		"Oregorger",
+		"Beastlord Darmac",
+		"Flamebender Ka'graz",
+	    "Hans'gar and Franzok",
+		"Operator Thogar",
+		"The Blast Furnace",
+		"Kromog",
+		"The Iron Maidens",
+		"Blackhand"
+	},
 	-- MoP
 		-- 5.4
     ["Siege of Orgrimmar"] = {
@@ -153,6 +179,9 @@ CT_RaidTracker_lang_ReceivesLoot4 = "You receive loot: "..CT_ITEMREG_MULTI..".";
 CT_RaidTracker_lang_ReceivesLootYou = "You";
 
 CT_RaidTracker_ZoneTriggers = {
+	-- WoD
+	["Highmaul"] = "Highmaul",
+	["Blackrock Foundry"] = "Blackrock Foundry", 
 	-- MoP
 	["Siege of Orgrimmar"] = "Siege of Orgrimmar",
     ["Throne of Thunder"] = "Throne of Thunder",
@@ -173,6 +202,27 @@ CT_RaidTracker_ZoneTriggers = {
 };
 
 CT_RaidTracker_BossUnitTriggers = {
+	-- Highmaul
+	["Kargath Bladefist"] = "Kargath Bladefist",
+	["The Butcher"] = "The Butcher",
+	["Tectus"] = "Tectus",
+	["Brackenspore"] = "Brackenspore",
+	["Twin Ogron"] = "Twin Ogron",
+	["Ko'ragh"] = "Ko'ragh",
+	["Imperator Mar'gok"] = "Imperator Mar'gok",
+	
+	-- Blackrock Foundry
+	["Gruul"] = "Gruul",
+	["Oregorger"] = "Oregorger",
+	["Beastlord Darmac"] = "Beastlord Darmac",
+	["Flamebender Ka'graz"] = "Flamebender Ka'graz",
+	["Hans'gar and Franzok"] = "Hans'gar and Franzok",
+	["Operator Thogar"] = "Operator Thogar",
+	["The Blast Furnace"] = "The Blast Furnace",
+	["Kromog"] = "Kromog",
+	["The Iron Maidens"] = "The Iron Maidens",
+	["Blackhand"] = "Blackhand",
+		
 	-- siege of orgrimmar
 	["Immerseus"] 					= "Immerseus",
 	["The Fallen Protectors"]		= "The Fallen Protectors", -- ? about death

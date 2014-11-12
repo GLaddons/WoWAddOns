@@ -244,6 +244,7 @@ function DKPmonBA:ProcessQueryConsole(bidname, bidclass)
    local cInfo = DKPmon.CustomInfo:Get("BossAuction")
    local tab = DKPmon.PointsDB:GetTable(bidname)
    if tab == nil then
+   print('common_base.lua fired')
       return L["You have no points."]
    end
    local reply = L["Your points are: "]

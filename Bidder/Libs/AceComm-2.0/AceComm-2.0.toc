@@ -1,4 +1,4 @@
-## Interface: 30000
+## Interface: 60000
 ## X-Curse-Packaged-Version: r1094
 ## X-Curse-Project-Name: Ace2
 ## X-Curse-Project-ID: ace2

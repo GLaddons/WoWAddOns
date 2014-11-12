@@ -21,12 +21,12 @@
 Bidder = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceDB-2.0", "AceComm-2.0",  "Metrognome-2.0", "FuBarPlugin-2.0")
 local L = AceLibrary("AceLocale-2.2"):new("Bidder")
 
-local BidderDBVer = 2.0
+local BidderDBVer = 2.5
 
 Bidder.DBDefaults = {
    namelist = {},
    dbversion = BidderDBVer
-} 
+}
 
 Bidder.hasIcon = "Interface\\Addons\\Bidder\\Bidder_icon.tga"
 Bidder.cannotDetachTooltip = true
@@ -36,7 +36,7 @@ function Bidder:OnInitialize()
    self.OnMenuRequest = self.Options.fubar
    -- Set the console commands
    self:RegisterChatCommand({L["/bid"], L["/bidder"]}, self.Options.console)
-   
+
    -- Called when the addon is loaded
    self:RegisterDB("BidderDB")
    self:RegisterDefaults('realm', self.DBDefaults)
@@ -166,8 +166,10 @@ Called when icon is left-clicked
 Shows bidding window if bidding is open, otherwise show's dkp
 ]]
 function Bidder:OnClick()
+
    --Bidder:Print("Left Click Making Com Request")
-	if self.Looting.biddingOpen and not self.Looting.frame:IsVisible() then
+	if self.Looting.biddingOpen then --and not self.Looting.frame:IsVisible() then
+
 		self.Looting:Show()
 	else
 		Bidder.Comm:SendToDKPmon("RPDB", Bidder.DKPBrowser.dkpcache.checksum)
@@ -177,9 +179,9 @@ end
 function Bidder:GetFixedUpUnitName(unitname)
   local fixedUpUnitName = GetUnitName(unitname,true)
   if string.match(fixedUpUnitName, "-") then
-    return fixedUpUnitName 
+    return  fixedUpUnitName:gsub("%s+", "")
   else
     local realmName = GetRealmName()
-    return fixedUpUnitName.."-"..realmName
+    return fixedUpUnitName.."-"..realmName:gsub("%s+", "")
   end
 end

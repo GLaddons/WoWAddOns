@@ -543,7 +543,10 @@ function FDKP.prototype:OnAwardButtonClick()
 	 custab.args.pool.validate["p"..i] = pname
       end
       custab.args.amount = {
-	 type = 'text', name = L['Specify points'], usage = "<number>", desc = L["Specify the number of points to award. This can be negative."],
+	 type = 'text',
+	 name = L['Specify points'],
+	 usage = "<number>",
+	 desc = L["Specify the number of points to award. This can be negative."],
 	 get = function()
 		  return string.format("%g", fdkp.customaward.amount)
 	       end,

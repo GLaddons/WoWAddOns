@@ -37,6 +37,7 @@ Returns:
 ]]
 function RaidRoster:BuildRoster()
    -- Check if we're in a Battleground, and don't update anything if we are
+   --print('Build Roster Fired')
    if (GetNumBattlefieldScores() > 0) then return end
    local numMembers = GetNumGroupMembers()
    local rostertab = self:GetTable()
@@ -44,12 +45,13 @@ function RaidRoster:BuildRoster()
    if numMembers == 0 or IsInRaid() == false then
       --DKPmon:Print('Leader BuildRoster',val)
       DKPmon:SetLeader(false) -- Can't be running a raid if you're not in one.
-      rostertab.list = {}
+	  rostertab.list = {}
       rostertab.left = {}
       return
    end
    local i
    for i = 1, numMembers do
+   
       local name, _, _, level, _, class = GetRaidRosterInfo(i)
       name = Bidder:GetFixedUpUnitName(name)
       --DKPmon.Print('Raid Roster Build', name)
@@ -82,6 +84,7 @@ Returns:
 ]]
 function RaidRoster:UpdateRoster()
    -- Check if we're in a Battleground, and don't update anything if we are
+  --print('Update Roster Fired')
    if (GetNumBattlefieldScores() > 0) then return end
    local numMembers = GetNumGroupMembers()
    local rostertab = self:GetTable()
@@ -218,7 +221,8 @@ function RaidRoster:SetBidname(name, charInfo)
    local rostertab = self:GetTable()
    local tab = rostertab.list[name] or rostertab.left[name]   
    if tab == nil then
-      error(string.format(L["%s not present in the raid roster. This is -bad-"], name))
+      
+	  --error(string.format(L["%s not present in the raid roster. This is -bad-"], name))
       return
    end
    if name == charInfo.name then return end -- character's name & bidding name are the same; nothing to do

@@ -127,7 +127,7 @@ DKPmon.Options.console = {
 	       type = 'text',
 	       name = L['setde'],
 	       desc = L["Set the name of the raid's disenchanter. Case sensative! Remove spaces!"],
-	       usage = L['<Name-Server>'],
+	       usage = L['<name>'],
 	       get = function() return DKPmon.db.realm.disenchanter end,
 	       set = function(v) 
 			if v == "" then DKPmon.db.realm.disenchanter = v end
@@ -209,16 +209,15 @@ DKPmon.Options.fubar = {
 	       type = 'text',
 	       name = L['Set disenchanter'],
 	       desc = L["Set the name of the raid's disenchanter. Case sensative! Remove spaces!"],
-	       usage = '<Name-Server>',
+	       usage = '<name>',
 	       get = function() return string.format('%s', DKPmon.db.realm.disenchanter) end,
-	       set = function(v)
+	       set = function(v) 
 			if v == "" then DKPmon.db.realm.disenchanter = v end
-			--local n = DKPmon:ProperNameCaps(v);
-			DKPmon.db.realm.disenchanter = v
+			local n = DKPmon:ProperNameCaps(v); DKPmon.db.realm.disenchanter = n 
 		     end,
 	       validate = function(v)
 			     if v == "" then DKPmon.db.realm.disenchanter = v return true end
-			     --local n = DKPmon:ProperNameCaps(v);
+			     local n = DKPmon:ProperNameCaps(v); 
 			     if DKPmon.RaidRoster:GetPlayerInfo(v) ~= nil then
 				return true
 			     end
@@ -230,12 +229,12 @@ DKPmon.Options.fubar = {
 	       type = 'text',
 	       name = L['Set banker'],
 	       desc = L["Set the name of the player to give all bankables to. Case sensative! Remove spaces!"],
-	       usage = '<Name-Server>',
+	       usage = '<name>',
 	       get = function() return string.format('%s', DKPmon.db.realm.bankname) end,
 	       set = function(v) 
 			if v == "" then DKPmon.db.realm.bankname = v end
 			--local n = DKPmon:ProperNameCaps(v); 
-			DKPmon.db.realm.bankname = v
+			DKPmon.db.realm.bankname = n
 			 end,
 	       validate = function(v) 
 			     if v == "" then return true end

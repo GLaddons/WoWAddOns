@@ -106,10 +106,10 @@ local translations = {
    ['raidsetup'] = true,
    ['Configure settings for the raid.'] = true,
    ['setde'] = true,
-   ["Set the name of the raid's disenchanter"] = true,
-   ['<name>'] = true,
+   ["Set the name of the raid's disenchanter. Case sensative! Remove spaces!"] = true,
+   ['<Name-Server>'] = true,
    ['setbank'] = true,
-   ["Set the name of the player to give all bankables to"] = true,
+   ["Set the name of the player to give all bankables to. Case sensative! Remove spaces!"] = true,
    
    -- Options table: Fubar items
    ['Points database'] = true,

@@ -85,7 +85,7 @@ function LootFrame:Create()
    -- Actions button
    b = CreateFrame("Button", "DKPmonLootFrameActionButton", self.frame, "UIPanelButtonTemplate")
    self.actionbutton = b
-   b:SetWidth(100); b:SetHeight(22)
+   b:SetWidth(100); b:SetHeight(20)
    b:SetText(L["Actions"])
    b:SetPoint("TOP", self.frame, "TOP", 0, -20)
    b:SetScript("OnClick", function() LootFrame:ShowActionMenu() end)

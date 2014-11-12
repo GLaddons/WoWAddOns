@@ -3203,7 +3203,7 @@ SlashCmdList["RAIDTRACKER"] = function(msg)
     elseif(command == "addevent") then
         CT_RaidTracker_ShowAddEventFrame()
     elseif(command == "toggleminimap") then
-        if (GuildLaunchCT_RaidTracker.minimapFrame) then
+        if (GuildLaunchCT_RaidTracker.miniminimapFrame) then
             if (GuildLaunchCT_RaidTracker.minimapFrame:IsVisible()) then
                 GuildLaunchCT_RaidTracker:Hide()
             else
