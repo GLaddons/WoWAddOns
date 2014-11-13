@@ -225,18 +225,28 @@ local get_quests = function()
 	-- this will make it so that you can have 1 quest in each zone and still be alright with some buffer
 	while (questTitle ~= nil and i < 50) do
 		SelectQuestLogEntry(i);
-		questTitle, level, difficulty, suggested_group, header, collapsed, completed = GetQuestLogTitle(i)
+		title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = GetQuestLogTitle(i);
 		if header then
 			area = questTitle
 		else
 			GUILDLAUNCH_SVARS.quests[quest_on] = {}
-			GUILDLAUNCH_SVARS.quests[quest_on].title = questTitle
-			GUILDLAUNCH_SVARS.quests[quest_on].difficulty = difficulty
-			GUILDLAUNCH_SVARS.quests[quest_on].area = area
-			GUILDLAUNCH_SVARS.quests[quest_on].suggested_group = suggested_group
-			GUILDLAUNCH_SVARS.quests[quest_on].completed = completed
-			GUILDLAUNCH_SVARS.quests[quest_on].objectives = {}
-			quest_on= quest_on+ 1			
+			GUILDLAUNCH_SVARS.quests[quest_on].title = title
+			GUILDLAUNCH_SVARS.quests[quest_on].level = level
+			GUILDLAUNCH_SVARS.quests[quest_on].suggestedGroup = suggestedGroup
+			GUILDLAUNCH_SVARS.quests[quest_on].isHeader = isHeader
+			GUILDLAUNCH_SVARS.quests[quest_on].isCollapsed = isCollapsed
+			GUILDLAUNCH_SVARS.quests[quest_on].isComplete = isComplete
+			GUILDLAUNCH_SVARS.quests[quest_on].frequency = frequency
+			GUILDLAUNCH_SVARS.quests[quest_on].questID = questID
+			GUILDLAUNCH_SVARS.quests[quest_on].startEvent = startEvent
+			GUILDLAUNCH_SVARS.quests[quest_on].displayQuestID = displayQuestID
+			GUILDLAUNCH_SVARS.quests[quest_on].isOnMap = isOnMap
+			GUILDLAUNCH_SVARS.quests[quest_on].hasLocalPOI = hasLocalPOI
+			GUILDLAUNCH_SVARS.quests[quest_on].isTask = isTask
+			GUILDLAUNCH_SVARS.quests[quest_on].isStory = isStory
+
+			--GUILDLAUNCH_SVARS.quests[quest_on].objectives = {}
+			quest_on= quest_on+ 1
 		end
 		i = i + 1
 	end
@@ -776,15 +786,20 @@ local onevent = function(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 
 			update_profile()
 		end
 	elseif event == "PET_STABLE_SHOW" then
-		update_pet_info()		
+		--update_pet_info()
+		--pulling from WoW API 11/13/14		
 	elseif event == "TRADE_SKILL_SHOW" then
-		update_tradeskills()
+		--update_tradeskills()
+		--pulling from WoW API 11/13/14
 	elseif event == "CHARACTER_POINTS_CHANGED" then
-		update_talents()
+		--update_talents()
+		--pulling from WoW API 11/13/14
 	elseif event == "FRIENDLIST_UPDATE" then
-		update_friends()
+		--update_friends()
+		--Pulling, we never did anything with it.
 	elseif event == "PLAYER_GUILD_UPDATE" then
-		update_guild()
+		--update_guild()
+		--pulling from WoW API 11/13/14
 	elseif event == "PLAYER_LEVEL_UP" then
 		--DEFAULT_CHAT_FRAME:AddMessage("Level Up"..arg2.." "..arg3.." "..arg4.." "..arg5.." "..arg6.." "..arg7)
 		GUILDLAUNCH_SVARS.level = arg1
@@ -798,13 +813,15 @@ local onevent = function(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 
 			intellect = arg8,
 			spirit = arg9,
 		}
-		update_profile()
+		--update_profile()
+		--pulling from WoW API 11/13/14
 	elseif event == "UNIT_INVENTORY_CHANGED" and arg1 == "player" then
 		update_inventory()
 	elseif event == "BANKFRAME_CLOSED" then
 		update_bank()
 	elseif event == "HONOR_CURRENCY_UPDATE" or event == "PLAYER_PVP_RANK_CHANGED" then
-		update_pvp()
+		--update_pvp()
+		--Pulling, we never did anything with it.
 	elseif event == "GUILDBANKFRAME_OPENED" then
 		refresh_banktabs()
 	elseif (event == "GUILDBANK_UPDATE_TABS" or event=="GUILDBANKBAGSLOTS_CHANGED") then
