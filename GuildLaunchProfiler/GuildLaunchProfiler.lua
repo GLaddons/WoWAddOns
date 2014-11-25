@@ -1,4 +1,5 @@
 GUILDLAUNCH_SVARS = GUILDLAUNCH_SVARS or {}
+GUILDLAUNCH_SVARS = GUILDLAUNCH_SVARS or {}
 
 local L = getglobal("GL_ProfilerLocalizations");
 
@@ -55,6 +56,7 @@ local initialize_profile = function()
 	GUILDLAUNCH_SVARS.trade_skills = {}
 	GUILDLAUNCH_SVARS.crafting = {}
 	GUILDLAUNCH_SVARS.achievements = {} 
+	GUILDLAUNCH_SVARS.garrison = {}
 end
 
 local initialize_glprofiler_variables = function()
@@ -70,6 +72,27 @@ local initialize_glprofiler_variables = function()
 		GUILDLAUNCH_SVARS.skills = {}
 		DEFAULT_CHAT_FRAME:AddMessage("|cffff8c00"..L["GL_RESETTING_SKILLS"].."|r")
 	end
+end
+
+function tprint (tbl, indent)
+  if not indent then indent = 0 end
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tprint(v, indent+1)
+    elseif type(v) == 'boolean' then
+      print(formatting .. tostring(v))      
+    else
+      print(formatting .. v)
+    end
+  end
+end
+	--tprint(C_Garrison.GetBuildings())
+	
+local update_garrison = function()
+	--buildings = C_Garrison.GetBuildings()
+	GUILDLAUNCH_SVARS.garrison = C_Garrison.GetBuildings()
 end
 
 local update_skills = function()
@@ -225,7 +248,8 @@ local get_quests = function()
 	-- this will make it so that you can have 1 quest in each zone and still be alright with some buffer
 	while (questTitle ~= nil and i < 50) do
 		SelectQuestLogEntry(i);
-		title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, isOnMap, hasLocalPOI, isTask, isStory = GetQuestLogTitle(i);
+		title, level, suggestedGroup, _, _, isComplete, _, questID, _, _, _, _, _, _ = GetQuestLogTitle(i);
+		if level > 0 then
 		if header then
 			area = questTitle
 		else
@@ -233,22 +257,24 @@ local get_quests = function()
 			GUILDLAUNCH_SVARS.quests[quest_on].title = title
 			GUILDLAUNCH_SVARS.quests[quest_on].level = level
 			GUILDLAUNCH_SVARS.quests[quest_on].suggestedGroup = suggestedGroup
-			GUILDLAUNCH_SVARS.quests[quest_on].isHeader = isHeader
-			GUILDLAUNCH_SVARS.quests[quest_on].isCollapsed = isCollapsed
+			--GUILDLAUNCH_SVARS.quests[quest_on].isHeader = isHeader
+			--GUILDLAUNCH_SVARS.quests[quest_on].isCollapsed = isCollapsed
 			GUILDLAUNCH_SVARS.quests[quest_on].isComplete = isComplete
-			GUILDLAUNCH_SVARS.quests[quest_on].frequency = frequency
+			--GUILDLAUNCH_SVARS.quests[quest_on].frequency = frequency
 			GUILDLAUNCH_SVARS.quests[quest_on].questID = questID
-			GUILDLAUNCH_SVARS.quests[quest_on].startEvent = startEvent
-			GUILDLAUNCH_SVARS.quests[quest_on].displayQuestID = displayQuestID
-			GUILDLAUNCH_SVARS.quests[quest_on].isOnMap = isOnMap
-			GUILDLAUNCH_SVARS.quests[quest_on].hasLocalPOI = hasLocalPOI
-			GUILDLAUNCH_SVARS.quests[quest_on].isTask = isTask
-			GUILDLAUNCH_SVARS.quests[quest_on].isStory = isStory
+			--GUILDLAUNCH_SVARS.quests[quest_on].startEvent = startEvent
+			--GUILDLAUNCH_SVARS.quests[quest_on].displayQuestID = displayQuestID
+			--GUILDLAUNCH_SVARS.quests[quest_on].isOnMap = isOnMap
+			--GUILDLAUNCH_SVARS.quests[quest_on].hasLocalPOI = hasLocalPOI
+			--GUILDLAUNCH_SVARS.quests[quest_on].isTask = isTask
+			--GUILDLAUNCH_SVARS.quests[quest_on].isStory = isStory
 
 			--GUILDLAUNCH_SVARS.quests[quest_on].objectives = {}
 			quest_on= quest_on+ 1
 		end
+		end
 		i = i + 1
+
 	end
 	--DEFAULT_CHAT_FRAME:AddMessage("|cffff8c00Quest info updated|r")
 end
@@ -267,7 +293,7 @@ local parse_bag = function(id, num)
 	for i = 1, num do
 		bag_contents[i] = {}
 		local item_link = GetContainerItemLink(id, i)
-		-- most of our current code trackes stuff based off of ID for using item stats
+		-- most of our current code tracks stuff based off of ID for using item stats
 		-- but we need to grab the rest anyway
 		if item_link then
 			-- texture and count
@@ -734,19 +760,23 @@ end
 
 local update_profile = function()
 	GUILDLAUNCH_SVARS.level = UnitLevel("player")
-	update_pvp()
-	update_skills()
-	record_reputation()
+	--update_pvp()
+	--update_skills()
+	--record_reputation()
 	update_inventory()
-	update_talents()
-	update_stats()
-	update_equipped_items()
-	update_friends()
-	update_inventory()
-	update_guild()
-	update_guild_ranks()
+	--update_talents()
+	--update_stats()
+	--update_equipped_items()
+	--update_friends()
+	--update_inventory()
+	--update_guild()
+	--update_guild_ranks()
 	get_quests()
-	update_achievements()
+	--update_achievements()
+	update_garrison()
+	update_bank()
+	update_guildbank()
+	--print('update profile fired')
 end
 
 
@@ -787,7 +817,9 @@ local onevent = function(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 
 		end
 	elseif event == "PET_STABLE_SHOW" then
 		--update_pet_info()
-		--pulling from WoW API 11/13/14		
+		--pulling from WoW API 11/13/14
+	elseif event == "GARRISON_ARCHITECT_OPENED" then
+			update_garrison()
 	elseif event == "TRADE_SKILL_SHOW" then
 		--update_tradeskills()
 		--pulling from WoW API 11/13/14
@@ -819,6 +851,7 @@ local onevent = function(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 
 		update_inventory()
 	elseif event == "BANKFRAME_CLOSED" then
 		update_bank()
+		
 	elseif event == "HONOR_CURRENCY_UPDATE" or event == "PLAYER_PVP_RANK_CHANGED" then
 		--update_pvp()
 		--Pulling, we never did anything with it.
