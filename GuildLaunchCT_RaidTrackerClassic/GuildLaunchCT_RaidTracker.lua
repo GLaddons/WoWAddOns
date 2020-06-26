@@ -1734,6 +1734,21 @@ function CT_RaidTrackerItem_SetHyperlink(this)
     end
 end
 
+function tprint (tbl, indent)
+    if not indent then indent = 0 end
+    for k, v in pairs(tbl) do
+        formatting = string.rep("  ", indent) .. k .. ": "
+        if type(v) == "table" then
+            print(formatting)
+            tprint(v, indent+1)
+        elseif type(v) == 'boolean' then
+            print(formatting .. tostring(v))      
+        else
+            print(formatting .. v)
+        end
+    end
+end
+
 function CT_RaidTrackerItem_GetChatHyperlink(this)
     local raidid = this.raidid;
     local lootid = this.itemid;
@@ -2262,6 +2277,20 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
                     end
                     CT_RaidTracker_Online[name] = online;
                 end
+            end
+        end
+        for k, v in pairs(CT_RaidTracker_Online) do
+            if (v == false) then
+                print('someone left should be: ')
+                print(k)
+                --FUCK
+                --[[tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Leave"],
+                    {
+                        ["player"] = k,
+                        ["time"] = CT_RaidTracker_Date()
+                    }
+                );
+                CT_RaidTracker_Debug("OFFLINE", name, CT_RaidTracker_Date());--]]
             end
         end
         if ( updated ) then
