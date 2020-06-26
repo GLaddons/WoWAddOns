@@ -193,13 +193,10 @@ CT_RaidTracker_Bosses = {
    },	
    -- WotLK
 
-	},
 	["The Eye of Eternity"] = {
 		"Malygos",
 	},	
 
-
-	},
 	["The Obsidian Sanctum"] = {
 		"Sartharion",
 		"Sartharion + 1 Drakes",
@@ -207,7 +204,6 @@ CT_RaidTracker_Bosses = {
 		"Sartharion + 3 Drakes",
 	},
 
-	},
 	["Vault of Archavon"] = {
 		"Archavon the Stone Watcher",
 	},
@@ -220,7 +216,7 @@ CT_RaidTracker_Bosses = {
 		"Instructor Razuvious",
 		"Gothik the Harvester",
 		--"Highlord Mograine",
-		"Four Horsemen"
+		"Four Horsemen",
 		--"Thane Korth'azz",
 		--"Lady Blaumeux",
 		--"Sir Zeliek",
