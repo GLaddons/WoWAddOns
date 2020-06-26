@@ -1763,6 +1763,8 @@ function CT_RaidTracker_GetItemTooltip(sItem)
     return tTooltip;
 end
 
+-- test if array contains value
+
 -- Debug function(s)
 
 function CT_RaidTracker_Debug(...)
@@ -2169,6 +2171,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         end
     end
     if ( event == "GROUP_ROSTER_UPDATE" or event == "PLAYER_ENTERING_WORLD") then
+        --Group already formed, but no members - end raid.
         if ( GetNumGroupMembers() == 0 and event == "GROUP_ROSTER_UPDATE" and CT_RaidTracker_GetCurrentRaid) then
             local raidendtime = CT_RaidTracker_Date();
             for k, v in pairs(CT_RaidTracker_Online) do
@@ -2188,73 +2191,75 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Offline = { };
             CT_RaidTracker_UpdateView();
             CT_RaidTracker_Update();
+        --New Group Formed
         elseif ( not CT_RaidTracker_GetCurrentRaid and GetNumGroupMembers() > 0 and IsInRaid() and event == "GROUP_ROSTER_UPDATE" and CT_RaidTracker_Options["AutoRaidCreation"] == true) then
             CT_RaidTrackerCreateNewRaid();
         end
+        --No raid started - do
         if ( not CT_RaidTracker_GetCurrentRaid ) then
             return;
         end
         local updated;
         for i = 1, GetNumGroupMembers(), 1 do
-                local name = GetFixedUpUnitName("raid" .. i, true)
-                local online = UnitIsConnected("raid" .. i);
-                if ( name and name ~= UKNOWNBEING and name ~= UNKNOWN ) then
-                    local _, race = UnitRace("raid" .. i);
-                    local _, class = UnitClass("raid" .. i);
-                    local sex = UnitSex("raid" .. i);
-                    local level = UnitLevel("raid" .. i);
-                    local guild = GetGuildInfo("raid" .. i);
+            local name = GetFixedUpUnitName("raid" .. i, true)
+            local online = UnitIsConnected("raid" .. i);
+            if ( name and name ~= UKNOWNBEING and name ~= UNKNOWN ) then
+                local _, race = UnitRace("raid" .. i);
+                local _, class = UnitClass("raid" .. i);
+                local sex = UnitSex("raid" .. i);
+                local level = UnitLevel("raid" .. i);
+                local guild = GetGuildInfo("raid" .. i);
 
-                    if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"]) then
-                        CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"] = { };
+                if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"]) then
+                    CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"] = { };
+                end
+                if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]) then
+                    CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name] = { };
+                end
+                if(CT_RaidTracker_Options["SaveExtendedPlayerInfo"] == 1) then
+                    if(race) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["race"] = race; end
+                    if(class) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["class"] = class; end
+                    if(sex) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["sex"] = sex; end
+                    if(level > 0) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["level"] = level; end
+                    if(guild) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["guild"] = guild; end
+                end
+                if ( online ~= CT_RaidTracker_Online[name] ) then
+                    -- Status isn't updated
+                    CT_RaidTracker_Debug("Status isn't updated", name, online);
+                    if ( not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] and CT_RaidTracker_Options["AutoRaidCreation"] == true) then
+                        CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] = {
+                            ["Loot"] = { },
+                            ["Join"] = { },
+                            ["Leave"] = { },
+                            ["PlayerInfos"] = { },
+                            ["BossKills"] = { },
+                        };
                     end
-                    if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]) then
-                        CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name] = { };
-                    end
-                    if(CT_RaidTracker_Options["SaveExtendedPlayerInfo"] == 1) then
-                        if(race) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["race"] = race; end
-                        if(class) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["class"] = class; end
-                        if(sex) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["sex"] = sex; end
-                        if(level > 0) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["level"] = level; end
-                        if(guild) then CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]["guild"] = guild; end
-                    end
-                    if ( online ~= CT_RaidTracker_Online[name] ) then
-                        -- Status isn't updated
-                        CT_RaidTracker_Debug("Status isn't updated", name, online);
-                        if ( not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] and CT_RaidTracker_Options["AutoRaidCreation"] == true) then
-                            CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] = {
-                                ["Loot"] = { },
-                                ["Join"] = { },
-                                ["Leave"] = { },
-                                ["PlayerInfos"] = { },
-                                ["BossKills"] = { },
-                            };
-                        end
-                        if( CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] ) then
-                            if ( not online ) then
-                                if ( online ~= CT_RaidTracker_Online[name] ) then
-                                    tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Leave"],
-                                        {
-                                            ["player"] = name,
-                                            ["time"] = CT_RaidTracker_Date()
-                                        }
-                                    );
-                                    CT_RaidTracker_Debug("OFFLINE", name, CT_RaidTracker_Date());
-                                end
-                            else
-                                tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Join"],
+                    if( CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid] ) then
+                        if ( not online ) then
+                            if ( online ~= CT_RaidTracker_Online[name] ) then
+                                tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Leave"],
                                     {
                                         ["player"] = name,
-                                        --["race"] = race,
-                                        --["class"] = class,
-                                        --["level"] = level,
                                         ["time"] = CT_RaidTracker_Date()
                                     }
-                                    );
-                                CT_RaidTracker_Debug("ONLINE", name, CT_RaidTracker_Date());
+                                );
+                                CT_RaidTracker_Debug("OFFLINE", name, CT_RaidTracker_Date());
                             end
-                            updated = 1;
+                        else
+                            tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Join"],
+                                {
+                                    ["player"] = name,
+                                    --["race"] = race,
+                                    --["class"] = class,
+                                    --["level"] = level,
+                                    ["time"] = CT_RaidTracker_Date()
+                                }
+                                );
+                            CT_RaidTracker_Debug("ONLINE", name, CT_RaidTracker_Date());
                         end
+                        updated = 1;
+                    end
                     CT_RaidTracker_Online[name] = online;
                 end
             end
@@ -2265,6 +2270,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         end
 
     -- Party code added thx to Gof
+    -- PARTY_MEMBERS_CHANGED is deprecated. All changes in raid and party are now GROUP_ROSTER_UPDATE
     elseif ( GetNumGroupMembers() == 0 and (event == "PARTY_MEMBERS_CHANGED" or event == "PLAYER_ENTERING_WORLD")) then
         if ( GetNumGroupMembers() == 0 and event == "PARTY_MEMBERS_CHANGED" and CT_RaidTracker_GetCurrentRaid) then
             local raidendtime = CT_RaidTracker_Date();
