@@ -1,0 +1,10 @@
+## Interface: 11303
+## Title: Classic GuildLaunch Profiler
+## Author: Brian Schaaf
+## Version: 1.13
+## X-ExportVersion: 7.0
+## Notes: Guild Launch Profiler
+## SavedVariablesPerCharacter: GUILDLAUNCH_SVARS
+## X-Website: http://www.gamerlaunch.com
+localization.lua
+ClassicGuildLaunchProfiler.lua

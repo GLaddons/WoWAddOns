@@ -1,0 +1,29 @@
+## Interface: 11304
+## Title: GL CT_RaidTracker Classic
+## Version: 1.05
+## X-Version: (Guild Launch) Modded by Eris, Frothy & Guild Launch
+## Notes: Counts raid loot and attendence, modified for GuildLaunch.com
+## X-GLExportVersion: GL-2.0
+## X-DKPMonInterfaceVersion: 10000
+## SavedVariables: CT_RaidTracker_Online, CT_RaidTracker_RaidLog, CT_RaidTracker_Options, CT_RaidTracker_SortOptions, CT_RaidTracker_ItemOptions, CT_RaidTracker_ItemOptions_selected, CT_RaidTracker_VersionFix, CT_RaidTracker_GetCurrentRaid, CT_RaidTracker_TimeOffsetStatus,CT_RaidTracker_CustomZoneTriggers, CT_RaidTracker_WaitList, CT_RaidTracker_FuBarOptions
+## OptionalDeps: Ace2, FuBar, CT_MasterMod, HoB_DKP, AdvancedItemTooltip, dkpposter, FuBarPlugin-2.0
+## LoadOnDemand: 0
+Libs\AceLibrary\AceLibrary.lua
+Libs\AceOO-2.0\AceOO-2.0.lua
+Libs\AceEvent-2.0\AceEvent-2.0.lua
+Libs\AceDB-2.0\AceDB-2.0.lua
+Libs\AceConsole-2.0\AceConsole-2.0.lua
+Libs\AceAddon-2.0\AceAddon-2.0.lua
+Libs\AceLocale-2.2\AceLocale-2.2.lua
+Libs\Dewdrop-2.0\Dewdrop-2.0.lua
+Libs\Metrognome-2.0\Metrognome-2.0.lua
+Libs\Tablet-2.0\Tablet-2.0.lua
+Libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua
+Libs\LibBabble-Inventory-3.0\lib.xml
+Libs\LibDeformat-3.0\lib.xml
+LibDebug-1.0.lua
+LibItemUtils-1.0.lua
+LibGearPoints-1.2.lua
+GuildLaunchCT_RaidTracker.xml
+CT_RaidTrackerOptions.xml
+CT_RaidTrackerItemOptions.xml

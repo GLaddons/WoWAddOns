@@ -1,9 +1,9 @@
-## Interface: 60000
+## Interface: 80300
 ## Title: GL CT_RaidTracker
-## Version: v3.0.9
-## X-Version: (Guild Launch) Modded by Eris & Guild Launch
+## Version: 8.3.4
+## X-Version: (Guild Launch) Modded by Eris, Frothy & Guild Launch
 ## Notes: Counts raid loot and attendence, modified for GuildLaunch.com
-## X-GLExportVersion: GL-1.0
+## X-GLExportVersion: GL-2.0
 ## X-DKPMonInterfaceVersion: 10000
 ## SavedVariables: CT_RaidTracker_Online, CT_RaidTracker_RaidLog, CT_RaidTracker_Options, CT_RaidTracker_SortOptions, CT_RaidTracker_ItemOptions, CT_RaidTracker_ItemOptions_selected, CT_RaidTracker_VersionFix, CT_RaidTracker_GetCurrentRaid, CT_RaidTracker_TimeOffsetStatus,CT_RaidTracker_CustomZoneTriggers, CT_RaidTracker_WaitList, CT_RaidTracker_FuBarOptions
 ## OptionalDeps: Ace2, FuBar, CT_MasterMod, HoB_DKP, AdvancedItemTooltip, dkpposter, FuBarPlugin-2.0
@@ -23,8 +23,7 @@ Libs\LibBabble-Inventory-3.0\lib.xml
 Libs\LibDeformat-3.0\lib.xml
 LibDebug-1.0.lua
 LibItemUtils-1.0.lua
-CT_GPTooltip-1.2.lua
-localization.lua
+LibGearPoints-1.2.lua
+GuildLaunchCT_RaidTracker.xml
 CT_RaidTrackerOptions.xml
 CT_RaidTrackerItemOptions.xml
-GuildLaunchCT_RaidTracker.xml

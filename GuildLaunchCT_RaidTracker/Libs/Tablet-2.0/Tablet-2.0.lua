@@ -1390,6 +1390,9 @@ local function AcquireFrame(self, registration, data, detachedData)
 			self.scrollFrame:SetScrollChild(self.scrollChild)
 			local val = self.scrollFrame:GetVerticalScroll()
 			local max = self.scrollChild:GetHeight() - self:GetHeight()
+			--if max <= 0 then
+			--	max = 1
+			--end
 			if val > max then
 				val = max
 			end
@@ -2971,3 +2974,4 @@ local function deactivate(self)
 end
 
 AceLibrary:Register(Tablet, MAJOR_VERSION, MINOR_VERSION, activate, deactivate)
+
