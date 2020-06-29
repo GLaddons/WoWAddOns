@@ -1804,6 +1804,7 @@ function CT_RaidTracker_OnLoad(this)
     this:RegisterEvent("CHAT_MSG_LOOT");
     this:RegisterEvent("CHAT_MSG_SYSTEM");
     this:RegisterEvent("GROUP_ROSTER_UPDATE");
+    this:RegisterEvent("RAID_ROSTER_UPDATE");
     this:RegisterEvent("VARIABLES_LOADED");
     this:RegisterEvent("UPDATE_MOUSEOVER_UNIT");
     this:RegisterEvent("ZONE_CHANGED_NEW_AREA");
@@ -2187,7 +2188,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
     end
     if ( event == "GROUP_ROSTER_UPDATE" or event == "PLAYER_ENTERING_WORLD") then
         --Group already formed, but no members - end raid.
-        if ( GetNumGroupMembers() == 0 and event == "GROUP_ROSTER_UPDATE" and CT_RaidTracker_GetCurrentRaid) then
+        if ( GetNumGroupMembers() == 0 and event == "GROUP_ROSTER_UPDATE" and CT_RaidTracker_GetCurrentRaid ) then
             local raidendtime = CT_RaidTracker_Date();
             for k, v in pairs(CT_RaidTracker_Online) do
                 CT_RaidTracker_Debug("ADDING LEAVE", k, raidendtime);
@@ -2210,14 +2211,54 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         elseif ( not CT_RaidTracker_GetCurrentRaid and GetNumGroupMembers() > 0 and IsInRaid() and event == "GROUP_ROSTER_UPDATE" and CT_RaidTracker_Options["AutoRaidCreation"] == true) then
             CT_RaidTrackerCreateNewRaid();
         end
-        --No raid started - do
+        --Auto create raid off. Do not create raid.
         if ( not CT_RaidTracker_GetCurrentRaid ) then
             return;
         end
         local updated;
+        local names;
+        local prev_count = 0
+        for _ in pairs(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"]) do prev_count = prev_count + 1 end
+        --check for leaves
+        for k, v in pairs(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"]) do
+            --if
+            --print (k)
+        end
+        print(UnitClass("Raid1"))
+        --[[if(prev_count > GetNumGroupMembers()) then
+
+        end
+        for i = 1, GetNumGroupMembers(), 1 do
+            local name = GetFixedUpUnitName("raid" .. i, true)
+            if( not has_value(name, CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"]) ) then
+                print('wew')
+            end
+        end
+        --end
+        for i = 1, GetNumGroupMembers(), 1 do
+                    print('wewlad')
+                    print(k)
+                end
+        for i = 1, CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"], 1 do
+            local name = CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][i]
+            print(name)
+            print('wewlad')
+            if(not has_value(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"], name)) then
+                tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Leave"],
+                    {
+                        ["player"] = name,
+                        ["time"] = CT_RaidTracker_Date()
+                    }
+                );
+                CT_RaidTracker_Debug("OFFLINE", name, CT_RaidTracker_Date());
+                updated = 1;
+            end
+        end--]]
+        --loop current roster
         for i = 1, GetNumGroupMembers(), 1 do
             local name = GetFixedUpUnitName("raid" .. i, true)
             local online = UnitIsConnected("raid" .. i);
+
             if ( name and name ~= UKNOWNBEING and name ~= UNKNOWN ) then
                 local _, race = UnitRace("raid" .. i);
                 local _, class = UnitClass("raid" .. i);
@@ -2277,20 +2318,6 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
                     end
                     CT_RaidTracker_Online[name] = online;
                 end
-            end
-        end
-        for k, v in pairs(CT_RaidTracker_Online) do
-            if (v == false) then
-                print('someone left should be: ')
-                print(k)
-                --FUCK
-                --[[tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["Leave"],
-                    {
-                        ["player"] = k,
-                        ["time"] = CT_RaidTracker_Date()
-                    }
-                );
-                CT_RaidTracker_Debug("OFFLINE", name, CT_RaidTracker_Date());--]]
             end
         end
         if ( updated ) then
@@ -2849,6 +2876,16 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         CT_RaidTracker_Debug("UPDATE_INSTANCE_INFO");
         CT_RaidTracker_DoRaidIdCheck();
     end
+end
+
+function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
 end
 
 function CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)

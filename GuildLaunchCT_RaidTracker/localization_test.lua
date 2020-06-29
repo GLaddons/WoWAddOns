@@ -190,12 +190,12 @@ CT_RaidTracker_Bosses = {
       "Eredar Twins",
       "Entropius",
       "Kil'jaeden",
-   },	
+   },
    -- WotLK
 
 	["The Eye of Eternity"] = {
 		"Malygos",
-	},	
+	},
 
 
 	["The Obsidian Sanctum"] = {
