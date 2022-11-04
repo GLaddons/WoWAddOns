@@ -123,7 +123,22 @@ CT_RaidTracker_HellfireCouncil_Yells = {
 	[CT_RaidTracker_lang_BossKills_HellfireCouncil_Dia_Yell]			= 4, --Dia Darkwhisper
 };
 CT_RaidTracker_HellfireCouncil_Status = 0;
-CT_RaidTracker_HellfireCouncil_Dead = 7;	
+CT_RaidTracker_HellfireCouncil_Dead = 7;
+
+CT_RaidTracker_CouncilofBlood_Yells = {
+    [CT_RaidTracker_lang_BossKills_CouncilofBlood_Stavros_Yell] = 1,
+    [CT_RaidTracker_lang_BossKills_CouncilofBlood_Niklaus_Yell] = 2,
+    [CT_RaidTracker_lang_BossKills_CouncilofBlood_Frieda_Yell] = 4,
+}
+CT_RaidTracker_CouncilofBlood_Status = 0;
+CT_RaidTracker_CouncilofBlood_Dead = 7;
+
+CT_RaidTracker_StoneLegionGenerals_Yells = {
+    [CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Crashaal_Yell] = 1,
+    [CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Kaal_Yell] = 2,
+}
+CT_RaidTracker_StoneLegionGenerals_Status = 0;
+CT_RaidTracker_StoneLegionGenerals_Dead = 3;
 
 CT_RaidTracker_Klaxxi_Yells =
 {
@@ -141,6 +156,21 @@ CT_RaidTracker_Klaxxi_Yells =
 CT_RaidTracker_Klaxxi_Status = 0;
 CT_RaidTracker_Klaxxi_Dead = 511;
 
+CT_RaidTracker_PrototypePantheon_Yells = {
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Absolution_Yell] = 1,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Absolution_Yell2] = 1,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_War_Yell] = 2,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_War_Yell2] = 2,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Renewal_Yell] = 4,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Renewal_Yell2] = 4,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Duty_Yell] = 8,
+    [CT_RaidTracker_lang_BossKills_PrototypePantheon_Duty_Yell2] = 8,
+}
+
+CT_RaidTracker_PrototypePantheon_Status = 0;
+CT_RaidTracker_PrototypePantheon_Dead = 15;
+
+
 CT_RaidTracker_QuickLooter = {"disenchanted", "bank"};
 
 CT_RaidTracker_ExpansionLevel = 3;
@@ -157,105 +187,105 @@ GuildLaunchCT_RaidTracker.Options = {}
 
 -- Options table for the fubar menu
 GuildLaunchCT_RaidTracker.Options.fubar = {
-   type = 'group',
-   args = {
-      showui = {
-     type = 'execute',
-     name = "Show Raid Tracker Log",
-     desc = "Shows the Raid Tracker Log",
-     func = function() ShowUIPanel(CT_RaidTrackerFrame) end,
-     order = 10
-      },
-    eventadditions = {
-     type = 'group',
-     name = "Add Event",
-     desc = "This menu allows for manual event addition to the Raid Tracker log",
-     args = {
-              addevent = {
-             type = 'execute',
-             name = "Custom Event",
-             desc = "Add a custom event to the Raid Tracker log",
-             func = function() CT_RaidTracker_ShowAddEventFrame() end
-              },
-              addattendance = {
-             type = 'execute',
-             name = "Attendance Event",
-             desc = "Adds an attendance event to the Raid Tracker log",
-             func = function() CT_RaidTracker_AddAttendance() end
-              },
-              addwipe = {
-             type = 'execute',
-             name = "Wipe Event",
-             desc = "Adds a wipe event to the Raid Tracker log",
-             func = function() CT_RaidTracker_AddWipe() end
-             },
+    type = "group",
+    args = {
+        showui = {
+            type = "execute",
+            name = "Show Raid Tracker Log",
+            desc = "Shows the Raid Tracker Log",
+            func = function() CT_RaidTrackerFrame:Show() end,
+            order = 10
         },
-     order = 20
-      },
-    config = {
-     type = 'group',
-     name = "Configuration",
-     desc = "Raid Tracker Configuration Options",
-     args = {
-         premade = {
-         type = 'group',
-         name = "Load Preset Configuration",
-         desc = "Loads Recommended Configurations for different usage",
-         args = {
-                standalone = {
-                     type = 'group',
-                     name = "Standalone Configuration (Standard)",
-                     desc = "Raid Tracker Configuration Options for when using Raid Tracker as a standalone mod",
-                     args = {
-                              standarddefault = {
-                             type = 'execute',
-                             name = "Load Default",
-                             desc = "Loads Default Options - Most users will use this",
-                             func = function() CT_RaidTrackerLoadDefaultOptions() end
-                              },
-                              standardepgp = {
-                             type = 'execute',
-                             name = "Load EPGP",
-                             desc = "Loads Default EPGP Options",
-                             func = function() CT_RaidTrackerLoadDefaultEPGPOptions() end
-                              },
-                        },
-                     order = 10
+        eventadditions = {
+            type = "group",
+            name = "Add Event",
+            desc = "This menu allows for manual event addition to the Raid Tracker log",
+            args = {
+                addevent = {
+                    type = "execute",
+                    name = "Custom Event",
+                    desc = "Add a custom event to the Raid Tracker log",
+                    func = function() CT_RaidTracker_ShowAddEventFrame() end
                 },
-                config = {
-                     type = 'group',
-                     name = "DKPmon Logging Configuration (Advanced)",
-                     desc = "Raid Tracker Configuration Option for when running the Raid Tracker with DKPmon",
-                     args = {
-                              showitemoptions = {
-                             type = 'execute',
-                             name = "Load Default",
-                             desc = "Show the Raid Tracker item tracking options Screen",
-                             func = function() CT_RaidTrackerLoadDefaultDKPmonOptions() end
-                              },
-
-                    },
-                     order = 20
-                  },
+                addattendance = {
+                    type = "execute",
+                    name = "Attendance Event",
+                    desc = "Adds an attendance event to the Raid Tracker log",
+                    func = function() CT_RaidTracker_AddAttendance() end
+                },
+                addwipe = {
+                    type = "execute",
+                    name = "Wipe Event",
+                    desc = "Adds a wipe event to the Raid Tracker log",
+                    func = function() CT_RaidTracker_AddWipe() end
+                },
             },
-         order = 10
-          },
-              showitemoptions = {
-             type = 'execute',
-             name = "Show Item Tracking Options",
-             desc = "Show the Raid Tracker item tracking options Screen",
-             func = function() CT_RaidTrackerItemOptionsFrame:Show() end
-              },
-              showoptions = {
-             type = 'execute',
-             name = "Show Current Configuration",
-             desc = "Show the main Raid Tracker Options Screen",
-             func = function() CT_RaidTrackerOptionsFrame:Show() end
-              },
+            order = 20
         },
-     order = 30
-      },
-   }
+        config = {
+            type = "group",
+            name = "Configuration",
+            desc = "Raid Tracker Configuration Options",
+            args = {
+                premade = {
+                    type = "group",
+                    name = "Load Preset Configuration",
+                    desc = "Loads Recommended Configurations for different usage",
+                    args = {
+                        standalone = {
+                            type = "group",
+                            name = "Standalone Configuration (Standard)",
+                            desc = "Raid Tracker Configuration Options for when using Raid Tracker as a standalone mod",
+                            args = {
+                                standarddefault = {
+                                    type = "execute",
+                                    name = "Load Default",
+                                    desc = "Loads Default Options - Most users will use this",
+                                    func = function() CT_RaidTrackerLoadDefaultOptions() end
+                                },
+                                standardepgp = {
+                                    type = "execute",
+                                    name = "Load EPGP",
+                                    desc = "Loads Default EPGP Options",
+                                    func = function() CT_RaidTrackerLoadDefaultEPGPOptions() end
+                                },
+                            },
+                            order = 10
+                        },
+                        config = {
+                            type = "group",
+                            name = "DKPmon Logging Configuration (Advanced)",
+                            desc = "Raid Tracker Configuration Option for when running the Raid Tracker with DKPmon",
+                            args = {
+                                showitemoptions = {
+                                    type = "execute",
+                                    name = "Load Default",
+                                    desc = "Show the Raid Tracker item tracking options Screen",
+                                    func = function() CT_RaidTrackerLoadDefaultDKPmonOptions() end
+                                },
+
+                            },
+                            order = 20
+                        },
+                    },
+                    order = 10
+                },
+                showitemoptions = {
+                    type = "execute",
+                    name = "Show Item Tracking Options",
+                    desc = "Show the Raid Tracker item tracking options Screen",
+                    func = function() CT_RaidTrackerItemOptionsFrame:Show() end
+                },
+                showoptions = {
+                    type = "execute",
+                    name = "Show Current Configuration",
+                    desc = "Show the main Raid Tracker Options Screen",
+                    func = function() CT_RaidTrackerOptionsFrame:Show() end
+                },
+            },
+            order = 30
+        },
+    }
 }
 
 function CT_RaidTrackerLoadDefaultOptions()
@@ -292,7 +322,7 @@ function CT_RaidTrackerLoadDefaultOptions()
         ["DKPmonLoggingMode"] = false; -- Create a new raid if zone get switched
         ["LogGroup"] = false;
         ["ListMeEnabled"] = true; -- indicates whether the listme functionality is enabled // can also be enabled/disabled by command line /rt listme enable|disable
-        ["WaitlistAttendanceType"] = 1; -- indicates the style of waitlitst tracking. Current options are whether waitlisted players form the "listme" functionality are included in the boss kill or entered as a seperate "waitlist" event. 1 = include 2 = seperate        
+        ["WaitlistAttendanceType"] = 1; -- indicates the style of waitlitst tracking. Current options are whether waitlisted players form the "listme" functionality are included in the boss kill or entered as a seperate "waitlist" event. 1 = include 2 = seperate
         ["BonusLoot"] = false;
     };
     CT_RaidTrackerOptionsFrame:Show();
@@ -603,21 +633,21 @@ function CT_RaidTracker_RunVersionFix()
         CT_RaidTracker_VersionFix = 13;
         CT_RaidTrackerOptionsFrame:Show();
     end;
-    
+
     if (CT_RaidTracker_VersionFix == 13) then
         CT_RaidTracker_Options["ListMeEnabled"] = true;
         --print ("version 14 fired")
         CT_RaidTracker_VersionFix = 14;
         CT_RaidTrackerOptionsFrame:Show();
     end;
-    
+
     if (CT_RaidTracker_VersionFix == 14) then
         CT_RaidTracker_Options["WaitlistAttendanceType"] = 1;
-        
+
         CT_RaidTracker_VersionFix = 15;
 		--print ("version 15 fired")
         CT_RaidTrackerOptionsFrame:Show();
-    end;    
+    end;
 
     CT_RaidTracker_Options["DebugFlag"] = debugflagpre;
 end
@@ -1792,6 +1822,7 @@ function CT_RaidTracker_OnLoad(this)
     this:RegisterEvent("ZONE_CHANGED_NEW_AREA");
     this:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
     this:RegisterEvent("CHAT_MSG_MONSTER_YELL");
+    this:RegisterEvent("CHAT_MSG_MONSTER_SAY");
     this:RegisterEvent("CHAT_MSG_MONSTER_EMOTE");
     this:RegisterEvent("PLAYER_ENTERING_WORLD");
     --this:RegisterEvent("PARTY_MEMBERS_CHANGED");
@@ -1804,7 +1835,7 @@ end
 function CT_RaidTracker_OnEvent(this, event, arg1)
 --if event ~= "COMBAT_LOG_EVENT_UNFILTERED" then
 --	if event ~= "UNIT_HEALTH" then
---		if event ~= "UPDATE_MOUSEOVER_UNIT" then 
+--		if event ~= "UPDATE_MOUSEOVER_UNIT" then
 --		CT_RaidTracker_Debug("event fired", event);
 --	end
 --	end
@@ -1869,8 +1900,9 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
     if ( event == "" and arg7 == CT_RaidTracker_lang_BossKills_Julianne_BossName) then
 
     end;
-    if ( event == "CHAT_MSG_MONSTER_YELL" 
-            or event == "CHAT_MSG_MONSTER_EMOTE") then
+    if ( event == "CHAT_MSG_MONSTER_YELL"
+            or event == "CHAT_MSG_MONSTER_EMOTE"
+                or event == "CHAT_MSG_MONSTER_SAY" ) then
         CT_RaidTracker_Debug("Boss Yell "..arg1)
         -- Cata Yells
         if(arg1 == CT_RaidTracker_lang_BossKills_Conclave_of_Wind_Yell) then
@@ -1892,12 +1924,12 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Debug("New Deathwing Final Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg9 = CT_RaidTracker_lang_BossKills_DeathwingFinal_BossName;                
+            arg9 = CT_RaidTracker_lang_BossKills_DeathwingFinal_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_WillOfTheEmperor_Yell) then
             CT_RaidTracker_Debug("New Will of Emperor Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg9 = CT_RaidTracker_lang_BossKills_WillOfTheEmperor_BossName; 
+            arg9 = CT_RaidTracker_lang_BossKills_WillOfTheEmperor_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_SpiritKings_Yell) then
             CT_RaidTracker_Debug("New Spirit Kings Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
@@ -1907,7 +1939,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Debug("New Lei Shi Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg9 = CT_RaidTracker_lang_BossKills_LeiShi_BossName;                                                       
+            arg9 = CT_RaidTracker_lang_BossKills_LeiShi_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Tsulong_Yell) then
             CT_RaidTracker_Debug("New Tsulong Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
@@ -1917,7 +1949,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Debug("New Pandarian Spoils Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg9 = CT_RaidTracker_lang_BossKills_Spoils_BossName;             
+            arg9 = CT_RaidTracker_lang_BossKills_Spoils_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_FallenProtectors_Yell) then
             CT_RaidTracker_Debug("New Fallen Protectors Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
@@ -1937,7 +1969,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Debug("New Immerseus3 Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName3;                       
+            arg9 = CT_RaidTracker_lang_BossKills_Immerseus_BossName3;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Immerseus_Yell4) then
             CT_RaidTracker_Debug("New Immerseus4 Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
@@ -1954,65 +1986,123 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_TrialofValor_Odyn_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Uldir_MOTHER_Yell) then
-            CT_RaidTracker_Debug("New MOTHER Defeated")                                                                         ;
+            CT_RaidTracker_Debug("New MOTHER Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_Uldir_MOTHER_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Dazar_Jaina_Yell) then
-            CT_RaidTracker_Debug("New Jaina Defeated")                                                                         ;
+            CT_RaidTracker_Debug("New Jaina Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_Dazar_Jaina_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_Dazar_Rastakhan_Yell) then
-            CT_RaidTracker_Debug("New King Rastakhan Defeated")                                                                         ;
+            CT_RaidTracker_Debug("New King Rastakhan Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_Dazar_Rastakhan_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_TheProphetSkitra_Yell) then
-            CT_RaidTrackerDebug("Prophet Skitra Defeated")
+            CT_RaidTracker_Debug("Prophet Skitra Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_TheProphetSkitra_BossName;
         elseif(arg1 == CT_RaidTracker_lang_BossKills_NZoth_Yell) then
-            CT_RaidTrackerDebug("N'Zoth Defeated")
+            CT_RaidTracker_Debug("N'Zoth Defeated");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
             arg9 = CT_RaidTracker_lang_BossKills_NZoth_BossName;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_ArtificerXymox_Yell) then
+            CT_RaidTracker_Debug("Artificer Xymox Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_ArtificerXymox_BossName;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_SunKings_Yell) then
+            CT_RaidTracker_Debug("Sun Kings Salvation Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_SunKings_BossName;
+        elseif(arg1 == CT_RaidTracker_long_BossKills_AnduinWrynn_Yell) then
+            CT_RaidTracker_Debug("Anduin Wrynn Defeated");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_AnduinWrynn_BossName;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_Yell or arg1 == CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_Yell2) then
+            CT_RaidTracker_Debug("Lords of Dread Defeated (maybe)");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_LordsofDread_BossName;
+        elseif(arg1 == CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_Yell) then
+            CT_RaidTracker_Debug("Halondrus the Reclaimer");
+            event = "COMBAT_LOG_EVENT_UNFILTERED";
+            arg2 = "UNIT_DIED";
+            arg9 = CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_BossName;
         end
 
-        if (CT_RaidTracker_Klaxxi_Yells[arg1]) then            
-            CT_RaidTracker_Klaxxi_Status = CT_RaidTracker_Klaxxi_Status + CT_RaidTracker_Klaxxi_Yells[arg1];    
+        if (CT_RaidTracker_Klaxxi_Yells[arg1]) then
+            CT_RaidTracker_Klaxxi_Status = CT_RaidTracker_Klaxxi_Status + CT_RaidTracker_Klaxxi_Yells[arg1];
             CT_RaidTracker_Debug("Got one of the Klaxxi " .. CT_RaidTracker_Klaxxi_Status);
             if (CT_RaidTracker_Klaxxi_Status == CT_RaidTracker_Klaxxi_Dead) then
                 CT_RaidTracker_Debug("Got ALL of the Klaxxi");
                 event   = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2    = "UNIT_DIED";
-                arg9    = CT_RaidTracker_lang_BossKills_Paragons_BossName;   
-                CT_RaidTracker_Klaxxi_Status = 0; 
-            end            
+                arg9    = CT_RaidTracker_lang_BossKills_Paragons_BossName;
+                CT_RaidTracker_Klaxxi_Status = 0;
+            end
         end
-        if (CT_RaidTracker_Maidens_Yells[arg1]) then            
-            CT_RaidTracker_Maidens_Status = CT_RaidTracker_Maidens_Status + CT_RaidTracker_Maidens_Yells[arg1];    
+        if (CT_RaidTracker_Maidens_Yells[arg1]) then
+            CT_RaidTracker_Maidens_Status = CT_RaidTracker_Maidens_Status + CT_RaidTracker_Maidens_Yells[arg1];
             CT_RaidTracker_Debug("Got one of the Maidens " .. CT_RaidTracker_Maidens_Status);
             if (CT_RaidTracker_Maidens_Status == CT_RaidTracker_Maidens_Dead) then
                 CT_RaidTracker_Debug("Got ALL of the Maidens");
                 event   = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2    = "UNIT_DIED";
-                arg9    = CT_RaidTracker_lang_BossKills_Maidens_BossName;   
-                CT_RaidTracker_Maidens_Status = 0; 
-            end            
+                arg9    = CT_RaidTracker_lang_BossKills_Maidens_BossName;
+                CT_RaidTracker_Maidens_Status = 0;
+            end
         end
-		if (CT_RaidTracker_HellfireCouncil_Yells[arg1]) then            
-            CT_RaidTrackerHellfireCouncil_Status = CT_RaidTracker_HellfireCouncil_Status + CT_RaidTracker_HellfireCouncil_Yells[arg1];    
+		if (CT_RaidTracker_HellfireCouncil_Yells[arg1]) then
+            CT_RaidTrackerHellfireCouncil_Status = CT_RaidTracker_HellfireCouncil_Status + CT_RaidTracker_HellfireCouncil_Yells[arg1];
             CT_RaidTracker_Debug("Got one of the Council " .. CT_RaidTracker_HellfireCouncil_Status);
             if (CT_RaidTracker_HellfireCouncil_Status == CT_RaidTracker_HellfireCouncil_Dead) then
                 CT_RaidTracker_Debug("Got ALL of the Council");
                 event   = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2    = "UNIT_DIED";
-                arg9    = CT_RaidTracker_lang_BossKills_HellfireCouncil_BossName;   
-                CT_RaidTracker_HellfireCouncil_Status = 0; 
-            end            
+                arg9    = CT_RaidTracker_lang_BossKills_HellfireCouncil_BossName;
+                CT_RaidTracker_HellfireCouncil_Status = 0;
+            end
         end
+        if (CT_RaidTracker_StoneLegionGenerals_Yells[arg1]) then
+            CT_RaidTracker_StoneLegionGenerals_Status = CT_RaidTracker_StoneLegionGenerals_Status + CT_RaidTracker_StoneLegionGenerals_Yells[arg1];
+            CT_RaidTracker_Debug("Got one of the Stone Legion Generals " .. CT_RaidTracker_StoneLegionGenerals_Status);
+            if (CT_RaidTracker_StoneLegionGenerals_Status == CT_RaidTracker_StoneLegionGenerals_Dead) then
+                CT_RaidTracker_Debug("Got ALL of the Stone Legion Generals");
+                event   = "COMBAT_LOG_EVENT_UNFILTERED";
+                arg2    = "UNIT_DIED";
+                arg9    = CT_RaidTracker_lang_BossKills_StoneLegionGenerals_BossName;
+                CT_RaidTracker_StoneLegionGenerals_Status = 0;
+            end
+        end
+        if (CT_RaidTracker_CouncilofBlood_Yells[arg1]) then
+            CT_RaidTracker_CouncilofBlood_Status = CT_RaidTracker_CouncilofBlood_Status + CT_RaidTracker_CouncilofBlood_Yells[arg1];
+            CT_RaidTracker_Debug("Got one of the Council of Blood " .. CT_RaidTracker_CouncilofBlood_Status);
+            if (CT_RaidTracker_CouncilofBlood_Status == CT_RaidTracker_CouncilofBlood_Dead) then
+                CT_RaidTracker_Debug("Got ALL of the Council of Blood");
+                event   = "COMBAT_LOG_EVENT_UNFILTERED";
+                arg2    = "UNIT_DIED";
+                arg9    = CT_RaidTracker_lang_BossKills_CouncilofBlood_BossName;
+                CT_RaidTracker_CouncilofBlood_Status = 0;
+            end
+        end
+        if (CT_RaidTracker_PrototypePantheon_Yells[arg1]) then
+            CT_RaidTracker_PrototypePantheon_Status = CT_RaidTracker_PrototypePantheon_Status + CT_RaidTracker_PrototypePantheon_Yells[arg1];
+            CT_RaidTracker_Debug("Got one of the Prototype Pantheons " .. CT_RaidTracker_PrototypePantheon_Status);
+            if (CT_RaidTracker_PrototypePantheon_Status == CT_RaidTracker_PrototypePantheon_Dead) then
+                event   = "COMBAT_LOG_EVENT_UNFILTERED";
+                arg2    = "UNIT_DIED";
+                arg9    = CT_RaidTracker_lang_BossKills_PrototypePantheon_BossName;
+                CT_RaidTracker_PrototypePantheon_Status = 0;
+            end
+        end
+
         --[[
         -- yell sample
         if(arg1 == CT_RaidTracker_lang_BossKills_Majordomo_Yell) then
@@ -2024,7 +2114,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
             CT_RaidTracker_Debug("Halion - Hardmode");
             event = "COMBAT_LOG_EVENT_UNFILTERED";
             arg2 = "UNIT_DIED";
-            arg7 = CT_RaidTracker_lang_bossKills_HalionHardmode_BossName;                                                
+            arg7 = CT_RaidTracker_lang_bossKills_HalionHardmode_BossName;
         end
         --]]
         -- these are old boss yells
@@ -2139,17 +2229,17 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
                 CT_RaidTracker_Debug("Faction Champs");
                 event = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2 = "UNIT_DIED";
-                arg9 = CT_RaidTracker_lang_bossKills_FactionChamps_BossName;                        
+                arg9 = CT_RaidTracker_lang_bossKills_FactionChamps_BossName;
             elseif(arg1 == CT_RaidTracker_lang_bossKills_GunshipBattleOne) then
                 CT_RaidTracker_Debug("Gunship Battle");
                 event = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2 = "UNIT_DIED";
-                arg9 = CT_RaidTracker_lang_bossKills_GunshipBattle_BossName;                        
+                arg9 = CT_RaidTracker_lang_bossKills_GunshipBattle_BossName;
             elseif(arg1 == CT_RaidTracker_lang_bossKills_GunshipBattleTwo) then
                 CT_RaidTracker_Debug("Gunship Battle");
                 event = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2 = "UNIT_DIED";
-                arg9 = CT_RaidTracker_lang_bossKills_GunshipBattle_BossName;                        
+                arg9 = CT_RaidTracker_lang_bossKills_GunshipBattle_BossName;
             elseif(arg1 == CT_RaidTracker_lang_bossKills_DeathbringerSaurfang) then
                 CT_RaidTracker_Debug("Deathbringer Saurfang");
                 event = "COMBAT_LOG_EVENT_UNFILTERED";
@@ -2169,7 +2259,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
                 CT_RaidTracker_Debug("Halion - Hardmode");
                 event = "COMBAT_LOG_EVENT_UNFILTERED";
                 arg2 = "UNIT_DIED";
-                arg9 = CT_RaidTracker_lang_bossKills_HalionHardmode_BossName;                                                
+                arg9 = CT_RaidTracker_lang_bossKills_HalionHardmode_BossName;
             end
         end
     end
@@ -2434,9 +2524,9 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         CT_RaidTracker_Debug("item award arg1", arg1);
         CT_RaidTracker_Debug(string.sub(arg1,1,-2));
         CT_RaidTracker_Debug(string.sub(arg1,1,-5));
-        
+
         CT_RaidTracker_Debug("Loot Type",CT_RaidTracker_lang_ReceivesLoot2);
-        
+
         if(string.find(arg1, CT_RaidTracker_lang_ReceivesLoot1)) then
             CT_RaidTracker_Debug("CT_RaidTracker_lang_ReceivesLoot1");
             iStart, iEnd, sPlayerName, sItem = string.find(arg1, CT_RaidTracker_lang_ReceivesLoot1);
@@ -2771,7 +2861,7 @@ function CT_RaidTracker_OnEvent(this, event, arg1)
         end
     elseif ( event == "COMBAT_LOG_EVENT_UNFILTERED" and arg2 == "UNIT_DIED" ) then
         CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
-        
+
     elseif ( event == "UNIT_HEALTH" ) then
         -- check for wipe count
         if (CT_RaidTracker_Options["Wipe"] == false) then
@@ -2834,7 +2924,7 @@ function CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
         CT_RaidTracker_Debug('6',arg6);
         CT_RaidTracker_Debug('7',arg7);
         CT_RaidTracker_Debug('8',arg8);
-        CT_RaidTracker_Debug('9',arg9);        
+        CT_RaidTracker_Debug('9',arg9);
         CT_RaidTracker_Debug("COMBAT_LOG_EVENT_UNFILTERED","The mob you just killed is"..arg9);
         local unit = arg9
 --        for unit in string.gmatch(arg9, CT_RaidTracker_ConvertGlobalString(UNITDIESOTHER)) do
@@ -2912,24 +3002,24 @@ function CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
                                 tinsert(tAttendees, name);
                             end
                         end
-                        
-                        if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then                        
+
+                        if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then
                             for k,v in pairs(CT_RaidTracker_WaitList) do
                                 tinsert(tAttendees, k);
                             end
                         elseif (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
                             for k,v in pairs(CT_RaidTracker_WaitList) do
                                 tinsert(tAttendeesWaitlist, k);
-                            end                        
+                            end
                         else
                             for k,v in pairs(CT_RaidTracker_WaitList) do
                                 tinsert(tAttendees, k);
-                            end    
+                            end
                         end
                     end
 
                     -- BOSS KILL TRACKING
-                    
+
                     if (CT_RaidTracker_Options["DKPmonLoggingMode"] == false) then
                         tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["BossKills"],
                             {
@@ -2949,7 +3039,7 @@ function CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
                             }
                         );
                         -- add wait listers if there are any
-                        if (#(tAttendeesWaitlist) > 0) then                                                    
+                        if (#(tAttendeesWaitlist) > 0) then
                             if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
                                 tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["BossKills"],
                                     {
@@ -2958,7 +3048,7 @@ function CT_RaidTracker_BossKill(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
                                     ["attendees"] = tAttendeesWaitlist,
                                     ["event_source"] = "Raid Tracker",
                                     }
-                                );                    
+                                );
                             end
                         end
                      end
@@ -3447,16 +3537,16 @@ SlashCmdList["RAIDTRACKER"] = function(msg)
         CT_RaidTracker_Print("The waitlist has been cleared.", 1, 1, 0);
     elseif(command == "listme") then
         if (args == "enable") then
-            CT_RaidTracker_Options["ListMeEnabled"] = true    
-            CT_RaidTracker_Print("Waitlist functionality is now enabled.", 1, 1, 0);        
+            CT_RaidTracker_Options["ListMeEnabled"] = true
+            CT_RaidTracker_Print("Waitlist functionality is now enabled.", 1, 1, 0);
         elseif(args == "disable") then
             CT_RaidTracker_Options["ListMeEnabled"] = false
             CT_RaidTracker_Print("Waitlist functionality is now disabled.", 1, 1, 0);
         elseif(args == "status") then
             if (CT_RaidTracker_Options["ListMeEnabled"] == false) then
-                CT_RaidTracker_Print("Waitlist functionality is currently disabled.", 1, 1, 0);                    
+                CT_RaidTracker_Print("Waitlist functionality is currently disabled.", 1, 1, 0);
             else
-                CT_RaidTracker_Print("Waitlist functionality is currently enabled.", 1, 1, 0);                    
+                CT_RaidTracker_Print("Waitlist functionality is currently enabled.", 1, 1, 0);
             end
         end
    -- elseif(command == "guids") then
@@ -3483,7 +3573,7 @@ SlashCmdList["RAIDTRACKER"] = function(msg)
         CT_RaidTracker_Print("|cff40bbff/rt showwaitlist|r - Shows the Current Waitlist", 1, 1, 0);
         CT_RaidTracker_Print("|cff40bbff/rt clearwaitlist|r - Clears the Current Waitlist", 1, 1, 0);
         CT_RaidTracker_Print("|cff40bbff/rt toggleminimap|r - Toggles the display of the icon on minimap. Will also show the icon on the minimap if it is not displaying anywhere currently. If another Addon such as FuBar is displaying the icon on a bar then this option will have no effect.", 1, 1, 0);
-        CT_RaidTracker_Print("|cff40bbff/rt listme enable|disable|status|r - The Enable and disable commands toggle the listme functionality on and off. The Status command will show you the current state.", 1, 1, 0);        
+        CT_RaidTracker_Print("|cff40bbff/rt listme enable|disable|status|r - The Enable and disable commands toggle the listme functionality on and off. The Status command will show you the current state.", 1, 1, 0);
         CT_RaidTracker_Print("|cff40bbff/rt gptest [ITEMLINK]|r - Will return the GP value for the item using the internal EPGP formula", 1, 1, 0);
         CT_RaidTracker_Print("|cff40bbff/rt killazshara|r - Will trigger a kill event of Queen Azshara.", 1, 1, 0);
     else
@@ -3704,7 +3794,7 @@ function CT_RaidTrackerCreateNewRaid()
             local guild = GetGuildInfo("raid" .. i);
             local name = GetFixedUpUnitName("raid" .. i, true);
             local rank, subgroup, level, class, fileName, zone, online = GetRaidRosterInfo(i);
-            
+
                 if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name]) then
                     CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["PlayerInfos"][name] = { };
                 end
@@ -5195,7 +5285,7 @@ function CT_RaidTracker_ItemsRightClickMenu_Initialize(self, level)
 end
 
 function CT_RaidTracker_ItemsRightClickMenu_Toggle(this)
-    
+
     local menu = getglobal(this:GetParent():GetName().."RightClickMenu");
     menu.point = "TOPLEFT";
     menu.relativePoint = "BOTTOMLEFT";
@@ -5239,7 +5329,7 @@ function CT_RaidTracker_RaidsRightClickMenu_Initialize(self, level)
         end
         info.value = { ["raidid"] = raidid, ["what"] = "raidend"};
         info.func = function(self)
-            HideDropDownMenu(1);            
+            HideDropDownMenu(1);
             CT_RaidTracker_EditTime(self.value["raidid"], self.value["what"]);
         end;
         UIDropDownMenu_AddButton(info, level);
@@ -5380,7 +5470,7 @@ function CT_RaidTracker_RaidsRightClickMenu_Initialize(self, level)
 end
 
 function CT_RaidTracker_RaidsRightClickMenu_Toggle(self)
-    CT_RaidTracker_Debug("Right Click Menu Toggle", 1); 
+    CT_RaidTracker_Debug("Right Click Menu Toggle", 1);
     CT_RaidTracker_Debug(self:GetName().."RightClickMenu", 1);
     local menu = getglobal(self:GetName().."RightClickMenu");
     menu.point = "TOPLEFT";
@@ -5570,7 +5660,7 @@ end
 function CT_RaidTracker_AddEventSaveEx(event_name, event_note, event_value, event_time)
     local tAttendees = { };
     local tAttendeesWaitlist = { };
-    
+
     if( (CT_RaidTracker_Options["LogAttendees"] == 1) or (CT_RaidTracker_Options["LogAttendees"] == 3)) then
         if((IsInRaid() == true) and (GetNumGroupMembers() > 0)) then
             for i = 1, GetNumGroupMembers() do
@@ -5600,18 +5690,18 @@ function CT_RaidTracker_AddEventSaveEx(event_name, event_note, event_value, even
             end
         end
 
-        if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then                        
+        if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then
             for k,v in pairs(CT_RaidTracker_WaitList) do
                 tinsert(tAttendees, k);
             end
         elseif (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
             for k,v in pairs(CT_RaidTracker_WaitList) do
                 tinsert(tAttendeesWaitlist, k);
-            end                        
+            end
         else
             for k,v in pairs(CT_RaidTracker_WaitList) do
                 tinsert(tAttendees, k);
-            end    
+            end
         end
     end
 
@@ -5628,9 +5718,9 @@ function CT_RaidTracker_AddEventSaveEx(event_name, event_note, event_value, even
         ["event_note"] = event_note,
         }
     );
-            
+
     -- add wait listers if there are any
-    if (#(tAttendeesWaitlist) > 0) then                                                    
+    if (#(tAttendeesWaitlist) > 0) then
         if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
             tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["BossKills"],
                 {
@@ -5638,11 +5728,11 @@ function CT_RaidTracker_AddEventSaveEx(event_name, event_note, event_value, even
                 ["time"] = event_time,
                 ["attendees"] = tAttendeesWaitlist,
                 ["value"] = event_value,
-                ["event_note"] = event_note,                
+                ["event_note"] = event_note,
                 }
-            );                    
+            );
         end
-    end            
+    end
 
     CT_RaidTracker_Print("Event Added:"..event_name.." manually added at "..event_time.." for a value of "..event_value, 1, 1, 0);
 end
@@ -5660,19 +5750,19 @@ function CT_RaidTracker_AddEventWithAttendees(event_name, event_value, event_att
     --for k,v in pairs(CT_RaidTracker_WaitList) do
     --    tinsert(tAttendees, k);
     --end
-    
-    if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then                        
+
+    if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 1) then
         for k,v in pairs(CT_RaidTracker_WaitList) do
             tinsert(tAttendees, k);
         end
     elseif (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
         for k,v in pairs(CT_RaidTracker_WaitList) do
             tinsert(tAttendeesWaitlist, k);
-        end                        
+        end
     else
         for k,v in pairs(CT_RaidTracker_WaitList) do
             tinsert(tAttendees, k);
-        end    
+        end
     end
 
     if(not CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["BossKills"]) then
@@ -5695,9 +5785,9 @@ function CT_RaidTracker_AddEventWithAttendees(event_name, event_value, event_att
                 ["event_source"] = "DKPmon",
             }
             );
-            
+
     -- add wait listers if there are any
-    if (#(tAttendeesWaitlist) > 0) then                                                    
+    if (#(tAttendeesWaitlist) > 0) then
         if (CT_RaidTracker_Options["WaitlistAttendanceType"] == 2) then
             tinsert(CT_RaidTracker_RaidLog[CT_RaidTracker_GetCurrentRaid]["BossKills"],
                 {
@@ -5706,9 +5796,9 @@ function CT_RaidTracker_AddEventWithAttendees(event_name, event_value, event_att
                 ["attendees"] = tAttendeesWaitlist,
                 ["event_source"] = "DKPmon",
                 }
-            );                    
+            );
         end
-    end            
+    end
 
     CT_RaidTracker_Print("Event Added:"..event_name.." manually added at "..CT_RaidTracker_Date().." for a value of "..event_value, 1, 1, 0);
 end
@@ -5819,7 +5909,7 @@ function pprint(...)
     for k in pairs(recursions) do
         recursions[k] = nil
     end
-    --print(table.concat(t))
+    print(table.concat(t))
 end
 
 function GetFixedUpUnitName(name)

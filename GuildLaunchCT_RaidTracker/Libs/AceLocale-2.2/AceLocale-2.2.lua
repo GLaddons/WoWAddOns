@@ -86,10 +86,10 @@ local function clearCache(self)
 	if not rawget(self, BASE_TRANSLATIONS) then
 		return
 	end
-	
+
 	local cache = self[BASE_TRANSLATIONS]
 	rawset(self, REVERSE_TRANSLATIONS, nil)
-	
+
 	for k in pairs(self) do
 		if rawget(cache, k) ~= nil then
 			self[k] = nil
@@ -117,11 +117,11 @@ local function refixInstance(instance)
 		end
 		if translations == baseTranslations or instance[STRICTNESS] then
 			setmetatable(instance, strict_instance_mt)
-			
+
 			setmetatable(translations, baseTranslations_mt)
 		else
 			setmetatable(instance, nonstrict_instance_mt)
-			
+
 			setmetatable(baseTranslations, baseTranslations_mt)
 		end
 	else
@@ -135,11 +135,11 @@ end
 
 function AceLocale:new(name)
 	self:argCheck(name, 2, "string")
-	
+
 	if self.registry[name] and type(rawget(self.registry[name], 'GetLibraryVersion')) ~= "function" then
 		return self.registry[name]
 	end
-	
+
 	AceLocale.registry[name] = refixInstance({
 		[STRICTNESS] = false,
 		[NAME] = name,
@@ -175,11 +175,11 @@ end
 function AceLocale.prototype:RegisterTranslations(locale, func)
 	AceLocale.argCheck(self, locale, 2, "string")
 	AceLocale.argCheck(self, func, 3, "function")
-	
+
 	if locale == rawget(self, BASE_LOCALE) then
 		AceLocale.error(self, "Cannot provide the same locale more than once. %q provided twice.", locale)
 	end
-	
+
 	if rawget(self, BASE_TRANSLATIONS) and GetLocale() ~= locale then
 		if rawget(self, DEBUGGING) or rawget(self, DYNAMIC_LOCALES) then
 			if not rawget(self, TRANSLATION_TABLES) then
@@ -204,7 +204,7 @@ function AceLocale.prototype:RegisterTranslations(locale, func)
 	if type(t) ~= "table" then
 		AceLocale.error(self, "Bad argument #3 to `RegisterTranslations'. function did not return a table. (expected table, got %s)", type(t))
 	end
-	
+
 	rawset(self, TRANSLATIONS, t)
 	if not rawget(self, BASE_TRANSLATIONS) then
 		rawset(self, BASE_TRANSLATIONS, t)
@@ -260,15 +260,15 @@ function AceLocale.prototype:SetLocale(locale)
 			locale = self[BASE_LOCALE]
 		end
 	end
-	
+
 	if self[CURRENT_LOCALE] == locale then
 		return
 	end
-	
+
 	if not self[TRANSLATION_TABLES][locale] then
 		AceLocale.error(self, "Locale %q not registered.", locale)
 	end
-	
+
 	self[TRANSLATIONS] = self[TRANSLATION_TABLES][locale]
 	self[CURRENT_LOCALE] = locale
 	refixInstance(self)
@@ -494,7 +494,7 @@ setmetatable(AceLocale.prototype, {
 
 local function activate(self, oldLib, oldDeactivate)
 	AceLocale = self
-	
+
 	self.frame = oldLib and oldLib.frame or CreateFrame("Frame")
 	self.registry = oldLib and oldLib.registry or {}
 	self.BASE_TRANSLATIONS = oldLib and oldLib.BASE_TRANSLATIONS or {}
@@ -508,7 +508,7 @@ local function activate(self, oldLib, oldDeactivate)
 	self.DYNAMIC_LOCALES = oldLib and oldLib.DYNAMIC_LOCALES or {}
 	self.CURRENT_LOCALE = oldLib and oldLib.CURRENT_LOCALE or {}
 	self.reverseToBase = oldLib and oldLib.reverseToBase or {}
-	
+
 	BASE_TRANSLATIONS = self.BASE_TRANSLATIONS
 	DEBUGGING = self.DEBUGGING
 	TRANSLATIONS = self.TRANSLATIONS
@@ -519,7 +519,7 @@ local function activate(self, oldLib, oldDeactivate)
 	NAME = self.NAME
 	DYNAMIC_LOCALES = self.DYNAMIC_LOCALES
 	CURRENT_LOCALE = self.CURRENT_LOCALE
-	
+
 	strict_instance_mt = {
 		__index = strict__index,
 		__newindex = __newindex,
@@ -535,7 +535,7 @@ local function activate(self, oldLib, oldDeactivate)
 	baseTranslations_mt = {
 		__index = AceLocale.prototype
 	}
-	
+
 	local GetTime = GetTime
 	local timeUntilClear = GetTime() + 5
 	scheduleClear = function()
@@ -544,7 +544,7 @@ local function activate(self, oldLib, oldDeactivate)
 			timeUntilClear = GetTime() + 5
 		end
 	end
-	
+
 	for name, instance in pairs(self.registry) do
 		local name = name
 		setmetatable(instance, nil)
@@ -560,7 +560,7 @@ local function activate(self, oldLib, oldDeactivate)
 		instance[STRICTNESS] = strict and true or false
 		refixInstance(instance)
 	end
-	
+
 	self.frame:SetScript("OnEvent", scheduleClear)
 	self.frame:SetScript("OnUpdate", function() -- (this, elapsed)
 		if timeUntilClear - GetTime() <= 0 then
@@ -576,7 +576,7 @@ local function activate(self, oldLib, oldDeactivate)
 	self.frame:RegisterEvent("ADDON_LOADED")
 	self.frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self.frame:Show()
-	
+
 	if oldDeactivate then
 		oldDeactivate(oldLib)
 	end
@@ -590,11 +590,11 @@ if true then -- debug
 		Monkey = true,
 		House = true,
 	} end)
-	
+
 	L:RegisterTranslations("deDE", function() return {
 		Monkey = "Affe"
 	} end)
-	
+
 	L = AceLocale:new(MINOR_VERSION ~= 100000 and "AceLocale_DEBUG" or "AceLocale_DEBUG3")
 	assert(L.Monkey == "Monkey")
 	assert(L.House == "House")
@@ -604,7 +604,7 @@ if true then -- debug
 	end
 	assert(L.Debug)
 	assert(L.Debug == AceLocale.prototype.Debug)
-	
+
 	if MINOR_VERSION == 100000 then
 		L = AceLocale:new("AceLocale_DEBUG")
 		assert(L.Monkey == "Monkey")
@@ -615,23 +615,23 @@ if true then -- debug
 		assert(type(AceLocale.prototype.Debug) == "function")
 		assert(L.Debug == AceLocale.prototype.Debug)
 	end
-	
+
 	local L = AceLocale:new(MINOR_VERSION ~= 100000 and "AceLocale_DEBUG2" or "AceLocale_DEBUG4")
 	L:RegisterTranslations("deDE", function() return {
 		Affe = true,
 		Haus = true,
 	} end)
-	
+
 	L:RegisterTranslations("enUS", function() return {
 		Affe = "Monkey"
 	} end)
-	
+
 	L = AceLocale:new(MINOR_VERSION ~= 100000 and "AceLocale_DEBUG2" or "AceLocale_DEBUG4")
 	assert(L.Affe == "Monkey")
 	assert(L.Haus == "Haus")
 	assert(L.Debug)
 	assert(L.Debug == AceLocale.prototype.Debug)
-	
+
 	if MINOR_VERSION == 100000 then
 		L = AceLocale:new("AceLocale_DEBUG2")
 		assert(L.Affe == "Monkey")
@@ -639,25 +639,25 @@ if true then -- debug
 		assert(L.Debug)
 		assert(L.Debug == AceLocale.prototype.Debug)
 	end
-	
+
 	local L = AceLocale:new(MINOR_VERSION ~= 100000 and "AceLocale_DEBUG5" or "AceLocale_DEBUG6")
 	L:RegisterTranslations("deDE", function() return {
 		Affe = true,
 		Haus = true,
 	} end)
-	
+
 	L:RegisterTranslations("enUS", function() return {
 		Affe = "Monkey"
 	} end)
-	
+
 	L:SetStrictness(true)
-	
+
 	L = AceLocale:new(MINOR_VERSION ~= 100000 and "AceLocale_DEBUG5" or "AceLocale_DEBUG6")
 	assert(L.Affe == "Monkey")
 	assert(L.Haus == "Haus")
 	assert(L.Debug)
 	assert(L.Debug == AceLocale.prototype.Debug)
-	
+
 	if MINOR_VERSION == 100000 then
 		L = AceLocale:new("AceLocale_DEBUG5")
 		assert(L.Affe == "Monkey")

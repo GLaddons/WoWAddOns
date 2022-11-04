@@ -462,7 +462,7 @@ function FuBarPlugin:UpdateTooltip()
 	if self.blizzardTooltip then
 		if GameTooltip:IsOwned(self:IsMinimapAttached() and self.minimapFrame or self.frame) then
 			GameTooltip:Hide()
-			
+
 			local frame = self:IsMinimapAttached() and self.minimapFrame or self.frame
 			local anchor
 			if frame:GetTop() > GetScreenHeight() / 2 then
@@ -1177,7 +1177,7 @@ function FuBarPlugin:OpenMenu(frame)
 	end
 	if frame == self:GetFrame() then
 		Dewdrop:Open(self:GetFrame())
-	elseif frame ~= UIParent then		
+	elseif frame ~= UIParent then
 		Dewdrop:Open(self:GetFrame(), 'cursorX', true, 'cursorY', true)
 	else
 		Dewdrop:Open(frame, self:GetFrame(), 'cursorX', true, 'cursorY', true)
@@ -1592,11 +1592,11 @@ function MinimapContainer:AddPlugin(plugin)
 					end
 				end
 				if this.self.OnClick or this.self.OnMouseDown or this.self.OnMouseUp or this.self.OnDoubleClick then
-					if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
-						this.self.minimapIcon:SetTexCoord(0.14, 0.86, 0.14, 0.86)
-					else
+					-- if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
+					-- 	this.self.minimapIcon:SetTexCoord(0.14, 0.86, 0.14, 0.86)
+					-- else
 						this.self.minimapIcon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-					end
+					-- end
 				end
 			end
 		end
@@ -1606,11 +1606,11 @@ function MinimapContainer:AddPlugin(plugin)
 				if not this.dragged and type(this.self.OnMouseUp) == "function" then
 					this.self:OnMouseUp(...)
 				end
-				if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
-					this.self.minimapIcon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-				else
+				-- if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
+				-- 	this.self.minimapIcon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+				-- else
 					this.self.minimapIcon:SetTexCoord(0, 1, 0, 1)
-				end
+				-- end
 			end
 		end
 		frame:SetScript("OnMouseUp", minimap_OnMouseUp)
@@ -1670,7 +1670,7 @@ function MinimapContainer:ReadjustLocation(plugin)
 		local minimapShape = GetMinimapShape and GetMinimapShape() or "ROUND"
 		local cos = math.cos(angle)
 		local sin = math.sin(angle)
-		
+
 		local round = true
 		if minimapShape == "ROUND" then
 			-- do nothing
@@ -1777,11 +1777,11 @@ function MinimapContainer.OnDragStart(this)
 	this.dragged = true
 	this:LockHighlight()
 	this:SetScript("OnUpdate", MinimapContainer.OnUpdate)
-	if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
-		this.self.minimapIcon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-	else
+	-- if this.self.minimapIcon:GetTexture():sub(1, 16) == "Interface\\Icons\\" then
+	-- 	this.self.minimapIcon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+	-- else
 		this.self.minimapIcon:SetTexCoord(0, 1, 0, 1)
-	end
+	-- end
 end
 
 function MinimapContainer.OnDragStop(this)

@@ -547,7 +547,7 @@ local function RegisterOnEnable(self)
 		AceAddon.playerLoginFired = false
 	end
 	if AceAddon.playerLoginFired then
-        DEFAULT_CHAT_FRAME:AddMessage("Player Login Fired") 
+        DEFAULT_CHAT_FRAME:AddMessage("Player Login Fired")
 		AceAddon.addonsStarted[self] = true
 		if (type(self.IsActive) ~= "function" or self:IsActive()) and (not AceModuleCore or not AceModuleCore:IsModule(self) or AceModuleCore:IsModuleActive(self)) then
 			AceAddon:ManualEnable(self)
@@ -555,9 +555,9 @@ local function RegisterOnEnable(self)
         --if not AceAddon.addonsToOnEnable then
         --    AceAddon.addonsToOnEnable = {}
         --end
-        --table.insert(AceAddon.addonsToOnEnable, self)        
+        --table.insert(AceAddon.addonsToOnEnable, self)
 	else
-        --DEFAULT_CHAT_FRAME:AddMessage("Player Login Not Fired") 
+        --DEFAULT_CHAT_FRAME:AddMessage("Player Login Not Fired")
 		if not AceAddon.addonsToOnEnable then
 			AceAddon.addonsToOnEnable = {}
 		end
@@ -677,7 +677,7 @@ function AceAddon:InitializeAddon(addon, name)
 	if AceEvent then
 		AceEvent:TriggerEvent("Ace2_AddonInitialized", addon)
 	end
-    --DEFAULT_CHAT_FRAME:AddMessage("AceAddon Initialized: "..name) 
+    --DEFAULT_CHAT_FRAME:AddMessage("AceAddon Initialized: "..name)
 	RegisterOnEnable(addon)
 	local n2 = AceAddon.addonsToOnEnable and #AceAddon.addonsToOnEnable or 0
 	if n2 - n > 1 then
@@ -884,7 +884,7 @@ local function createDonateFrame()
 	scrollFrame:SetHeight(70)
 	howto:SetPoint("BOTTOM", scrollFrame, "TOP")
 
-	local editBox = CreateFrame("EditBox", nil, scrollFrame)
+	local editBox = CreateFrame("EditBox", nil, scrollFrame, BackdropTemplateMixin and "BackdropTemplate")
 	donateFrame.editBox = editBox
 	scrollFrame:SetScrollChild(editBox)
 	editBox:SetFontObject(ChatFontNormal)

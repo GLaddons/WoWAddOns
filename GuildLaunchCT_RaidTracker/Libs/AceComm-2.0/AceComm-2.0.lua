@@ -168,11 +168,11 @@ do
 		end
 		return counter % 16777213
 	end
-	
+
 	function HexCheckSum(text)
 		return ("%06x"):format(NumericCheckSum(text))
 	end
-	
+
 	function TailoredNumericCheckSum(text)
 		local hash = NumericCheckSum(text)
 		local a = math_floor(hash / 256^2)
@@ -197,7 +197,7 @@ do
 		end
 		return a * 256^2 + b * 256 + c
 	end
-	
+
 	function TailoredBinaryCheckSum(text)
 		local num = TailoredNumericCheckSum(text)
 		return string_char(math_floor(num / 256^2), math_floor(num / 256) % 256, num % 256)
@@ -263,7 +263,7 @@ do
 			return text:gsub("([\176\255%z\010\124%%])", soberHelper)
 		end
 	end
-	
+
 	function EncodeByte(num, drunk)
 		local t
 		if drunk then
@@ -271,7 +271,7 @@ do
 		else
 			t = soberHelper_t
 		end
-		
+
 		local value = t[num]
 		if value then
 			return value
@@ -279,7 +279,7 @@ do
 			return string_char(num)
 		end
 	end
-	
+
 	local function EncodeBytes_helper(drunk, ...)
 		local n = select('#', ...)
 		if n == 0 then
@@ -322,7 +322,7 @@ do
 	local function soberHelper(text)
 		return t[text]
 	end
-	
+
 	local t = {
 		["\127"] = "\000",
 		["\015"] = "s",
@@ -331,7 +331,7 @@ do
 	local function drunkHelper1(text)
 		return t[text]
 	end
-	
+
 	local t = setmetatable({}, {__index=function(self, c)
 		local num = c:byte()
 		if num >= 29 then
@@ -366,19 +366,19 @@ do
 	local function drunkHelper3(text)
 		return t[text]
 	end
-	
+
 	-- Clean a received message
 	function Decode(text, drunk)
 		if drunk then
 			text = text:gsub("^(.*)\029.-$", "%1")
 			-- get rid of " ...hic!"
-			
+
 			text = text:gsub("([\127\015\020])", drunkHelper1)
 			text = text:gsub("\031(.)", drunkHelper2)
 			text = text:gsub("\029([\038\125\011\126\016\021\001\002\003\004\005\032\030])", drunkHelper3)
 		else
 			text = text:gsub("\255", "\000")
-		
+
 			text = text:gsub("\176([\177\254\011\125\038])", soberHelper)
 		end
 		-- remove the hidden character and refix the prohibited characters.
@@ -429,7 +429,7 @@ local zoneCache
 local function GetCurrentZoneChannel()
 	if not zoneCache then
 		if (GetRealZoneText()) then
-			zoneCache = "AceCommZone" .. HexCheckSum(GetRealZoneText())		
+			zoneCache = "AceCommZone" .. HexCheckSum(GetRealZoneText())
 		else
 			zoneCache = "AceCommZone" .. "Unknown"
 		end
@@ -445,7 +445,7 @@ local function SupposedToBeInChannel(chan)
 	elseif shutdown or not AceEvent:IsFullyInitialized() then
 		return false
 	end
-	
+
 	if chan == "AceComm" then
 		return AceComm_registry.GLOBAL and next(AceComm_registry.GLOBAL) and true or false
 	elseif chan:find("^AceCommZone%x%x%x%x%x%x$") then
@@ -482,7 +482,7 @@ local function RefixAceCommChannelsAndEvents()
 	end
 	lastRefix = GetTime()
 	LeaveAceCommChannels(true)
-	
+
 	local channel = false
 	if SupposedToBeInChannel("AceComm") then
 		JoinChannel("AceComm")
@@ -509,7 +509,7 @@ local function RefixAceCommChannelsAndEvents()
 			AceComm:UnregisterEvent("CHAT_MSG_ADDON")
 		end
 	end
-	
+
 	if channel then
 		if not AceComm:IsEventRegistered("CHAT_MSG_CHANNEL") then
 			AceComm:RegisterEvent("CHAT_MSG_CHANNEL")
@@ -547,7 +547,7 @@ do
 		end
 		switches[k] = del(k)
 	end
-	
+
 	function AceComm:CHAT_MSG_CHANNEL_NOTICE(kind, _, _, deadName, _, _, _, num, channel)
 		if kind == "YOU_LEFT" then
 			if not channel:find("^AceComm") then
@@ -685,7 +685,7 @@ do
 			local r,g,b,A,B,C,D,E,F,G,H,name = v:match("^|cff(%x%x)(%x%x)(%x%x)|Hitem:(%d+):(%d+):(%d+):(%d+):(%d+):(%d+):(%-?%d+):(%d+)|h%[(.+)%]|h|r$")
 			if A then
 				-- item link
-				
+
 				A = A+0 -- convert to number
 				B = B+0
 				C = C+0
@@ -697,16 +697,16 @@ do
 				r = tonumber(r, 16)
 				g = tonumber(g, 16)
 				b = tonumber(b, 16)
-				
+
 				-- (1-35000):(1-3093):(1-3093):(1-3093):(1-3093):(?):(-57 to 2164):(0-4294967295)
-				
+
 				F = nil -- don't care
 				if G < 0 then
 					G = G + 256^2 -- handle negatives
 				end
-				
+
 				H = H % 256^2 -- only lower 16 bits matter
-				
+
 				sb[#sb+1] = "I"
 				sb[#sb+1] = EncodeBytes(drunk, r, g, b, math_floor(A / 256) % 256, A % 256, math_floor(B / 256) % 256, B % 256, math_floor(C / 256) % 256, C % 256, math_floor(D / 256) % 256, D % 256, math_floor(E / 256) % 256, E % 256, math_floor(G / 256) % 256, G % 256, math_floor(H / 256) % 256, H % 256, math_min(name:len(), 255))
 				sb[#sb+1] = Encode(name:sub(1, 255), drunk)
@@ -845,10 +845,10 @@ do
 					sb[sb_id+1] = EncodeBytes(drunk, math_floor(num / 256), num % 256)
 					return 3 + len
 				end
-			end	
+			end
 		end
 	end
-	
+
 	function SerializeAndEncode(value, textToHash, drunk)
 		local sb = new()
 		sb[1] = ""
@@ -921,7 +921,7 @@ do
 			local _, link = GetItemInfo(s)
 			if not link then
 				local name = value:sub(position + 19, position + 18 + len)
-				
+
 				link = ("|cff%02x%02x%02x|Hitem:%d:%d:%d:%d:%d:%d:%d:%d|h[%s]|h|r"):format(r, g, b, A, B, C, D, E, 0, G, H, name)
 			end
 			return link, position + 18 + len
@@ -975,7 +975,7 @@ do
 				N = N - 2^64
 			end
 			return N, position + 8
-		elseif x == byte_plus or x == byte_minus then	
+		elseif x == byte_plus or x == byte_minus then
 			local a, b, c, d, e, f, g, h = value:byte(position + 1, position + 8)
 			local N = a * 256^5 + b * 256^4 + c * 256^3 + d * 256^2 + e * 256 + f
 			local sign = x
@@ -1156,7 +1156,7 @@ function AceComm:RegisterComm(prefix, distribution, method, a4)
 	if type(method) == "string" and type(self[method]) ~= "function" and type(self[method]) ~= "table" then
 		AceComm:error("Cannot register comm %q to method %q, it does not exist", prefix, method)
 	end
-	
+
 	local registry = AceComm_registry
 	if not registry[distribution] then
 		registry[distribution] = new()
@@ -1176,7 +1176,7 @@ function AceComm:RegisterComm(prefix, distribution, method, a4)
 		end
 		registry[distribution][prefix][self] = method
 	end
-	
+
 	RefixAceCommChannelsAndEvents()
 end
 
@@ -1194,7 +1194,7 @@ function AceComm:UnregisterComm(prefix, distribution, customChannel)
 	else
 		AceComm:argCheck(customChannel, 3, "nil")
 	end
-	
+
 	local registry = AceComm_registry
 	if not distribution then
 		for k,v in pairs(registry) do
@@ -1228,11 +1228,11 @@ function AceComm:UnregisterComm(prefix, distribution, customChannel)
 			AceComm:error("Cannot unregister comm %q. %q is not registered with it.", distribution, self)
 		end
 		registry[distribution][customChannel][prefix][self] = nil
-		
+
 		if not next(registry[distribution][customChannel][prefix]) then
 			registry[distribution][customChannel][prefix] = del(registry[distribution][customChannel][prefix])
 		end
-		
+
 		if not next(registry[distribution][customChannel]) then
 			registry[distribution][customChannel] = del(registry[distribution][customChannel])
 		end
@@ -1241,16 +1241,16 @@ function AceComm:UnregisterComm(prefix, distribution, customChannel)
 			AceComm:error("Cannot unregister comm %q. %q is not registered with it.", distribution, self)
 		end
 		registry[distribution][prefix][self] = nil
-		
+
 		if not next(registry[distribution][prefix]) then
 			registry[distribution][prefix] = del(registry[distribution][prefix])
 		end
 	end
-	
+
 	if not next(registry[distribution]) then
 		registry[distribution] = del(registry[distribution])
 	end
-	
+
 	RefixAceCommChannelsAndEvents()
 end
 
@@ -1358,7 +1358,7 @@ local stopGuildMessages = false
 
 function AceComm:PLAYER_GUILD_UPDATE(arg1)
 	if arg1 and arg1 ~= "player" then return end
-	
+
 	recentGuildMessage = 0
 	firstGuildMessage = true
 	stopGuildMessages = false
@@ -1430,7 +1430,7 @@ local function SendMessage(prefix, priority, distribution, person, message, text
 					else
 						point = "c"
 					end
-					
+
 					bit = prefix .. string_char(9 --[[\t]], id) .. point .. "-" .. bit .. "\029"
 					ChatThrottleLib:SendChatMessage(priority, prefix, bit, "CHANNEL", nil, index)
 				else
@@ -1445,7 +1445,7 @@ local function SendMessage(prefix, priority, distribution, person, message, text
 				else
 					point = "c"
 				end
-				
+
 				bit = string_char(id) .. point .. "-" .. bit
 				ChatThrottleLib:SendAddonMessage(priority, prefix, bit, distribution, person)
 			end
@@ -1513,7 +1513,7 @@ function AceComm:SendPrioritizedCommMessage(priority, distribution, person, ...)
 	if distribution and distribution ~= "GLOBAL" and distribution ~= "WHISPER" and distribution ~= "PARTY" and distribution ~= "RAID" and distribution ~= "GUILD" and distribution ~= "BATTLEGROUND" and distribution ~= "GROUP" and distribution ~= "ZONE" and distribution ~= "CUSTOM" then
 		AceComm:error('Distribution for `Send[Prioritized]CommMessage\' must be either nil, "GLOBAL", "ZONE", "WHISPER", "PARTY", "RAID", "GUILD", "BATTLEGROUND", "GROUP", or "CUSTOM". %q is not appropriate', distribution)
 	end
-	
+
 	local prefix = AceComm.commPrefixes[self]
 	if type(prefix) ~= "string" then
 		AceComm:error("`SetCommPrefix' must be called before sending a message.")
@@ -1543,7 +1543,7 @@ function AceComm:SetDefaultCommPriority(priority)
 	if priority ~= "NORMAL" and priority ~= "BULK" and priority ~= "ALERT" then
 		AceComm:error('Argument #2 must be either "NORMAL", "BULK", or "ALERT"')
 	end
-	
+
 	self.commPriority = priority
 end
 
@@ -1553,18 +1553,18 @@ function AceComm:SetCommPrefix(prefix)
 	--else
 	---	DEFAULT_CHAT_FRAME:AddMessage("nil prefix")
 	--end
-    
+
 	AceComm:argCheck(prefix, 2, "string")
-	
+
 	if AceComm.commPrefixes[self] then
-        --DEFAULT_CHAT_FRAME:AddMessage(AceComm.commPrefixes[self].."<--") 
+        --DEFAULT_CHAT_FRAME:AddMessage(AceComm.commPrefixes[self].."<--")
 		AceComm:error("Cannot call `SetCommPrefix' more than once.")
 	end
-	
+
 	if AceComm.prefixes[prefix] then
 		AceComm:error("Cannot set prefix to %q, it is already in use.", prefix)
 	end
-	
+
 	local hash
 	if prefix:len() == 3 then
 		hash = prefix
@@ -1574,7 +1574,7 @@ function AceComm:SetCommPrefix(prefix)
 	if AceComm.prefixHashToText[hash] then
 		AceComm:error("Cannot set prefix to %q, its hash is used by another prefix: %q", prefix, AceComm.prefixHashToText[hash])
 	end
-	
+
 	AceComm.prefixes[prefix] = true
 	self.commPrefix = prefix
 	AceComm.commPrefixes[self] = prefix
@@ -1910,7 +1910,7 @@ function AceComm:IsUserInChannel(userName, distribution, customChannel)
 	else
 		AceComm:error('Argument #3 to `IsUserInChannel\' must be "GLOBAL", "CUSTOM", or "ZONE"')
 	end
-	
+
 	return AceComm.userRegistry[channel] and AceComm.userRegistry[channel][userName] or false
 end
 
@@ -1918,7 +1918,7 @@ function AceComm:CHAT_MSG_CHANNEL_LIST(text, _, _, _, _, _, _, _, channel)
 	if not channel:find("^AceComm") then
 		return
 	end
-	
+
 	if not self.userRegistry[channel] then
 		self.userRegistry[channel] = new()
 	end
@@ -1932,7 +1932,7 @@ function AceComm:CHAT_MSG_CHANNEL_JOIN(_, user, _, _, _, _, _, _, channel)
 	if not channel:find("^AceComm") then
 		return
 	end
-	
+
 	if not self.userRegistry[channel] then
 		self.userRegistry[channel] = new()
 	end
@@ -1944,7 +1944,7 @@ function AceComm:CHAT_MSG_CHANNEL_LEAVE(_, user, _, _, _, _, _, _, channel)
 	if not channel:find("^AceComm") then
 		return
 	end
-	
+
 	if not self.userRegistry[channel] then
 		self.userRegistry[channel] = new()
 	end
@@ -2053,7 +2053,7 @@ function AceComm:CHAT_MSG_SYSTEM(text)
 	if not lastChannelJoined or not lastChannelJoined:find("^AceComm") then
 		return
 	end
-	
+
 	local text
 	if lastChannelJoined == "AceComm" then
 		local addon = AceComm_registry.GLOBAL and next(AceComm_registry.GLOBAL)
@@ -2077,7 +2077,7 @@ function AceComm:CHAT_MSG_SYSTEM(text)
 		addon = tostring(addon)
 		text = ("%s has tried to join the AceComm custom channel %s, but there are not enough channels available. %s may not work because of this."):format(addon, lastChannelJoined, addon)
 	end
-	
+
 	_G.StaticPopupDialogs["ACECOMM_TOO_MANY_CHANNELS"] = {
 		text = text,
 		button1 = _G.CLOSE,
@@ -2124,7 +2124,7 @@ end
 
 local function activate(self, oldLib, oldDeactivate)
 	AceComm = self
-	
+
 	if not oldLib or not oldLib.hooks or not oldLib.hooks.ChatFrame_MessageEventHandler then
 		local old_ChatFrame_MessageEventHandler = _G.ChatFrame_MessageEventHandler
 		function _G.ChatFrame_MessageEventHandler(...)
@@ -2155,7 +2155,7 @@ local function activate(self, oldLib, oldDeactivate)
 			end
 		end
 	end
-	
+
 	self.recvQueue = oldLib and oldLib.recvQueue or {}
 	self.registry = oldLib and oldLib.registry or {}
 	self.channels = oldLib and oldLib.channels or {}
@@ -2171,9 +2171,9 @@ local function activate(self, oldLib, oldDeactivate)
 	for k in pairs(self.classes) do
 		self.classes[k] = nil
 	end
-	
+
 	self:activate(oldLib, oldDeactivate)
-	
+
 	if oldLib and not oldLib.commPrefixes then
 		for t in pairs(self.embedList) do
 			if t.commPrefix and not self.commPrefixes[t] then
@@ -2181,7 +2181,7 @@ local function activate(self, oldLib, oldDeactivate)
 			end
 		end
 	end
-	
+
 	if oldDeactivate then
 		oldDeactivate(oldLib)
 	end
@@ -2190,24 +2190,24 @@ end
 local function external(self, major, instance)
 	if major == "AceEvent-2.0" then
 		AceEvent = instance
-		
+
 		AceEvent:embed(self)
-		
+
 		self:UnregisterAllEvents()
 		self:CancelAllScheduledEvents()
-		
+
 		if AceEvent:IsFullyInitialized() then
 			RefixAceCommChannelsAndEvents()
 		else
 			self:RegisterEvent("AceEvent_FullyInitialized", RefixAceCommChannelsAndEvents, true)
 		end
-		
+
 		self:RegisterEvent("PLAYER_LOGOUT", LeaveAceCommChannels)
 		self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 		self:RegisterEvent("CHAT_MSG_CHANNEL_NOTICE")
 		self:RegisterEvent("CHAT_MSG_SYSTEM")
 		self:RegisterEvent("PLAYER_GUILD_UPDATE")
-		
+
 		if not self.addonVersionPinger then
 			self.addonVersionPinger = {}
 			self:embed(self.addonVersionPinger)
@@ -2274,12 +2274,12 @@ local function external(self, major, instance)
 					if not version or version == "" then
 						version = GetAddOnMetadata(addon, "Version")
 						if version and version ~= "" and not IsAddOnLoaded(addon) then
-							local enabled, loadable = select(4, GetAddOnInfo(addon))  
+							local enabled, loadable = select(4, GetAddOnInfo(addon))
 							version = enabled and loadable and version .. " (LoD)" or version .. " (Off)"
 						end
 					end
 					if not version or version == "" then
-						local enabled, loadable = select(4, GetAddOnInfo(addon))  
+						local enabled, loadable = select(4, GetAddOnInfo(addon))
 						version = IsAddOnLoaded(addon) and true or enabled and loadable and "(LoD)" or false
 					end
 				end
@@ -2322,7 +2322,7 @@ AceLibrary:Register(AceComm, MAJOR_VERSION, MINOR_VERSION, activate, nil, extern
 --
 -- Manages AddOn chat output to keep player from getting kicked off.
 --
--- ChatThrottleLib:SendChatMessage/:SendAddonMessage functions that accept 
+-- ChatThrottleLib:SendChatMessage/:SendAddonMessage functions that accept
 -- a Priority ("BULK", "NORMAL", "ALERT") as well as prefix for SendChatMessage.
 --
 -- Priorities get an equal share of available bandwidth when fully loaded.
@@ -2433,7 +2433,7 @@ end
 
 
 -----------------------------------------------------------------------
--- Recycling bin for pipes 
+-- Recycling bin for pipes
 -- A pipe is a plain integer-indexed queue, which also happens to be a ring member
 
 ChatThrottleLib.PipeBin = nil -- pre-v19, drastically different
@@ -2488,7 +2488,7 @@ end
 -- Initialize queues, set up frame for OnUpdate, etc
 
 
-function ChatThrottleLib:Init()	
+function ChatThrottleLib:Init()
 
 	-- Set up queues
 	if not self.Prio then
@@ -2656,8 +2656,8 @@ function ChatThrottleLib.OnUpdate(this,delay)
 	-- See how many of our priorities have queued messages (we only have 3, don't worry about the loop)
 	local n = 0
 	for prioname,Prio in pairs(self.Prio) do
-		if Prio.Ring.pos or Prio.avail < 0 then 
-			n = n + 1 
+		if Prio.Ring.pos or Prio.avail < 0 then
+			n = n + 1
 		end
 	end
 

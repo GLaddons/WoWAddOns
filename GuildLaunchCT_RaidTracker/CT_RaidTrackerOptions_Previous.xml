@@ -7,7 +7,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 		</Size>
 		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
-				<AbsInset left="11" right="12" top="12" bottom="11" />	
+				<AbsInset left="11" right="12" top="12" bottom="11" />
 				<Size>
 					<AbsDimension x="128" y="17" />
 				</Size>
@@ -40,7 +40,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						</Anchor>
 					</Anchors>
 				</Texture>
-				
+
 				<!-- Frame header label -->
 				<FontString inherits="GameFontNormalSmall" text="CT_RaidTracker Options">
 					<Anchors>
@@ -50,7 +50,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 							</Offset>
 						</Anchor>
 					</Anchors>
-				</FontString>   
+				</FontString>
                 <FontString inherits="GameFontNormal" text="General Settings">
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -59,7 +59,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </FontString>                                                             
+                </FontString>
                 <FontString inherits="GameFontNormal" text="DKPmon Integration Options">
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -68,7 +68,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </FontString> 
+                </FontString>
                 <FontString inherits="SystemFont_Tiny" text="These option are only used when running with DKPmon">
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -77,7 +77,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </FontString> 
+                </FontString>
                 <FontString inherits="GameFontNormalSmall" text="Need Help? http://support.guildlaunch.com/">
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -86,7 +86,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </FontString>                                                  
+                </FontString>
 			</Layer>
 		</Layers>
 		<Frames>
@@ -100,7 +100,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                         <AbsDimension x="-20" y="-45" />
                     </Offset>
                 </Anchor>
-            </Anchors>              
+            </Anchors>
             <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
                 <BackgroundInsets>
                     <AbsInset left="3" right="3" top="6" bottom="6" />
@@ -143,9 +143,9 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                             <AbsValue val="10" />
                         </FontHeight>
                     </FontString>
-                </Layer>                   
+                </Layer>
             </Layers>
-            <Scripts>                
+            <Scripts>
                 <OnUpdate>
                     local colors = {
                     "|c00ffffffOff",
@@ -426,7 +426,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                 </Layer>
             </Layers>
         </CheckButton>
-        
+
         <Slider name="$parentAskWipeSlider" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.8" valueStep=".01" orientation="HORIZONTAL">
             <Size>
                 <AbsDimension x="128" y="20"/>
@@ -484,8 +484,8 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                     getglobal(this:GetName() .. "Value"):SetText(math.ceil(this:GetValue()*100));
                 </OnUpdate>
             </Scripts>
-        </Slider>            
-        
+        </Slider>
+
         <CheckButton name="$parentAskNextBossCB" inherits="OptionsCheckButtonTemplate" checked="false">
             <Size>
                 <AbsDimension x="20" y="20"/>
@@ -510,8 +510,8 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                     </FontString>
                 </Layer>
             </Layers>
-        </CheckButton>            
-        
+        </CheckButton>
+
         <Slider name="$parentGroupItemsSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
             <Size>
                 <AbsDimension x="128" y="20"/>
@@ -801,9 +801,9 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                     getglobal(this:GetName() .. "Value"):SetText(math.ceil(this:GetValue()*1000));
                 </OnUpdate>
             </Scripts>
-        </Slider>            
-        
-        
+        </Slider>
+
+
         <Slider name="$parentLogAttendeesSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="3" valueStep="1" orientation="HORIZONTAL">
             <Size>
                 <AbsDimension x="128" y="20"/>
@@ -1122,9 +1122,9 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                     };
                     getglobal(this:GetName() .. "Value"):SetText(colors[this:GetValue()+1]);
                 </OnUpdate>
-            </Scripts>                
+            </Scripts>
         </Slider>
-<!-- ExportFormat Slider end -->            
+<!-- ExportFormat Slider end -->
 	<!-- oberan added to auto record epgp costs -->
         <CheckButton name="$parentAutoSetEPGPCost" inherits="OptionsCheckButtonTemplate" checked="false">
             <Size>
@@ -1151,7 +1151,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                 </Layer>
             </Layers>
         </CheckButton>
-		<!-- end oberan added to auto record epgp costs --> 
+		<!-- end oberan added to auto record epgp costs -->
         <!-- Guild Launch "logging" mode for DKPmon -->
         <CheckButton name="$parentDKPmonLoggingMode" inherits="OptionsCheckButtonTemplate" checked="false">
             <Size>
@@ -1181,7 +1181,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
                 </Layer>
             </Layers>
         </CheckButton>
-        <!-- end Guild Launch "logging" mode for DKPmon -->                
+        <!-- end Guild Launch "logging" mode for DKPmon -->
         <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
 			<Anchors>
 				<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">

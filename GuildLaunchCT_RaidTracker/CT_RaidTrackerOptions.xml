@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">    
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
     <Script file="CT_RaidTrackerOptions.lua"/>
     <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
 		<Scripts>
@@ -22,13 +22,13 @@
         </Anchors>
         <Scripts>
             <OnEnter>
-            	CT_RaidTracker_OptionsFrame_ShowItemHelp(self:GetName());						    
-            </OnEnter>				                   
+            	CT_RaidTracker_OptionsFrame_ShowItemHelp(self:GetName());
+            </OnEnter>
             <OnLeave>
-            	CT_RaidTracker_OptionsFrame_HideItemHelp();							    
-            </OnLeave>		                    
+            	CT_RaidTracker_OptionsFrame_HideItemHelp();
+            </OnLeave>
         </Scripts>
-    </Button>	
+    </Button>
     <Frame
        name="CT_RaidTrackerOptionsFrame"
        toplevel="true"
@@ -48,7 +48,10 @@
        <Backdrop
            bgFile="Interface\DialogFrame\UI-DialogBox-Background"
            edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
-           tile="true">
+           tile="true"
+           tileEdge="true"
+           tileSize="32"
+           edgeSize="32">
            <BackgroundInsets>
                <AbsInset left="11" right="12" top="12" bottom="11"/>
            </BackgroundInsets>
@@ -90,7 +93,7 @@
                            </Offset>
                        </Anchor>
                    </Anchors>
-               </FontString>               
+               </FontString>
                 <FontString name="$parentHelpString" inherits="SystemFont_Small" text="" justifyH="LEFT" nonspacewrap="true">
                     <Anchors>
                         <Anchor point="TOPLEFT"  relativeTo="$parentHelpHeader">
@@ -99,7 +102,7 @@
                             </Offset>
                         </Anchor>
                     </Anchors>
-                </FontString> 
+                </FontString>
                 <FontString name="$parentExtendedHelpString" inherits="SystemFont_Small" text="" justifyH="LEFT" nonspacewrap="true">
                     <Anchors>
                        <Anchor point="TOPLEFT" relativeTo="$parent">
@@ -108,7 +111,10 @@
                            </Offset>
                        </Anchor>
                     </Anchors>
-                </FontString>                                
+                </FontString>
+           </Layer>
+           <Layer level="BACKGROUND">
+           		<Texture file="Interface\DialogFrame\UI-DialogBox-Background" />
            </Layer>
        </Layers>
        <Frames>
@@ -136,7 +142,7 @@
                                    </Offset>
                                </Anchor>
                            </Anchors>
-                       </FontString>                       
+                       </FontString>
 						<FontString inherits="GameFontNormal" text="DKPmon Integration">
                            <Anchors>
                                <Anchor point="TOPLEFT" relativeTo="$parent">
@@ -145,7 +151,7 @@
                                    </Offset>
                                </Anchor>
                            </Anchors>
-                       </FontString>                                              
+                       </FontString>
                    </Layer>
                </Layers>
                <Frames>
@@ -181,13 +187,13 @@
 		                    </Anchor>
 		                </Anchors>
 		                <Scripts>
-		                    <OnClick>		                           
+		                    <OnClick>
     								CT_RaidTrackerLoadDefaultEPGPOptions();
     								CT_RaidTracker_Print("Standalone Raid Tracking w/ EPGP Options Loaded", 1, 1, 0);
     								self:GetParent():GetParent():Hide();
 		                    </OnClick>
 		                </Scripts>
-		            </Button> 
+		            </Button>
                		<Button name="$parentStandaloneDefault" inherits="UIPanelButtonTemplate" text="Load DKPmon Settings">
 		                <Size>
 		                    <AbsDimension x="190" y="21"/>
@@ -207,10 +213,10 @@
 							    self:GetParent():GetParent():Hide();
 		                    </OnClick>
 		                </Scripts>
-		            </Button> 		            		            		             
-               		<!-- end tab 1 contents -->                                  
-               </Frames> 
-           </Frame>   
+		            </Button>
+               		<!-- end tab 1 contents -->
+               </Frames>
+           </Frame>
            <Frame name="$parentTabPage2" hidden="true">
                <Anchors>
                    <Anchor point="TOPLEFT"/>
@@ -241,7 +247,7 @@
                                     <AbsDimension x="200" y="-50" />
                                 </Offset>
 			                </Anchor>
-			            </Anchors>		            
+			            </Anchors>
 			            <Layers>
 			                <Layer>
 			                    <FontString name="$parentTitle" inherits="GameFontNormalSmall" text="Auto zone:">
@@ -255,13 +261,13 @@
 			                        <FontHeight>
 			                            <AbsValue val="10" />
 			                        </FontHeight>
-			                    </FontString>			                    
-			                </Layer>		                
+			                    </FontString>
+			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			        </CheckButton>				        	        
+			        </CheckButton>
 			        <CheckButton name="$parentNewRaidOnNewZoneCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -283,12 +289,12 @@
 			                        <FontHeight>
 			                            <AbsValue val="10" />
 			                        </FontHeight>
-			                    </FontString>			                   
-			                </Layer>		                
+			                    </FontString>
+			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>				            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 					<CheckButton name="$parentAutoCreateRaidCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -315,9 +321,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>			        
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
 					<CheckButton name="$parentLogGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -343,9 +349,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>			        
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
 					<CheckButton name="$parentAutoGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -371,9 +377,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>					      
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
 			        <CheckButton name="$parentLogBattlefieldCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -399,11 +405,11 @@
 			                </Layer>
 			            </Layers>
 			           	<Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			        </CheckButton>				       
-               </Frames> 
-           </Frame>         
+			        </CheckButton>
+               </Frames>
+           </Frame>
  			<Frame name="$parentTabPage3" hidden="true">
                <Anchors>
                    <Anchor point="TOPLEFT"/>
@@ -422,7 +428,7 @@
                        </FontString>
                    </Layer>
                </Layers>
-               <Frames>	
+               <Frames>
                	<!-- tab 3 contents -->
                			<CheckButton name="$parentAskWipeCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -452,10 +458,10 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
-			        
+
 			        <Slider name="$parentAskWipeSlider" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.8" valueStep=".01" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
@@ -509,14 +515,14 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()*100));
 			                </OnUpdate>
 			            </Scripts>
-			        </Slider>   
+			        </Slider>
 					<CheckButton name="$parentAskNextBossCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -542,9 +548,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>			                    
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
                 	<CheckButton name="$parentSaveExtendedPlayerInfoCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -570,9 +576,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>			
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
 					<Slider name="$parentAutoBossSlider" enableMouse="true" minValue="0" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
@@ -626,8 +632,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local colors = {
@@ -637,12 +643,12 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
 			        </Slider>
-			
+
 			        <Slider name="$parentAutoBossChangeMinTimeSlider" enableMouse="true" minValue="1" maxValue="20" defaultValue="10" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
@@ -696,17 +702,17 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()));
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider>            			      		        
+			        </Slider>
 			        <Slider name="$parentLogAttendeesSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="3" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
@@ -760,8 +766,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local text = {
@@ -772,12 +778,12 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(text[self:GetValue()+1]);
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider>		        		        
-               </Frames> 
+			        </Slider>
+               </Frames>
            </Frame>
            <Frame name="$parentTabPage4" hidden="true">
                <Anchors>
@@ -797,7 +803,7 @@
                        </FontString>
                    </Layer>
                </Layers>
-               <Frames>	
+               <Frames>
                		<!-- tab 4 contents -->
 					<Slider name="$parentMinQualitySlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
                         <Size>
@@ -809,7 +815,7 @@
                                     <AbsDimension x="200" y="-50" />
                                 </Offset>
                             </Anchor>
-                        </Anchors>              
+                        </Anchors>
                         <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
                             <BackgroundInsets>
                                 <AbsInset left="3" right="3" top="6" bottom="6" />
@@ -852,12 +858,12 @@
                                         <AbsValue val="10" />
                                     </FontHeight>
                                 </FontString>
-                            </Layer>                   
+                            </Layer>
                         </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>                        
-                        <Scripts>                
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+                        <Scripts>
                             <OnUpdate>
                                 local colors = {
                                 "|c00ffffffOff",
@@ -871,7 +877,7 @@
                                 };
                                 getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
                             </OnUpdate>
-                            <OnValueChanged>			               
+                            <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
                         </Scripts>
@@ -929,8 +935,8 @@
                             </Layer>
                         </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>                         
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
                         <Scripts>
                             <OnUpdate>
                                 local colors = {
@@ -945,11 +951,11 @@
                                 };
                                 getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
                             </OnUpdate>
-                            <OnValueChanged>			               
+                            <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
                         </Scripts>
-                    </Slider> 
+                    </Slider>
 					<Slider name="$parentGetDKPValueSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
@@ -1003,8 +1009,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames> 			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local colors = {
@@ -1019,7 +1025,7 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
 			                </OnUpdate>
-			               	<OnValueChanged>			               
+			               	<OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
@@ -1077,8 +1083,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local colors = {
@@ -1093,11 +1099,11 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider> 	
+			        </Slider>
 					<CheckButton name="$parentSaveTooltipsCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -1123,9 +1129,9 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
-			        </CheckButton>			        				         
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
+			        </CheckButton>
 					<!-- oberan added to auto record epgp costs -->
 			        <CheckButton name="$parentAutoSetEPGPCost" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -1152,8 +1158,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 			        <CheckButton name="$parentBonusLoot" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -1180,13 +1186,13 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 
-			        <!-- end oberan added to auto record epgp costs -->                	
-               	<!-- end tab 4 contents -->		                     
-               </Frames> 
+			        <!-- end oberan added to auto record epgp costs -->
+               	<!-- end tab 4 contents -->
+               </Frames>
            </Frame>
            <!-- ATTENDANCE -->
 			<Frame name="$parentTabPage8" hidden="false">
@@ -1204,10 +1210,10 @@
                                    </Offset>
                                </Anchor>
                            </Anchors>
-                       </FontString>                                           
+                       </FontString>
                    </Layer>
                </Layers>
-               <Frames>	
+               <Frames>
                	<!-- tab 3 contents -->
                		<CheckButton name="$parentEnableListme" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -1237,8 +1243,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 					<Slider name="$parentWaitlistAttendanceType" enableMouse="true" minValue="1" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
@@ -1293,8 +1299,8 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local colors = {
@@ -1303,13 +1309,13 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()]);
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider> 			        
-				</Frames>               		 
-           </Frame>           
+			        </Slider>
+				</Frames>
+           </Frame>
            <Frame name="$parentTabPage5" hidden="true">
                <Anchors>
                    <Anchor point="TOPLEFT"/>
@@ -1329,7 +1335,7 @@
                    </Layer>
                </Layers>
                <Frames>
-               	<!-- tab 5 contents --> 
+               	<!-- tab 5 contents -->
 					<!-- Guild Launch "logging" mode for DKPmon -->
 			        <CheckButton name="$parentDKPmonLoggingMode" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
@@ -1359,12 +1365,12 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
-        			<!-- end Guild Launch "logging" mode for DKPmon -->               	
+        			<!-- end Guild Launch "logging" mode for DKPmon -->
                	<!-- end tab 5 contents -->
-               </Frames> 
+               </Frames>
            </Frame>
            <Frame name="$parentTabPage6" hidden="true">
                <Anchors>
@@ -1411,11 +1417,11 @@
 			                            <AbsValue val="10" />
 			                        </FontHeight>
 			                    </FontString>
-			                </Layer>			                		                
-			            </Layers>			            
+			                </Layer>
+			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>				            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 			        <Slider name="$parentTimeZoneSlider" valueStep="1" enableMouse="true" minValue="-12" maxValue="12" defaultValue="0" orientation="HORIZONTAL">
 			            <Size>
@@ -1470,13 +1476,13 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
@@ -1503,11 +1509,11 @@
 			                            <AbsValue val="10" />
 			                        </FontHeight>
 			                    </FontString>
-			                </Layer>			                
+			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			        </CheckButton>
 			        <Slider name="$parentMaxLevelSlider" enableMouse="true" minValue="0" maxValue="100" defaultValue="100" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
@@ -1562,17 +1568,17 @@
 			                </Layer>
 			            </Layers>
 			            <Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
 			                </OnUpdate>
-			                	<OnValueChanged>			               
+			                	<OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider>			     			
+			        </Slider>
                		<CheckButton name="$parentGuildSnapshotCB" inherits="OptionsCheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
@@ -1596,10 +1602,10 @@
 			                        </FontHeight>
 			                    </FontString>
 			                </Layer>
-			            </Layers>	
+			            </Layers>
 		          		<Frames>
-		               		<Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-		            	</Frames>			            		            
+		               		<Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+		            	</Frames>
 			        </CheckButton>
 					<!-- ExportFormat Silder -->
 			        <Slider name="$parentExportFormatSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="1" valueStep="1" orientation="HORIZONTAL">
@@ -1655,8 +1661,8 @@
 			                </Layer>
 			            </Layers>
 		            	<Frames>
-			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button> 
-			            </Frames>			            
+			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
+			            </Frames>
 			            <Scripts>
 			                <OnUpdate>
 			                    local colors = {
@@ -1667,15 +1673,15 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
 			                </OnUpdate>
-			                <OnValueChanged>			               
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
-			            </Scripts>                
+			            </Scripts>
 			        </Slider>
-					<!-- ExportFormat Slider end --> 			                       		
+					<!-- ExportFormat Slider end -->
                		<!-- end tab 6 contents -->
-               </Frames> 
-           </Frame>   
+               </Frames>
+           </Frame>
            <Frame name="$parentTabPage7" hidden="true">
                <Anchors>
                    <Anchor point="TOPLEFT"/>
@@ -1695,8 +1701,8 @@
                    </Layer>
                </Layers>
                <Frames>
-               </Frames> 
-           </Frame>                                                  
+               </Frames>
+           </Frame>
            <Button name="$parentTab1" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="1" text="Auto Config">
                <Anchors>
                    <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
@@ -1705,7 +1711,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button>           
+           </Button>
            <Button name="$parentTab2" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="2" text="Zone">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
@@ -1714,7 +1720,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button>            
+           </Button>
            <Button name="$parentTab3" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="3" text="Boss">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab2" relativePoint="RIGHT">
@@ -1741,7 +1747,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button>           
+           </Button>
             <Button name="$parentTab5" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="5" text="DKPmon">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab8" relativePoint="RIGHT">
@@ -1750,7 +1756,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button> 
+           </Button>
             <Button name="$parentTab6" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="6" text="Misc.">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab5" relativePoint="RIGHT">
@@ -1759,7 +1765,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button>                 
+           </Button>
             <Button name="$parentTab7" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="7" text="Help">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab6" relativePoint="RIGHT">
@@ -1768,7 +1774,7 @@
                        </Offset>
                    </Anchor>
                </Anchors>
-           </Button>                          
+           </Button>
             <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
                 <Anchors>
                     <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
@@ -1829,7 +1835,7 @@
                         CT_RaidTracker_OptionsFrame_ToggleHelp();
                     </OnClick>
                 </Scripts>
-            </Button>                       
+            </Button>
        </Frames>
        <Scripts>
             <OnLoad>
@@ -1838,18 +1844,18 @@
                 PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
             </OnLoad>
             <OnShow>
-                PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);                
-                CT_RaidTracker_OptionsFrame_OnShow();                
+                PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);
+                CT_RaidTracker_OptionsFrame_OnShow();
                 PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
                 CT_RaidTracker_OptionsFrame_ShowTabHelp(1)
                 CT_RaidTrackerOptionsFrameTabPage1:Show()
-                CT_RaidTrackerOptionsFrameTabPage2:Hide()              
-                CT_RaidTrackerOptionsFrameTabPage8:Hide() 
+                CT_RaidTrackerOptionsFrameTabPage2:Hide()
+                CT_RaidTrackerOptionsFrameTabPage8:Hide()
                 CT_RaidTrackerOptionsFrameTabPage3:Hide()
                 CT_RaidTrackerOptionsFrameTabPage4:Hide()
                 CT_RaidTrackerOptionsFrameTabPage5:Hide()
                 CT_RaidTrackerOptionsFrameTabPage6:Hide()
-                CT_RaidTrackerOptionsFrameTabPage7:Hide()            
+                CT_RaidTrackerOptionsFrameTabPage7:Hide()
             </OnShow>
             <OnHide>
                 PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);
@@ -1863,7 +1869,7 @@
                 if ( arg1 == "LeftButton" ) then
                     self:StopMovingOrSizing();
                 end
-             </OnMouseUp>         
+             </OnMouseUp>
        </Scripts>
    </Frame>
 </Ui>

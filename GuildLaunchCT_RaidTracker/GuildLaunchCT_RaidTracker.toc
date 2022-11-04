@@ -1,6 +1,6 @@
-## Interface: 80300
+## Interface: 90205
 ## Title: GL CT_RaidTracker
-## Version: 8.3.4
+## Version: 9.2.6
 ## X-Version: (Guild Launch) Modded by Eris, Frothy & Guild Launch
 ## Notes: Counts raid loot and attendence, modified for GuildLaunch.com
 ## X-GLExportVersion: GL-2.0

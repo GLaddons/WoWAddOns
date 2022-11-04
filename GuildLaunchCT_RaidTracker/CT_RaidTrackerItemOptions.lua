@@ -2,8 +2,8 @@
 
 function CT_RaidTracker_ItemOptions_ScrollBar_Update()
 	table.sort(CT_RaidTracker_ItemOptions, function(a1, a2) return a1["id"] < a2["id"]; end);
-  local line;
-  local lineplusoffset;
+	local line;
+	local lineplusoffset;
 	local maxlines = getn(CT_RaidTracker_ItemOptions);
 	local text;
   FauxScrollFrame_Update(CT_RaidTracker_ItemOptions_ScrollBar, maxlines, 24, 14);

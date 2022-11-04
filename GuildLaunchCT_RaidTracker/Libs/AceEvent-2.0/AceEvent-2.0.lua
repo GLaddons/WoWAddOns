@@ -207,13 +207,13 @@ function AceEvent:RegisterAllEvents(method)
 			AceEvent:error("Cannot register all events to method %q, it does not exist", method)
 		end
 	end
-	
+
 	local AceEvent_registry = AceEvent.registry
 	if not AceEvent_registry[ALL_EVENTS] then
 		AceEvent_registry[ALL_EVENTS] = new()
 		AceEvent.frame:RegisterAllEvents()
 	end
-	
+
 	local remember = not AceEvent_registry[ALL_EVENTS][self]
 	AceEvent_registry[ALL_EVENTS][self] = method
 	if remember then
@@ -824,7 +824,7 @@ function AceEvent:ScheduleLeaveCombatAction(method, ...)
 			end
 		end
 	end
-	
+
 	if not inCombat then
 		local success, err
 		if type(method) == "function" then
@@ -874,7 +874,7 @@ end
 
 local function activate(self, oldLib, oldDeactivate)
 	AceEvent = self
-	
+
 	self.onceRegistry = oldLib and oldLib.onceRegistry or {}
 	self.throttleRegistry = oldLib and oldLib.throttleRegistry or {}
 	self.delayRegistry = oldLib and oldLib.delayRegistry or {}
@@ -888,7 +888,7 @@ local function activate(self, oldLib, oldDeactivate)
 	self.RATE = oldLib and oldLib.RATE or _G.newproxy()
 	self.combatSchedules = oldLib and oldLib.combatSchedules or {}
 	self.UID_NUM = oldLib and oldLib.UID_NUM or 0
-	
+
 	combatSchedules = self.combatSchedules
 	ALL_EVENTS = self.ALL_EVENTS
 	FAKE_NIL = self.FAKE_NIL
@@ -938,7 +938,7 @@ local function activate(self, oldLib, oldDeactivate)
 			registeringFromAceEvent = nil
 		end
 	end
-	
+
 	if not self.playerLogin then
 		registeringFromAceEvent = true
 		self:RegisterEvent("PLAYER_LOGIN", function()
@@ -988,7 +988,7 @@ local function activate(self, oldLib, oldDeactivate)
 	end)
 	inCombat = InCombatLockdown()
 	registeringFromAceEvent = nil
-	
+
 	self:activate(oldLib, oldDeactivate)
 	if oldLib then
 		oldDeactivate(oldLib)

@@ -28,9 +28,9 @@ CT_RaidTracker_Zones = {
 	-- WotLK
 	"---- WoTLK ----------------",
 	"The Obsidian Sanctum",
-	"Vault of Archavon",	
+	"Vault of Archavon",
 	"The Eye of Eternity",
-	"Naxxramas",	
+	"Naxxramas",
 	"Ulduar",
 	"Trial of the Crusader",
 	"Trial of the Grand Crusader",
@@ -218,7 +218,7 @@ CT_RaidTracker_Bosses = {
 		"Archavon the Stone Watcher",
 		"Emalon the Storm Watcher",
         "Koralon the Flame Watcher",
-        "Toravon the Ice Watcher", 
+        "Toravon the Ice Watcher",
 	},
 	["Naxxramas"] = {
 		"Patchwerk",
@@ -293,7 +293,7 @@ CT_RaidTracker_Bosses = {
 		"Saviana Ragefire",
 		"Halion",
 		"Halion - Hardmode"
-	},	
+	},
     -- TEST
 	["Ragefire Chasm"] = {
       		"Oggleflint",
@@ -719,7 +719,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Archavon the Stone Watcher"] = "Archavon the Stone Watcher",
 	["Emalon the Storm Watcher"] = "Emalon the Storm Watcher",
     ["Koralon the Flame Watcher"] = "Koralon the Flame Watcher",
-    ["Toravon the Ice Watcher"] = "Toravon the Ice Watcher",    
+    ["Toravon the Ice Watcher"] = "Toravon the Ice Watcher",
 	-- Naxxramas
 	["Patchwerk"] = "Patchwerk",
 	["Grobbulus"] = "Grobbulus",
@@ -807,7 +807,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["General Zarithrian"] = "General Zarithrian",
 	["Baltharus the Warborn"] = "Baltharus the Warborn",
 	["Saviana Ragefire"] = "Saviana Ragefire", -- this will likely require work on the emotes
-	["Halion"] = "Halion",	
+	["Halion"] = "Halion",
 	-- End Ruby Sanctum
 	-- Ragefire Chasm
     ["Oggleflint"] = "Oggleflint",
@@ -923,7 +923,7 @@ if (GetLocale() == "deDE") then
 		["Trial of the Crusader"] = "Trial of the Crusader",
 		["Trial of the Grand Crusader"] = "Trial of the Grand Crusader",
 		["Icecrown Citadel"] = "Icecrown Citadel",
-		["The Ruby Sanctum"] = "The Ruby Sanctum",		
+		["The Ruby Sanctum"] = "The Ruby Sanctum",
 	};
 
 	CT_RaidTracker_BossUnitTriggers = {
@@ -1362,12 +1362,12 @@ if (GetLocale() == "deDE") then
 		["Valithria Dreamwalker"] = "Valithria Dreamwalker",
 		["Sindragosa"] = "Sindragosa",
 		["The Lich King"] = "The Lich King", -- may still need to work on unit name
-		-- end icecrown citadel		
+		-- end icecrown citadel
 		-- Ruby Sanctum
 		["General Zarithrian"] = "General Zarithrian",
 		["Baltharus the Warborn"] = "Baltharus the Warborn",
 		["Saviana Ragefire"] = "Saviana Ragefire", -- this will likely require work on the emotes
-		["Halion"] = "Halion",	
+		["Halion"] = "Halion",
 		-- End Ruby Sanctum
 		-- ["Hochlord Mograine"] = "Four Horsemen", -- From old Naxx
 		["Baron Totenschwur"] = "Four Horsemen",
@@ -1766,7 +1766,7 @@ elseif (GetLocale() == "frFR") then
 		["General Zarithrian"] = "General Zarithrian",
 		["Baltharus the Warborn"] = "Baltharus the Warborn",
 		["Saviana Ragefire"] = "Saviana Ragefire", -- this will likely require work on the emotes
-		["Halion"] = "Halion",	
+		["Halion"] = "Halion",
 		-- End Ruby Sanctum
 		-- tbc
 		["DEFAULTBOSS"] = "Trash mob",
@@ -1853,7 +1853,7 @@ elseif (GetLocale() == "esES") then
 
 		-- TRANSLATIONS WELCOME
 		["Icecrown Citadel"] = "Icecrown Citadel",
-		["The Ruby Sanctum"] = "The Ruby Sanctum",		
+		["The Ruby Sanctum"] = "The Ruby Sanctum",
 	};
 
 	CT_RaidTracker_lang_BossKills_Majordomo_Yell = "Impossible ! Arr\195\170tez votre attaque, mortels... Je me rends ! Je me rends !";
@@ -1903,7 +1903,7 @@ CT_RaidTracker_ZoneTriggers = {
 
 	-- TRANSLATIONS WELCOME
 	["Icecrown Citadel"] = "Icecrown Citadel",
-	["The Ruby Sanctum"] = "The Ruby Sanctum",	
+	["The Ruby Sanctum"] = "The Ruby Sanctum",
 };
 
 CT_RaidTracker_BossUnitTriggers = {
@@ -2313,12 +2313,12 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Valithria Dreamwalker"] = "Valithria Dreamwalker",
 	["Sindragosa"] = "Sindragosa",
 	["The Lich King"] = "The Lich King", -- may still need to work on unit name
-	-- end icecrown citadel	
+	-- end icecrown citadel
 	-- Ruby Sanctum
 	["General Zarithrian"] = "General Zarithrian",
 	["Baltharus the Warborn"] = "Baltharus the Warborn",
 	["Saviana Ragefire"] = "Saviana Ragefire", -- this will likely require work on the emotes
-	["Halion"] = "Halion",	
+	["Halion"] = "Halion",
 	-- End Ruby Sanctum
 	["DEFAULTBOSS"] = "Trash mob",
 };

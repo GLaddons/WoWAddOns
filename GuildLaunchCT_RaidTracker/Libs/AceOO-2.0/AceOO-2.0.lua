@@ -89,7 +89,7 @@ do
 		t.uid = uid
 		return t
 	end
-	
+
 	local function createnew(self, ...)
 		local o = self.prototype
 		local x = new(o, getlibraries(...))
@@ -260,7 +260,7 @@ local function inherits(object, parent)
 				break
 			end
 		end
-		
+
 		local isInterface = false
 		local curr = parent.class
 		while true do
@@ -328,7 +328,7 @@ local class_new
 do
 	Class = Factory(Object, setmetatable({}, {__index = Object}), Object)
 	Class.super = Object
-	
+
 	local function protostring(t)
 		return '<' .. tostring(t.class) .. ' prototype>'
 	end
@@ -437,7 +437,7 @@ do
 		if self.virtual then
 			AceOO:error("Cannot instantiate a virtual class.")
 		end
-		
+
 		local o = self.prototype
 		local newobj = {}
 		if o.class and o.class.instancemeta then
@@ -445,10 +445,10 @@ do
 		else
 			Object:init(newobj, o)
 		end
-		
+
 		if self.interfaces and not self.interfacesVerified then
 			-- Verify the interfaces
-			
+
 			for interface in pairs(self.interfaces) do
 				for field,kind in pairs(interface.interface) do
 					if tostring(type(newobj[field])) ~= kind then
@@ -477,9 +477,9 @@ do
 	}
 	function Class:init(newclass, parent, ...)
 		parent = parent or self
-		
+
 		local total
-		
+
 		if parent.class then
 			total = { parent, ... }
 			parent = self
@@ -527,15 +527,15 @@ do
 		for k in pairs(total) do
 			total[k] = nil
 		end
-		
+
 		newclass.super = parent
-		
+
 		newclass.prototype = setmetatable(total, {
 			__index = parent.prototype,
 			__tostring = protostring,
 		})
 		total = nil
-		
+
 		newclass.instancemeta = {
 			__index = newclass.prototype,
 			__tostring = classobjectstring,
@@ -550,11 +550,11 @@ do
 			__pow = classobjectpow,
 			__concat = classobjectconcat,
 		}
-		
+
 		setmetatable(newclass, classmeta)
-		
+
 		newclass.new = class_new
-		
+
 		if newclass.mixins then
 			-- Fold in the mixins
 			local err, msg
@@ -568,20 +568,20 @@ do
 					break
 				end
 			end
-	
+
 			if err then
 				local pt = newclass.prototype
 				for k,v in pairs(pt) do
 					pt[k] = nil
 				end
-	
+
 				-- method conflict
 				AceOO:error(msg)
 			end
 		end
-		
+
 		newclass.prototype.class = newclass
-		
+
 		if newclass.interfaces then
 			for interface in pairs(newclass.interfaces) do
 				traverseInterfaces(interface, newclass.interfaces)
@@ -607,7 +607,7 @@ do
 			return "Class"
 		end
 	end
-	
+
 	local tmp
 	function Class.prototype:init()
 		if rawequal(self, initStatus) then
@@ -718,7 +718,7 @@ do
 		end
 		setmetatable(target, mt)
 	end
-	
+
 	function Mixin.prototype:activate(oldLib, oldDeactivate)
 		if oldLib and oldLib.embedList then
 			for target in pairs(oldLib.embedList) do
@@ -737,7 +737,7 @@ do
 			self.embedList = setmetatable({}, {__mode="k"})
 		end
 	end
-	
+
 	function Mixin.prototype:init(export, ...)
 		AceOO:argCheck(export, 2, "table")
 		for k,v in pairs(export) do
@@ -753,7 +753,7 @@ do
 			export[i] = nil
 			export[v] = true
 		end
-		
+
 		local interfaces
 		if select('#', ...) >= 1 then
 			interfaces = { ... }
@@ -959,7 +959,7 @@ local function activate(self, oldLib, oldDeactivate)
 	Mixin = self.Mixin
 	Interface = self.Interface
 	Classpool = self.Classpool
-	
+
 	if oldLib then
 		self.classes = oldLib.classes
 	end
@@ -970,7 +970,7 @@ local function activate(self, oldLib, oldDeactivate)
 			class.new = class_new
 		end
 	end
-	
+
 	if oldDeactivate then
 		oldDeactivate(oldLib)
 	end

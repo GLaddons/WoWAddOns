@@ -87,7 +87,7 @@ local CUSTOM_ITEM_DATA = {
 	["29765"]	= {	4, 120,	"INVTYPE_LEGS" },
 	["29766"]	= {	4, 120,	"INVTYPE_LEGS" },
 	["29767"]	= {	4, 120,	"INVTYPE_LEGS" },
-	
+
 	-- Tier 5
 	["30236"]	= {	4, 133,	"INVTYPE_CHEST"	},
 	["30237"]	= {	4, 133,	"INVTYPE_CHEST"	},
@@ -104,7 +104,7 @@ local CUSTOM_ITEM_DATA = {
 	["30248"]	= {	4, 133,	"INVTYPE_SHOULDER" },
 	["30249"]	= {	4, 133,	"INVTYPE_SHOULDER" },
 	["30250"]	= {	4, 133,	"INVTYPE_SHOULDER" },
-	
+
 	-- Tier 5	- BoE recipes -	BoP	crafts
 	["30282"]	= {	4, 100,	"INVTYPE_FLAT_COST"	},
 	["30283"]	= {	4, 100,	"INVTYPE_FLAT_COST"	},
@@ -114,7 +114,7 @@ local CUSTOM_ITEM_DATA = {
 	["30308"]	= {	4, 100,	"INVTYPE_FLAT_COST"	},
 	["30323"]	= {	4, 100,	"INVTYPE_FLAT_COST"	},
 	["30324"]	= {	4, 100,	"INVTYPE_FLAT_COST"	},
-	
+
 	-- Tier 6
 	["31089"]	= {	4, 146,	"INVTYPE_CHEST"	},
 	["31090"]	= {	4, 146,	"INVTYPE_CHEST"	},
@@ -131,7 +131,7 @@ local CUSTOM_ITEM_DATA = {
 	["31001"]	= {	4, 146,	"INVTYPE_SHOULDER" },
 	["31102"]	= {	4, 146,	"INVTYPE_SHOULDER" },
 	["31003"]	= {	4, 146,	"INVTYPE_SHOULDER" },
-	
+
 	-- Tier 6	- BoE recipes -	BoP	crafts
 	["32737"]	= {	4, 125,	"INVTYPE_FLAT_COST"	},
 	["32739"]	= {	4, 125,	"INVTYPE_FLAT_COST"	},
@@ -141,54 +141,54 @@ local CUSTOM_ITEM_DATA = {
 	["32751"]	= {	4, 125,	"INVTYPE_FLAT_COST"	},
 	["32753"]	= {	4, 125,	"INVTYPE_FLAT_COST"	},
 	["32755"]	= {	4, 125,	"INVTYPE_FLAT_COST"	},
-	
-	-- Tier 7 
-	["40610"] = { 4, 200, "INVTYPE_CHEST"}, 
-	["40611"] = { 4, 200, "INVTYPE_CHEST"}, 
-	["40612"] = { 4, 200, "INVTYPE_CHEST"}, 
-	["40613"] = { 4, 200, "INVTYPE_HAND"}, 
-	["40614"] = { 4, 200, "INVTYPE_HAND"}, 
-	["40615"] = { 4, 200, "INVTYPE_HAND"}, 
-	["40616"] = { 4, 200, "INVTYPE_HEAD"}, 
-	["40617"] = { 4, 200, "INVTYPE_HEAD"}, 
-	["40618"] = { 4, 200, "INVTYPE_HEAD"}, 
-	["40619"] = { 4, 200, "INVTYPE_LEGS"}, 
-	["40620"] = { 4, 200, "INVTYPE_LEGS"}, 
-	["40621"] = { 4, 200, "INVTYPE_LEGS"}, 
-	["40622"] = { 4, 200, "INVTYPE_SHOULDER"}, 
-	["40623"] = { 4, 200, "INVTYPE_SHOULDER"}, 
-	["40624"] = { 4, 200, "INVTYPE_SHOULDER"}, 
-	
-	-- Tier 7.5 
-	["40625"] = { 4, 213, "INVTYPE_CHEST"}, 
-	["40626"] = { 4, 213, "INVTYPE_CHEST"}, 
-	["40627"] = { 4, 213, "INVTYPE_CHEST"}, 
-	["40628"] = { 4, 213, "INVTYPE_HAND"}, 
-	["40629"] = { 4, 213, "INVTYPE_HAND"}, 
-	["40630"] = { 4, 213, "INVTYPE_HAND"}, 
-	["40631"] = { 4, 213, "INVTYPE_HEAD"}, 
-	["40632"] = { 4, 213, "INVTYPE_HEAD"}, 
-	["40633"] = { 4, 213, "INVTYPE_HEAD"}, 
-	["40634"] = { 4, 213, "INVTYPE_LEGS"}, 
-	["40635"] = { 4, 213, "INVTYPE_LEGS"}, 
-	["40636"] = { 4, 213, "INVTYPE_LEGS"}, 
-	["40637"] = { 4, 213, "INVTYPE_SHOULDER"}, 
-	["40638"] = { 4, 213, "INVTYPE_SHOULDER"}, 
-	["40639"] = { 4, 213, "INVTYPE_SHOULDER"},	
-	
+
+	-- Tier 7
+	["40610"] = { 4, 200, "INVTYPE_CHEST"},
+	["40611"] = { 4, 200, "INVTYPE_CHEST"},
+	["40612"] = { 4, 200, "INVTYPE_CHEST"},
+	["40613"] = { 4, 200, "INVTYPE_HAND"},
+	["40614"] = { 4, 200, "INVTYPE_HAND"},
+	["40615"] = { 4, 200, "INVTYPE_HAND"},
+	["40616"] = { 4, 200, "INVTYPE_HEAD"},
+	["40617"] = { 4, 200, "INVTYPE_HEAD"},
+	["40618"] = { 4, 200, "INVTYPE_HEAD"},
+	["40619"] = { 4, 200, "INVTYPE_LEGS"},
+	["40620"] = { 4, 200, "INVTYPE_LEGS"},
+	["40621"] = { 4, 200, "INVTYPE_LEGS"},
+	["40622"] = { 4, 200, "INVTYPE_SHOULDER"},
+	["40623"] = { 4, 200, "INVTYPE_SHOULDER"},
+	["40624"] = { 4, 200, "INVTYPE_SHOULDER"},
+
+	-- Tier 7.5
+	["40625"] = { 4, 213, "INVTYPE_CHEST"},
+	["40626"] = { 4, 213, "INVTYPE_CHEST"},
+	["40627"] = { 4, 213, "INVTYPE_CHEST"},
+	["40628"] = { 4, 213, "INVTYPE_HAND"},
+	["40629"] = { 4, 213, "INVTYPE_HAND"},
+	["40630"] = { 4, 213, "INVTYPE_HAND"},
+	["40631"] = { 4, 213, "INVTYPE_HEAD"},
+	["40632"] = { 4, 213, "INVTYPE_HEAD"},
+	["40633"] = { 4, 213, "INVTYPE_HEAD"},
+	["40634"] = { 4, 213, "INVTYPE_LEGS"},
+	["40635"] = { 4, 213, "INVTYPE_LEGS"},
+	["40636"] = { 4, 213, "INVTYPE_LEGS"},
+	["40637"] = { 4, 213, "INVTYPE_SHOULDER"},
+	["40638"] = { 4, 213, "INVTYPE_SHOULDER"},
+	["40639"] = { 4, 213, "INVTYPE_SHOULDER"},
+
 	-- Magtheridon's Head
 	["32385"]	= {	4, 125,	"INVTYPE_FINGER" },
 	["32386"]	= {	4, 125,	"INVTYPE_FINGER" },
-	
+
 	-- Kael'thas'	Sphere
 	["32405"]	= {	4, 138,	"INVTYPE_NECK" },
 }
 
 function CT_EPGP_GetGPValue(itemLink)
 	retVal = 0;
-	
+
 	-- NOTE THE MOD BY DEFAULT USES THE NEW EPGP FORMULA
-	-- to use the old forumla, uncomment (remove the --) the next line and comment out the line after that (add -- to the fron of it) like this:	
+	-- to use the old forumla, uncomment (remove the --) the next line and comment out the line after that (add -- to the fron of it) like this:
 	--retVal = CT_EPGP_GetGPValuePreWotlk(itemLink)
 	--retVal = CT_EPGP_GetGPValueNewMethod(itemLink)
 	retVal = CT_EPGP_Cataclysm_GetValue(itemLink)
@@ -200,37 +200,37 @@ function CT_EPGP_GetGPValueNewMethod(itemLink)
 	-- WOTLK EPGP FORMULA
 	-- 0.483 x 2 ^ (ilvl/26 + (rarity - 4)) x slot mod
 	-- http://code.google.com/p/epgp/wiki/GearPoints
-	
+
 	local retVal = 0;
-	
-	if (itemLink ~=	nil) then 
+
+	if (itemLink ~=	nil) then
 		CT_RaidTracker_Debug("Pre:", "GetItemInfo", "itemlink:", itemLink);
 
 		--oberan: I	had	to modify this slightly	so that	if an itemstring, and not an itemlink was sent in, it would	still work
 		local _, ctrt_link, ctrt_rarity, ctrt_level, _, _,	_, _, ctrt_equipLoc = GetItemInfo(itemLink);
 
 		CT_RaidTracker_Debug("Post:", "GetItemInfo", "ctrt_link:", ctrt_link, "ctrt_level:", ctrt_level);
-		
+
 		-- Get the item	ID to check	against	known token	IDs
 		local _, _,	ctrt_itemID = string.find(ctrt_link, "^|c%x+|Hitem:([^:]+):.+|h%[.+%]");
 
 		CT_RaidTracker_Debug("Post:", "string.find", "ctrt_itemID:", ctrt_itemID);
-		
+
 		-- Check to	see	if there is	custom data	for	this item ID
 		if CUSTOM_ITEM_DATA[ctrt_itemID]	then
 			ctrt_rarity, ctrt_level, ctrt_equipLoc = unpack(CUSTOM_ITEM_DATA[ctrt_itemID]);
 		end
 
 		CT_RaidTracker_Debug("Post:", "CUSTOM_ITEM_DATA unpack", "ctrt_equipLoc:", ctrt_equipLoc);
-		
+
 		local ctrt_islot_mod = EQUIPSLOT_VALUE_NEW[ctrt_equipLoc];
 
 		CT_RaidTracker_Debug("Post:", "EQUIPSLOT_VALUE", "ctrt_islot_mod:", ctrt_islot_mod);
-		
+
 		if (ctrt_islot_mod ~= nil) then
-			if (ctrt_islot_mod ~= -1) then 
+			if (ctrt_islot_mod ~= -1) then
 				local ctrt_ilvl2ivalue = ILVL_TO_IVALUE_NEW[ctrt_rarity]; --get the item level value function
-	
+
 				if ctrt_ilvl2ivalue then
 					local ctrt_ivalue = ctrt_ilvl2ivalue(ctrt_level);
 					retVal = math.floor(.483 * 2 ^ ctrt_ivalue * ctrt_islot_mod), ctrt_level, ctrt_ivalue;
@@ -238,7 +238,7 @@ function CT_EPGP_GetGPValueNewMethod(itemLink)
 				end
 			else
 				--Oberan : flat cost, the level is the cost, so return the level from the custom item data table
-				retVal = ctrt_level; 
+				retVal = ctrt_level;
 			end
 		end
 	end
@@ -256,42 +256,42 @@ end
 
 function CT_EPGP_GetGPValuePreWotlk(itemLink)
 	local retVal = 0;
-	
-	if (itemLink ~=	nil) then 
+
+	if (itemLink ~=	nil) then
 		CT_RaidTracker_Debug("Pre:", "GetItemInfo", "itemlink:", itemLink);
 
 		--oberan: I	had	to modify this slightly	so that	if an itemstring, and not an itemlink was sent in, it would	still work
 		local _, ctrt_link, ctrt_rarity, ctrt_level, _, _,	_, _, ctrt_equipLoc = GetItemInfo(itemLink);
 
 		CT_RaidTracker_Debug("Post:", "GetItemInfo", "ctrt_link:", ctrt_link, "ctrt_level:", ctrt_level);
-		
+
 		-- Get the item	ID to check	against	known token	IDs
 		local _, _,	ctrt_itemID = string.find(ctrt_link, "^|c%x+|Hitem:([^:]+):.+|h%[.+%]");
 
 		CT_RaidTracker_Debug("Post:", "string.find", "ctrt_itemID:", ctrt_itemID);
-		
+
 		-- Check to	see	if there is	custom data	for	this item ID
 		if CUSTOM_ITEM_DATA[ctrt_itemID]	then
 			ctrt_rarity, ctrt_level, ctrt_equipLoc = unpack(CUSTOM_ITEM_DATA[ctrt_itemID]);
 		end
 
 		CT_RaidTracker_Debug("Post:", "CUSTOM_ITEM_DATA unpack", "ctrt_equipLoc:", ctrt_equipLoc);
-		
+
 		local ctrt_islot_mod = EQUIPSLOT_VALUE[ctrt_equipLoc];
 
 		CT_RaidTracker_Debug("Post:", "EQUIPSLOT_VALUE", "ctrt_islot_mod:", ctrt_islot_mod);
-		
+
 		if (ctrt_islot_mod ~= nil) then
-			if (ctrt_islot_mod ~= -1) then 
+			if (ctrt_islot_mod ~= -1) then
 				local ctrt_ilvl2ivalue = ILVL_TO_IVALUE[ctrt_rarity]; --get the item level value function
-	
+
 				if ctrt_ilvl2ivalue then
 					local ctrt_ivalue = ctrt_ilvl2ivalue(ctrt_level);
 					retVal = math.floor(ctrt_ivalue ^ 2 * 0.04 * ctrt_islot_mod), ctrt_level, ctrt_ivalue;
 				end
 			else
 				--Oberan : flat cost, the level is the cost, so return the level from the custom item data table
-				retVal = ctrt_level; 
+				retVal = ctrt_level;
 			end
 		end
 	end
@@ -582,7 +582,7 @@ function CT_EPGP_SetQualityThreshold(itemQuality)
 end
 
 function CT_EPGP_Cataclysm_GetValue(item)
-	CT_RaidTracker_Debug('got to cata get value')	
+	CT_RaidTracker_Debug('got to cata get value')
   if not item then return end
 
   local _, itemLink, rarity, level, _, _, _, _, equipLoc = GetItemInfo(item)
@@ -601,7 +601,7 @@ function CT_EPGP_Cataclysm_GetValue(item)
   CT_RaidTracker_Debug('level',level)
   CT_RaidTracker_Debug('equipLoc',equipLoc)
   -- Is the item above our minimum threshold?
-  if not rarity or rarity < quality_threshold then  	
+  if not rarity or rarity < quality_threshold then
     return 0, nil, level, rarity, equipLoc
   end
 

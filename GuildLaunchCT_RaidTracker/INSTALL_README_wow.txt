@@ -7,7 +7,7 @@ this .zip file with "Retain directory structure" enabled.
 ===============================================================================
 Simple Installation Instructions
 ===============================================================================
-  
+
   1. Go into your Warcraft folder
      (e.g. C:\Program Files\World of Warcraft\)
      (or in Vista it may be: Start->Computer->Public then /Games/World of Warcraft/)
@@ -17,9 +17,9 @@ Simple Installation Instructions
   3. Go into the AddOns sub-folder (if you dont have one, create it)
 
   4. Copy/Extract this addon's folder into the AddOns folder.
-  
+
   5. The final path should be simailar to this: C:\Program Files\World of Warcraft\Interface\Addons\CT_RaidTracker\
-  
+
   6. The directory above will have the following files in it: CT_RaidTracker.lua, CT_RaidTracker.toc and more
 
 ===============================================================================
@@ -49,9 +49,9 @@ Need More Help?
   See the Installation FAQ's on WoWWiki
 
   http://www.wowwiki.com/UI_FAQ/AddOns
-  
+
   Visit the Guild Launch Support Forums
-  
+
   http://support.guildlaunch.com/
 
 ---------------------------------------------------------------------------

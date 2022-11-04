@@ -12,5 +12,5 @@
 ## X-Category: Library
 ## X-License: LGPL v2.1 + MIT for AceOO-2.0
 ## Dependencies: AceLibrary, AceOO-2.0
- 
+
 AceAddon-2.0.lua

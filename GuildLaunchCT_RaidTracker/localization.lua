@@ -6,6 +6,10 @@ CT_ITEMREG_MULTI = "(|c(%x+)|Hitem:([-%d:]+)|h%[(.-)%]|h|r)x(%d+)%";
 CT_PLAYER_FACTION, localizedPlayerFaction = UnitFactionGroup("player")
 
 CT_RaidTracker_Zones = {
+	"---Shadowlands---",
+	"Castle Nathria",
+	"Sanctum of Domination",
+	"Sepulcher of the First Ones",
 	"---BfA---",
 	"Uldir, Halls of Control",
 	"Battle of Dazar'alor",
@@ -41,6 +45,44 @@ CT_RaidTracker_Zones = {
 };
 
 CT_RaidTracker_Bosses = {
+	--Shadowlands
+	["Castle Nathria"] = {
+		"Shriekwing",
+		"Altimor the Huntsman",
+		"Hungering Destroyer",
+		"Artificer Xymox",
+		"Sun Kings Salvation",
+		"Lady Inerva Darkvein",
+		"The Council of Blood",
+		"Sludgefist",
+		"Stone Legion Generals",
+		"Sire Denathrius"
+	},
+	["Sanctum of Domination"] = {
+		"The Tarragrue",
+		"Eye of the Jailer",
+		"The Nine",
+		"Remnant of Ner'zhul",
+		"Soulrender Dormazain",
+		"Painsmith Raznal",
+		"Guardian of the First Ones",
+		"Fatescribe Roh-Kalo",
+		"Kel'Thuzad",
+		"Sylvanas Windrunner"
+	},
+	["Sepulcher of the First Ones"] = {
+		"Vigilant Guardian",
+		"Skolex, the Insatiable Ravener",
+		"Artificer Xy'mox",
+		"Dausegne, the Fallen Oracle",
+		"Prototype Pantheon",
+		"Lihuvim, Principal Architech",
+		"Halondrus the Reclaimer",
+		"Anduin Wrynn",
+		"Lords of Dread",
+		"Rygelon",
+		"The Jailer, Zovaal"
+	},
 	--BFA
 		--8.0.-
 	["Uldir, Halls of Control"] = {
@@ -237,7 +279,7 @@ CT_RaidTracker_Bosses = {
 		"Wind Lord Mel'jarak",
 		"Amber-Shaper Un'sok",
 		"Grand Empress Shek'zeer",
-	},						
+	},
     -- WOTLK
 	["Battle of Mount Hyjal"] = {
 		"",
@@ -283,7 +325,7 @@ CT_RaidTracker_Bosses = {
 		"Warmaster Blackhorn",
 		"Spine of Deathwing",
 		"Madness of Deathwing",
-	},						
+	},
     -- TEST
 	["Ragefire Chasm"] = {
   		"Adarogg",
@@ -314,6 +356,10 @@ CT_RaidTracker_lang_ReceivesLoot6 = "You receive bonus loot: "..CT_ITEMREG..".";
 CT_RaidTracker_lang_ReceivesLootYou = "You";
 
 CT_RaidTracker_ZoneTriggers = {
+	--Shadowlands
+	["Castle Nathria"]				= "Castle Nathria",
+	["Sanctum of Domination"]		= "Sanctum of Domination",
+	["Sepulcher of the First Ones"] = "Sepulcher of the First Ones",
 	--BFA
 	["Uldir, Halls of Control"]		= "Uldir, Halls of Control",
 	["Battle of Dazar'alor"] 		= "Battle of Dazar'alor",
@@ -328,7 +374,7 @@ CT_RaidTracker_ZoneTriggers = {
 	["Antorus, the Burning Throne"] = "Antorus, the Burning Throne",
 	-- WoD
 	["Highmaul"] 					= "Highmaul",
-	["Blackrock Foundry"] 			= "Blackrock Foundry", 
+	["Blackrock Foundry"] 			= "Blackrock Foundry",
 	["Hellfire Citadel"]			= "Hellfire Citadel",
 	-- MoP
 	["Siege of Orgrimmar"]			= "Siege of Orgrimmar",
@@ -360,13 +406,48 @@ CT_RaidTracker_ZoneTriggers = {
 	end
 
 CT_RaidTracker_BossUnitTriggers = {
+	--Shadowlands
+	--Castle Nathria
+	["Shriekwing"] = "Shriekwing",
+	["Huntsman Altimor"] = "Altimor the Huntsman",
+	["Hungering Destroyer"] = "Hungering Destroyer",
+	["Artificer Xymox"] = "Artificer Xymox",
+	["Sun Kings Salvation"] = "Sun Kings Salvation",
+	["Lady Inerva Darkvein"] = "Lady Inerva Darkvein",
+	["The Council of Blood"] = "The Council of Blood",
+	["Sludgefist"] = "Sludgefist",
+	["Stone Legion Generals"] = "Stone Legion Generals",
+	["Sire Denathrius"] = "Sire Denathrius",
+	--Sanctum of Domination
+	["The Tarragrue"] = "The Tarragrue",
+	["Eye of the Jailer"] = "Eye of the Jailer",
+	["Skyja"] = "The Nine",
+	["Remnant of Ner'zhul"] = "Remnant of Ner'zhul",
+	["Soulrender Dormazain"] = "Soulrender Dormazain",
+	["Painsmith Raznal"] = "Painsmith Raznal",
+	["Guardian of the First Ones"] = "Guardian of the First Ones",
+	["Fatescribe Roh-Kalo"] = "Fatescribe Roh-Kalo",
+	["Kel'Thuzad"] = "Kel'Thuzad",
+	["Sylvanas Windrunner"] = "Sylvanas Windrunner",
+	--Sepulcher of the First Ones
+	["Vigilant Guardian"] = "Vigilant Guardian",
+	["Skolex"] = "Skolex, the Insatiable Ravener",
+	["Artificer Xy'mox"] = "Artificer Xy'mox",
+	["Dausegne"] = "Dausegne, the Fallen Oracle",
+	["Prototype Pantheon"] = "Prototype Pantheon",
+	["Lihuvim"] = "Lihuvim, Principal Architech",
+	["Halondrus the Reclaimer"] = "Halondrus the Reclaimer",
+	["Anduin Wrynn"] = "Anduin Wrynn",
+	["Lords of Dread"] = "Lords of Dread",
+	["Rygelon"] = "Rygelon",
+	["The Jailer"] = "The Jailer, Zovaal",
 	--Uldir, Halls of Control
 	["Taloc"] = "Taloc the Corrupted",
 	["MOTHER"] = "MOTHER",
 	["Fetid Devourer"] = "Fetid Devourer",
 	["Zek'voz"] = "Zek'voz, Herald of N'zoth",
 	["Vectis"] = "Vectis",
-	["Zul"] = "Zul, Reborn", 
+	["Zul"] = "Zul, Reborn",
 	["Mythrax the Unraveler"] = "Mythrax the Unraveler",
 	["G'huun"] = "G'huun",
 	--Battle of Dazar'alor
@@ -458,7 +539,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Phemos"] 						= "Twin Ogron",
 	["Ko'ragh"] 					= "Ko'ragh",
 	["Imperator Mar'gok"] 			= "Imperator Mar'gok",
-	
+
 	-- Blackrock Foundry
 	["Gruul"] 						= "Gruul",
 	["Oregorger"] 					= "Oregorger",
@@ -473,7 +554,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	-- Enforcer Sorka yells "It feels... so..."
 	-- Marak the Blooded yells "My... blood..."
  	["Blackhand"] 					= "Blackhand",
-	
+
 	--Hellfire Citadel
 	["Iron Reaver"]					= "Iron Reaver",
 	["Gorefiend"]					= "Gorefiend",
@@ -488,8 +569,8 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Shadow-Lord Iskar"]			= "Shadow-Lord Iskar",
 	["Archimonde"]					= "Archimonde",
 	["Xhul'horac"]					= "Xhul'horac",
-	
-	
+
+
 	-- siege of orgrimmar
 	["Immerseus"] 					= "Immerseus",
 	["The Fallen Protectors"]		= "The Fallen Protectors", -- ? about death
@@ -504,7 +585,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Thok the Bloodthirsty"] 		= "Thok the Bloodthirsty",
 	["Siegecrafter Blackfuse"] 		= "Siegecrafter Blackfuse",
 	["Paragons of the Klaxxi"] 		= "Paragons of the Klaxxi", -- ? multiple mob death
-	["Garrosh Hellscream"] 			= "Garrosh Hellscream",	
+	["Garrosh Hellscream"] 			= "Garrosh Hellscream",
 	-- Throne of Thunder
 	["Jin'rokh the Breaker"] 		= "Jin'rokh the Breaker",
 	["Horridon"] 			        = "Horridon",
@@ -567,7 +648,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Theralion"] 					= "Valiona and Theralion",
 	["Halfus Wyrmbreaker"] 			= "Halfus Wyrmbreaker",
 	["Ascendant Council"] 			= "Ascendant Council",
-	["Elementium Monstrosity"] 		= "Ascendant Council",	
+	["Elementium Monstrosity"] 		= "Ascendant Council",
 	["Cho'gall"] 					= "Cho'gall",
 	-- Firelands
 	["Beth'tilac"] 					= "Beth'tilac",
@@ -585,7 +666,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Ultraxion"] 					= "Ultraxion",
 	["Warmaster Blackhorn"] 		= "Warmaster Blackhorn",
 	["Deathwing"] 					= "Spine of Deathwing",
-	["Madness of Deathwing"] 		= "IGNORE",	
+	["Madness of Deathwing"] 		= "IGNORE",
 	-- Ragefire Chasm
     ["Adarogg"] 					= "Adarogg",
     ["Dark Shaman Koranthal"] 		= "Dark Shaman Koranthal",
@@ -699,6 +780,74 @@ CT_RaidTracker_lang_BossKills_TheProphetSkitra_Yell = "How... did you... know...
 CT_RaidTracker_lang_BossKills_NZoth_BossName = "N'Zoth";
 CT_RaidTracker_lang_BossKills_NZoth_Yell = "Riperino";
 
+--Castle Nathria
+--Artificer Xy'mox
+CT_RaidTracker_lang_BossKills_ArtificerXymox_BossName = "Artificer Xymox";
+CT_RaidTracker_lang_BossKills_ArtificerXymox_Yell = "This exchange has no further value. Consider our business concluded, for now.";
+
+--Sun King's Salvation
+CT_RaidTracker_lang_BossKills_SunKings_BossName = "Sun Kings Salvation";
+CT_RaidTracker_lang_BossKills_SunKings_Yell = "No! I will not be confined again!";
+
+--The Council of Blood
+CT_RaidTracker_lang_BossKills_CouncilofBlood_BossName = "The Council of Blood";
+
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Stavros_BossName = "Lord Stavros";
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Stavros_Yell = "But I am... the life... of the party...";
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Niklaus_BossName = "Castellan Niklaus";
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Niklaus_Yell = "What kind... of strategy... was that...";
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Frieda_BossName = "Baroness Frieda";
+CT_RaidTracker_lang_BossKills_CouncilofBlood_Frieda_Yell = "You will always... be beneath me...";
+
+
+--Stone Legion Generals
+CT_RaidTracker_lang_BossKills_StoneLegionGenerals_BossName = "Stone Legion Generals";
+CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Crashaal_Yell = "To serve... was my... greatest honor...";
+CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Crashaal_BossName = "General Grashaal";
+CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Kaal_Yell = "My blood... for... master...";
+CT_RaidTracker_lang_BossKills_StoneLegionGenerals_Kaal_BossName = "General Kaal";
+
+--Anduin Wrynn
+CT_RaidTracker_lang_BossKills_AnduinWrynn_BossName = "Anduin Wrynn";
+CT_RaidTracker_long_BossKills_AnduinWrynn_Yell = "The Light has abandoned you.";
+
+--Prototype Pantheon
+CT_RaidTracker_lang_BossKills_PrototypePantheon_BossName = "Prototype Pantheon";
+--Prototype of Absolution
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Absolution_Yell = "Your misdeeds... will drag you... to ruin...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Absolution_Yell2 = "You will... answer for... your transgressions.";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Absolution_BossName = "Prototype of Absolution";
+--Prototype of War
+CT_RaidTracker_lang_BossKills_PrototypePantheon_War_Yell = "My war... has ended...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_War_Yell2 = "Shameful... shameful defeat...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_War_BossName = "Prototype of War";
+--Prototype of Renewal
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Renewal_Yell = "The forest... must... endure...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Renewal_Yell2 = "My hunt... has ended...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Renewal_BossName = "Prototype of Renewal";
+--Prototype of Duty
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Duty_Yell = "I fly... no... longer...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Duty_Yell2 = "I failed... the kyrian...";
+CT_RaidTracker_lang_BossKills_PrototypePantheon_Duty_BossName = "Prototype of Duty";
+
+--Lords of Dread
+CT_RaidTracker_lang_BossKills_LordsofDread_BossName = "Lords of Dread";
+CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_Yell = "I want... more... time...";
+CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_Yell2 = "You... deceived... me...";
+CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_BossName = "Kin'tessa";
+--Halondrus
+CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_Yell = "The pattern is restored. My purpose resumes.";
+CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_BossName = "Halondrus the Reclaimer";
+
+
+--Remnant of Ner'zhul
+-- CT_RaidTracker_lang_BossKills_RemnantofNerzhul_BossName = "Remnant of Ner'zhul";
+-- CT_RaidTracker_lang_BossKills_RemnantofNerzhul_Yell = "Ahhh... Rulkan... I come.. home...";
+-- Fatescribe Roh-Kalo
+-- CT_RaidTracker_lang_BossKills_Fatescribe_Yell = "Silence... at last...";
+-- CT_RaidTracker_lang_BossKills_Fatescribe_BossName = "Fatescribe Roh-Kalo";
+--Kel'Thuzad, died multiple times in fight and has no yell. Fun
+
 -- Translations
 
 if (GetLocale() == "deDE") then
@@ -718,10 +867,10 @@ if (GetLocale() == "deDE") then
 		["Throne of the Four Winds"] = "Thron der vier Winde",
 		["The Bastion of Twilight"] = "Bastion des Zwielichts",
 		["Firelands"] = "Firelands",
-		["Dragon Soul"] = "Dragon Soul",	
+		["Dragon Soul"] = "Dragon Soul",
 		-- TEST
 	    ["Ragefire Chasm"] = "Ragefire Chasm",
-	    ["The Stockade"] = "The Stockade",			
+	    ["The Stockade"] = "The Stockade",
 	};
 
 	CT_RaidTracker_BossUnitTriggers = {
@@ -753,7 +902,7 @@ if (GetLocale() == "deDE") then
 	    ["Dextren Ward"] = "Dextren Ward",
 	    ["Hamhock"] = "Hamhock",
 	    ["Kam Deepfury"] = "Kam Deepfury",
-	    ["Targorr the Dread"] = "Targorr the Dread",		
+	    ["Targorr the Dread"] = "Targorr the Dread",
 
 		["DEFAULTBOSS"] = "Trash mob",
 	};
@@ -766,7 +915,7 @@ if (GetLocale() == "deDE") then
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_Yell = "I knew I should have stayed out of this...";
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_BossName = "Valiona and Theralion";
 	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_Yell = "The Conclave of Wind has dissipated. Your honorable conduct and determination have earned you the right to face me in battle, mortals. I await your assault on my platform! Come!";
-	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";	
+	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";
 
 elseif (GetLocale() == "frFR") then
 	CT_RaidTracker_lang_LeftGroup = "([^%s]+) a quitt\195\169 le groupe de raid";
@@ -784,7 +933,7 @@ elseif (GetLocale() == "frFR") then
 		["Throne of the Four Winds"] = "Throne of the Four Winds",
 		["The Bastion of Twilight"] = "The Bastion of Twilight",
 		["Firelands"] = "Firelands",
-		["Dragon Soul"] = "Dragon Soul",		
+		["Dragon Soul"] = "Dragon Soul",
 		-- TEST
 	    ["Ragefire Chasm"] = "Ragefire Chasm",
 	    ["The Stockade"] = "The Stockade",
@@ -833,7 +982,7 @@ elseif (GetLocale() == "frFR") then
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_Yell = "I knew I should have stayed out of this...";
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_BossName = "Valiona and Theralion";
 	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_Yell = "The Conclave of Wind has dissipated. Your honorable conduct and determination have earned you the right to face me in battle, mortals. I await your assault on my platform! Come!";
-	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";		
+	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";
 
 elseif (GetLocale() == "esES") then
 	CT_RaidTracker_lang_LeftGroup = "([^%s]+) se ha marchado de la banda.";
@@ -851,10 +1000,10 @@ elseif (GetLocale() == "esES") then
 		["Throne of the Four Winds"] = "Throne of the Four Winds",
 		["The Bastion of Twilight"] = "The Bastion of Twilight",
 		["Firelands"] = "Firelands",
-		["Dragon Soul"] = "Dragon Soul",		
+		["Dragon Soul"] = "Dragon Soul",
 		-- TEST
 	    ["Ragefire Chasm"] = "Ragefire Chasm",
-	    ["The Stockade"] = "The Stockade",		
+	    ["The Stockade"] = "The Stockade",
 	};
 
 	-- samples
@@ -865,7 +1014,7 @@ elseif (GetLocale() == "esES") then
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_Yell = "I knew I should have stayed out of this...";
 	--CT_RaidTracker_lang_BossKills_ValionaTheralion_BossName = "Valiona and Theralion";
 	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_Yell = "The Conclave of Wind has dissipated. Your honorable conduct and determination have earned you the right to face me in battle, mortals. I await your assault on my platform! Come!";
-	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";		
+	CT_RaidTracker_lang_BossKills_Conclave_of_Wind_BossName = "Conclave of Wind";
 
 elseif (GetLocale() == "itIT") then
 	CT_RaidTracker_lang_LeftGroup = "([^%s]+) lascia li gruppo";
@@ -911,10 +1060,10 @@ elseif (GetLocale() == "ruRU") then
 			["Throne of the Four Winds"] = "Throne of the Four Winds",
 			["The Bastion of Twilight"] = "The Bastion of Twilight",
 			["Firelands"] = "Firelands",
-			["Dragon Soul"] = "Dragon Soul",			
+			["Dragon Soul"] = "Dragon Soul",
 			-- TEST
 		    ["Ragefire Chasm"] = "Ragefire Chasm",
-		    ["The Stockade"] = "The Stockade",		
+		    ["The Stockade"] = "The Stockade",
 	};
 
 	CT_RaidTracker_BossUnitTriggers = {
@@ -946,7 +1095,7 @@ elseif (GetLocale() == "ruRU") then
 	    ["Dextren Ward"] = "Dextren Ward",
 	    ["Hamhock"] = "Hamhock",
 	    ["Kam Deepfury"] = "Kam Deepfury",
-	    ["Targorr the Dread"] = "Targorr the Dread",	
+	    ["Targorr the Dread"] = "Targorr the Dread",
 		-- End Ruby Sanctum
 		["DEFAULTBOSS"] = "Trash mob",
 	};

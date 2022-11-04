@@ -2531,7 +2531,7 @@ function AceConsole:InjectAceOptionsTable(handler, options)
 			class = class.super
 		end
 	end
-	
+
 	return options
 end
 

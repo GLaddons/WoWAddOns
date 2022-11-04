@@ -28,7 +28,7 @@ CT_RaidTracker_Zones = {
 	"The Obsidian Sanctum",
 	"Vault of Archavon",
     -- TEST
-    "Ragefire Chasm",  
+    "Ragefire Chasm",
 };
 
 CT_RaidTracker_Bosses = {
@@ -95,10 +95,10 @@ CT_RaidTracker_Bosses = {
 		"Lord Kazzak",
 		"Azuregos",
 		-- tbc
-		"Highlord Kruul",	
+		"Highlord Kruul",
 		"Doom Lord Kazzak",
 		"Doomwalker",
-	  -- tbc		
+	  -- tbc
 	},
 	["Emerald Dragon"] = {
 		"Ysondre",
@@ -193,11 +193,13 @@ CT_RaidTracker_Bosses = {
    },
    -- WotLK
 
+	},
 	["The Eye of Eternity"] = {
 		"Malygos",
 	},
 
 
+	},
 	["The Obsidian Sanctum"] = {
 		"Sartharion",
 		"Sartharion + 1 Drakes",
@@ -205,6 +207,7 @@ CT_RaidTracker_Bosses = {
 		"Sartharion + 3 Drakes",
 	},
 
+	},
 	["Vault of Archavon"] = {
 		"Archavon the Stone Watcher",
 	},
@@ -217,7 +220,7 @@ CT_RaidTracker_Bosses = {
 		"Instructor Razuvious",
 		"Gothik the Harvester",
 		--"Highlord Mograine",
-		"Four Horsemen",
+		"Four Horsemen"
 		--"Thane Korth'azz",
 		--"Lady Blaumeux",
 		--"Sir Zeliek",
@@ -236,8 +239,8 @@ CT_RaidTracker_Bosses = {
             "Taragaman the Hungerer",
       		"Jergosh the Invoker",
       		"Bazzalan",
-   	},		
-	--TBC	
+   	},
+	--TBC
 	["Trash mob"] = 1,
 };
 
@@ -271,7 +274,7 @@ CT_RaidTracker_ZoneTriggers = {
 	["The Eye of Eternity"] = "The Eye of Eternity",
 	["The Obsidian Sanctum"] = "The Obsidian Sanctum",
 	["Vault of Archavon"] = "Vault of Archavon",
-	["Naxxramas"] = "Naxxramas",	
+	["Naxxramas"] = "Naxxramas",
 	-- TEST
     ["Ragefire Chasm"] = "Ragefire Chasm",
 };
@@ -293,7 +296,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Flamewaker Healer"] = "IGNORE",
 	["Flamewaker Elite"] = "IGNORE",
 	["Son of Flame"] = "IGNORE",
-	
+
 	["Razorgore the Untamed"] = "Razorgore the Untamed",
 	["Vaelastrasz the Corrupt"] = "Vaelastrasz the Corrupt",
 	["Broodlord Lashlayer"] = "Broodlord Lashlayer",
@@ -322,7 +325,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Corrupted Bronze Whelp"] = "IGNORE",
 	["Death Talon Hatcher"] = "IGNORE",
 	["Blackwing Taskmaster"] = "IGNORE",
-	
+
 	["High Priestess Jeklik"] = "High Priestess Jeklik",
 	["High Priest Venoxis"] =	"High Priest Venoxis",
 	["High Priestess Mar'li"] =	"High Priestess Mar'li",
@@ -343,7 +346,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Ohgan"] = "IGNORE",
 	["Frenzied Bloodseeker Bat"] = "IGNORE",
 	["Poisonous Cloud"] = "IGNORE",
-	
+
 	["Onyxia"] = "Onyxia",
 	["Lord Kazzak"] = "Lord Kazzak",
 	["Azuregos"] = "Azuregos",
@@ -351,13 +354,13 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Taerar"] = "Taerar",
 	["Emeriss"] = "Emeriss",
 	["Lethon"] = "Lethon",
-	
+
 	["Onyxian Whelp"] = "IGNORE",
 	["Onyxian Warder"] = "IGNORE",
 	["Shade of Taerar"] = "IGNORE",
 	["Spirit Shade"] = "IGNORE",
 	["Demented Druid Spirit"] = "IGNORE",
-	
+
 	["Kurinnaxx"] = "Kurinnaxx",
 	["General Rajaxx"] = "General Rajaxx",
 	["Ayamiss the Hunter"] = "Ayamiss the Hunter",
@@ -372,7 +375,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Hive'Zara Larva"] = "IGNORE",
 	["Vekniss Hatchling"] = "IGNORE",
 	["Anubisath Warrior"] = "IGNORE",
-	
+
 	["The Prophet Skeram"] = "The Prophet Skeram",
 	["Fankriss the Unyielding"] = "Fankriss the Unyielding",
 	["Battleguard Sartura"] = "Battleguard Sartura",
@@ -396,7 +399,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Poison Cloud"] = "IGNORE",
 	["Vekniss Drone"] = "IGNORE",
 	["Glob of Viscidus"] = "IGNORE",
-			
+
 	["Spotlight"] = "IGNORE",
 	["Roach"] = "IGNORE",
 	["Snake"] = "IGNORE",
@@ -414,7 +417,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Rat"] = "IGNORE",
 	["Jungle Toad"] = "IGNORE",
 	["Field Repair Bot 74A"] = "IGNORE",
-	
+
 	-- TBC
 	--Karazhan
 	["Doom Lord Kazzak"] = "Doom Lord Kazzak",
@@ -452,13 +455,13 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Echo of Medivh"] = "Echo of Medivh",
 	["Image of Medivh"] = "Image of Medivh",
 	-- Zul'Aman
-	["Nalorakk"] = "Nalorakk",	
-	["Akil'Zon"] = "Akil'zon",	
-	["Jan'Alai"] = "Jan'alai",	
-	["Halazzi"] = "Halazzi",	
-	["Witch Doctor"] = "Witch Doctor",	
-	["Hex Lord Malacrass"] = "Hex Lord Malacrass",	
-	["Zul'jin"] = "Zul'jin",	
+	["Nalorakk"] = "Nalorakk",
+	["Akil'Zon"] = "Akil'zon",
+	["Jan'Alai"] = "Jan'alai",
+	["Halazzi"] = "Halazzi",
+	["Witch Doctor"] = "Witch Doctor",
+	["Hex Lord Malacrass"] = "Hex Lord Malacrass",
+	["Zul'jin"] = "Zul'jin",
 	--Gruul
 	["High King Maulgar"] = "High King Maulgar",
 	["Gruul the Dragonkiller"] = "Gruul the Dragonkiller",
@@ -482,11 +485,11 @@ CT_RaidTracker_BossUnitTriggers = {
       ["Pure Spawn of Hydross"] = "IGNORE", -- Pure Spawn of Hydross
       ["Tainted Spawn of Hydross"] = "IGNORE", -- Tainted Spawn of Hydross
       ["Tainted Water Elemental"] = "IGNORE", -- Tainted Water Elemental
-      ["Purified Water Elemental"] = "IGNORE", -- Purified Water Elemental  
-      
+      ["Purified Water Elemental"] = "IGNORE", -- Purified Water Elemental
+
       -- Morogrim Adds
       ["Tidewalker Lurker"] = "IGNORE", -- Tidewalker Lurker
-      ["Water Globule"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%) 
+      ["Water Globule"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%)
 
 			-- Fathom-Lord Karathress Adds
 			["Spitfire Totem"] = "IGNORE", -- Spitfire Totem
@@ -497,21 +500,21 @@ CT_RaidTracker_BossUnitTriggers = {
 			["Fathom-Guard Caribdis"] = "IGNORE", -- Fathom-Guard Caribdis
 			["Fathom-Guard Tidalvess"] = "IGNORE", -- Fathom-Guard Tidalvess
 			["Fathom-Guard Sharkkis"] = "IGNORE", -- Fathom-Guard Sharkkis
-			
+
 			-- The Lurker Below Adds
 			["Coilfang Guardian"] = "IGNORE", -- Coilfang Guardian
 			["Coilfang Ambusher"] = "IGNORE", -- Coilfang Ambusher
-			
+
 			-- Leotheras the Blind Adds
 			["Inner Demon"] = "IGNORE", -- Inner Demon
-			
+
       -- Vashj Adds
       ["Toxic Spore Bat"] = "IGNORE",  -- Toxic Spore Bat
       ["Tainted Elemental"] = "IGNORE", -- Tainted Elemental
       ["Coilfang Elite"] = "IGNORE", -- Coilfang Elite
       ["Coilfang Strider"] = "IGNORE", -- Coilfang Strider
-      ["Enchanted Elemental"] = "IGNORE", -- Enchanted Elemental			
-      -- SSC Trashmobs 
+      ["Enchanted Elemental"] = "IGNORE", -- Enchanted Elemental
+      -- SSC Trashmobs
       ["Coilfang Beast-Tamer"] = "IGNORE",	-- Coilfang Beast-Tamer
       ["Vashj'ir Honor Guard"] = "IGNORE",	-- Vashj'ir Honor Guard
       ["Greyheart Tidecaller"] = "IGNORE", -- Greyheart Tidecaller
@@ -541,7 +544,7 @@ CT_RaidTracker_BossUnitTriggers = {
 			["Underbog Mushroom"] = "IGNORE", -- Underbog Mushroom
 			["Water Elemental Totem"] = "IGNORE", -- Water Elemental Totem
 			["Greyheart Spellbinder"] = "IGNORE", -- Greyheart Spellbinder
-			["Priestess Spirit"] = "IGNORE", -- Priestess Spirit	
+			["Priestess Spirit"] = "IGNORE", -- Priestess Spirit
 	--Black Temple
 	["High Warlord Naj'entus"] = "High Warlord Naj'entus",
 	["Supremus"] = "Supremus",
@@ -553,11 +556,11 @@ CT_RaidTracker_BossUnitTriggers = {
 	 ["Gathios the Shatterer"] = "Illidari Council",
 	 ["High Nethermancer Zerevor"] = "Illidari Council",
 	 ["Lady Malande"] = "Illidari Council",
-	 ["Veras Darkshadow"] = "Illidari Council",	
-	["Illidan Stormrage"] = "Illidan Stormrage",	
+	 ["Veras Darkshadow"] = "Illidari Council",
+	["Illidan Stormrage"] = "Illidan Stormrage",
 	--Tempest Keep: The Eye
 	["Al'ar"] = "Al'ar",
-	["High Astromancer Solarian"] = "High Astromancer Solarian",	
+	["High Astromancer Solarian"] = "High Astromancer Solarian",
 	["Void Reaver"] = "Void Reaver",
 	["Kael'thas Sunstrider"] = "Kael'thas Sunstrider",
     -- Bossadds
@@ -568,7 +571,7 @@ CT_RaidTracker_BossUnitTriggers = {
     ["Solarium Priest"] = "IGNORE", -- Solarium Priest
     -- Kael'thas Adds
     ["Lord Sanguinar"] = "IGNORE", -- Lord Sanguinar
-    ["Grand Astromancer Capernian"] = "IGNORE", -- Grand Astromancer Capernian  
+    ["Grand Astromancer Capernian"] = "IGNORE", -- Grand Astromancer Capernian
     ["Master Engineer Telonicus"] = "IGNORE", -- Master Engineer Telonicus
     ["Phoenix Egg"] = "IGNORE", -- Phoenix Egg
     ["Phoenix"] = "IGNORE", -- Phoenix
@@ -605,7 +608,7 @@ CT_RaidTracker_BossUnitTriggers = {
 		["Crimson Hand Centurion"] = "IGNORE", -- Crimson Hand Centurion
 
 	["Lord Illidan Stormrage"] = "Lord Illidan Stormrage",
-	["Highlord Kruul"] = "Highlord Kruul",	
+	["Highlord Kruul"] = "Highlord Kruul",
 
 	--Battle of Mount Hyjal
 	["Rage Winterchill"] = "Rage Winterchill",
@@ -613,18 +616,18 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Kaz'rogal"] = "Kaz'rogal",
 	["Azgalor"] = "Azgalor",
 	["Archimonde"] = "Archimonde",
-	
+
   --Sunwell Plateau
 	["Kalecgos"] =  "IGNORE", -- Kalecgos
 		["Sathrovarr the Corruptor"] = "Sathrovarr the Corruptor",
 		["Sathrovarr the Corruptor"] = "Kalecgos",
 	["Brutallus"] = "Brutallus",
-		["Madrigosa"] = "IGNORE", -- Madrigosa	
+		["Madrigosa"] = "IGNORE", -- Madrigosa
 	["Felmyst"] = "Felmyst",
 	["Lady Sacrolash"] = "Eredar Twins",
 	["Grand Warlock Alythess"] = "Eredar Twins",
 	["Entropius"] = "Entropius",
-	["Kil'jaeden"] = "Kil'jaeden",	
+	["Kil'jaeden"] = "Kil'jaeden",
 	["M'uru"] = "IGNORE",
 	["Shadowsword Berserker"] = "IGNORE", -- Shadowsword Berserker
 	["Shadowsword Fury Mage"] = "IGNORE", -- Shadowsword Fury Mage
@@ -632,7 +635,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Void Spawn"] = "IGNORE", -- Void Spawn
 	-- END TBC
 	-- Wotlk
-		
+
 	-- Eye of Eternity
 	["Malygos"] = "Malygos",
 
@@ -662,7 +665,7 @@ CT_RaidTracker_BossUnitTriggers = {
 
 	["Fangnetz"] = "IGNORE",
 	["Verstrahlter Br\195\188hschleimer"] = "IGNORE",
-		
+
 	["Crypt Guard"] = "IGNORE",
 	["Grobbulus Cloud"] = "IGNORE",
 	["Deathknight Understudy"] = "IGNORE",
@@ -684,8 +687,8 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Baron Rivendare"] = "Four Horsemen",
 	["Thane Korth'azz"] = "Four Horsemen",
 	["Lady Blaumeux"] = "Four Horsemen",
-	["Sir Zeliek"] = "Four Horsemen",	
-	-- TEST	
+	["Sir Zeliek"] = "Four Horsemen",
+	-- TEST
     ["Oggleflint"] = "Oggleflint",
     ["Taragaman the Hungerer"] = "Taragaman the Hungerer",
     ["Jergosh the Invoker"] = "Jergosh the Invoker",
@@ -712,7 +715,7 @@ if (GetLocale() == "deDE") then
 	CT_RaidTracker_lang_ReceivesLoot3 = "([^%s]+) erh\195\164lt Beute: "..CT_ITEMREG_MULTI..".";
 	CT_RaidTracker_lang_ReceivesLoot4 = "Ihr erhaltet Beute: "..CT_ITEMREG_MULTI..".";
 	CT_RaidTracker_lang_ReceivesLootYou = "Ihr";
-	
+
 	CT_RaidTracker_ZoneTriggers = {
 		["Geschmolzener Kern"] = "Molten Core",
 		["Pechschwingenhort"] = "Blackwing Lair",
@@ -735,9 +738,9 @@ if (GetLocale() == "deDE") then
 		["Das Auge der Ewigkeit"] = "The Eye of Eternity",
 		["Das Obsidiansanktum"] = "The Obsidian Sanctum",
 		["Archavons Kammer"] = "Vault of Archavon",
-		["Naxxramas"] = "Naxxramas",		
+		["Naxxramas"] = "Naxxramas",
 	};
-		
+
 	CT_RaidTracker_BossUnitTriggers = {
 		["Taschendieb der Defias"] = "Lucifron",
 		["Lucifron"] = "Lucifron",
@@ -756,7 +759,7 @@ if (GetLocale() == "deDE") then
 		["Flamewaker-Heiler"] = "IGNORE",
 		["Flamewaker-Elite"] = "IGNORE",
 		["Sohn der Flamme"] = "IGNORE",
-		
+
 		["Razorgore der Ungez\195\164hmte"] = "Razorgore the Untamed",
 		["Vaelastrasz der Verdorbene"] = "Vaelastrasz the Corrupt",
 		["Brutw\195\164chter Dreschbringer"] = "Broodlord Lashlayer",
@@ -785,7 +788,7 @@ if (GetLocale() == "deDE") then
 		["Verderbter bronzener Welpe"] = "IGNORE",
 		["Brutw\195\164chter der Todeskrallen"] = "IGNORE",
 		["Zuchtmeister der Pechschwingen"] = "IGNORE",
-		
+
 		["Hohepriesterin Jeklik"] = "High Priestess Jeklik",
 		["Hohepriester Venoxis"] =	"High Priest Venoxis",
 		["Hohepriesterin Mar'li"] =	"High Priestess Mar'li",
@@ -806,7 +809,7 @@ if (GetLocale() == "deDE") then
 		["Ohgan"] = "IGNORE",
 		["Rasende Blutsucherfledermaus"] = "IGNORE",
 		["Giftige Wolke"] = "IGNORE",
-		
+
 		["Kurinnaxx"] = "Kurinnaxx",
 		["General Rajaxx"] = "General Rajaxx",
 		["Ayamiss der J\195\164ger"] = "Ayamiss the Hunter",
@@ -845,7 +848,7 @@ if (GetLocale() == "deDE") then
 		["Giftwolke"] = "IGNORE",
 		["Drohne der Vekniss"] = "IGNORE",
 		["Klumpen von Viscidus"] = "IGNORE",
-				
+
 		["Onyxia"] = "Onyxia",
 		["Lord Kazzak"] = "Lord Kazzak",
 		["Azuregos"] = "Azuregos",
@@ -853,13 +856,13 @@ if (GetLocale() == "deDE") then
 		["Taerar"] = "Taerar",
 		["Emeriss"] = "Emeriss",
 		["Lethon"] = "Lethon",
-		
+
 		["Onyxia-Welpe"] = "IGNORE",
 		["Onyxias W\195\164rter"] = "IGNORE",
 		["Taerars Schemen"] = "IGNORE",
 		["Geisterschatten"] = "IGNORE",
 		["Verr\195\188ckter Druidengeist"] = "IGNORE",
-		
+
 		["Spotlight"] = "IGNORE",
 		["Schabe"] = "IGNORE",
 		["Natter"] = "IGNORE",
@@ -877,7 +880,7 @@ if (GetLocale() == "deDE") then
 		["Ratte"] = "IGNORE",
 		["Dschungelkr\195\182te"] = "IGNORE",
 		["Feldreparaturbot-74A"] = "IGNORE",
-		
+
 		-- TBC
 		["Verdammnislord Kazzak"] = "Doom Lord Kazzak",
 		["Hochlord Kazzak"] = "Highlord Kruul",
@@ -908,15 +911,15 @@ if (GetLocale() == "deDE") then
 		["Julianne"] = "Romulo and Julianne",
 		["Romulo"] = "IGNORE",
 		["Echo Medivhs"] = "Echo of Medivh",
-		["Abbild von Medivh"] = "Image of Medivh",			
+		["Abbild von Medivh"] = "Image of Medivh",
 		-- Zul'Aman
-		["Nalorakk"] = "Nalorakk",	
-		["Akil'zon"] = "Akil'zon",	
-		["Jan'alai"] = "Jan'alai",	
-		["Halazzi"] = "Halazzi",	
-		["Witch Doctor"] = "Witch Doctor",	
-		["Hexlord Malacrass"] = "Hex Lord Malacrass",	
-		["Zul'jin"] = "Zul'jin",			
+		["Nalorakk"] = "Nalorakk",
+		["Akil'zon"] = "Akil'zon",
+		["Jan'alai"] = "Jan'alai",
+		["Halazzi"] = "Halazzi",
+		["Witch Doctor"] = "Witch Doctor",
+		["Hexlord Malacrass"] = "Hex Lord Malacrass",
+		["Zul'jin"] = "Zul'jin",
 		-- Gruul
 		["Hochk\195\182nig Maulgar"] = "High King Maulgar",
 		["Gruul der Drachenschl\195\164chter"] = "Gruul the Dragonkiller",
@@ -928,7 +931,7 @@ if (GetLocale() == "deDE") then
 		["Magtheridon"] = "Magtheridon",
 		["H\195\182llenfeuerw\195\164rter"] = "IGNORE",
 		["Kanalisierer d3es H\195\182llenfeuers"] = "IGNORE",
-		
+
 		--Serpentshrine Cavern
 		["Hydross der Unstete"] = "Hydross the Unstable",
 		["Das Grauen aus der Tiefe"] = "The Lurker Below",
@@ -936,17 +939,17 @@ if (GetLocale() == "deDE") then
 		["Tiefenlord Karathress"] = "Fathom-Lord Karathress",
 		["Morogrim Gezeitenwandler"] = "Morogrim Tidewalker",
 		["Lady Vashj"] = "Lady Vashj",
-		
+
 		-- Bossadds
 			-- Hydross Adds
       ["Gereinigter Nachkomme Hydross"] = "IGNORE", -- Pure Spawn of Hydross
       ["Besudelter Nachkomme Hydross"] = "IGNORE", -- Tainted Spawn of Hydross
       ["Besudelter Wasserelementar"] = "IGNORE", -- Tainted Water Elemental
-      ["Gel\195\164uterter Wasserelementar"] = "IGNORE", -- Purified Water Elemental  
-      
+      ["Gel\195\164uterter Wasserelementar"] = "IGNORE", -- Purified Water Elemental
+
       -- Morogrim Adds
       ["Lauerer der Gezeitenwandler"] = "IGNORE", -- Tidewalker Lurker
-      ["Wasserkugel"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%) 
+      ["Wasserkugel"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%)
 
 			-- Fathom-Lord Karathress Adds
 			["Feuerspuckendes Totem"] = "IGNORE", -- Spitfire Totem
@@ -957,23 +960,23 @@ if (GetLocale() == "deDE") then
 			["Tiefenw\195\164chter Caribdis"] = "IGNORE", -- Fathom-Guard Caribdis
 			["Tiefenw\195\164chter Flutvess"] = "IGNORE", -- Fathom-Guard Tidalvess
 			["Tiefenw\195\164chter Haikis"] = "IGNORE", -- Fathom-Guard Sharkkis
-			
+
 			-- The Lurker Below Adds
 			["W\195\164chter des Echsenkessels"] = "IGNORE", -- Coilfang Guardian
 			["Wegelagerer des Echsenkessels"] = "IGNORE", -- Coilfang Ambusher
-			
+
 			-- Leotheras the Blind Adds
 			["Innerer D\195\164mon"] = "IGNORE", -- Inner Demon
-			
+
       -- Vashj Adds
       ["Toxischer Sporensegler"] = "IGNORE",  -- Toxic Spore Bat
       ["Besudelter Elementar"] = "IGNORE", -- Tainted Elemental
       ["Elitesoldat des Echsenkessels"] = "IGNORE", -- Coilfang Elite
       ["Schreiter des Echsenkessels"] = "IGNORE", -- Coilfang Strider
-      ["Verzauberter Elementar"] = "IGNORE", -- Enchanted Elemental		
+      ["Verzauberter Elementar"] = "IGNORE", -- Enchanted Elemental
 
- 
-      -- SSC Trashmobs 
+
+      -- SSC Trashmobs
       ["Bestienb\195\164ndiger des Echsenkessels"] = "IGNORE",	-- Coilfang Beast-Tamer
       ["Ehrenwache der Vashj'ir"] = "IGNORE",	-- Vashj'ir Honor Guard
       ["Gezeitenrufer der Grauherzen"] = "IGNORE", -- Greyheart Tidecaller
@@ -994,7 +997,7 @@ if (GetLocale() == "deDE") then
       ["Tiefensumpfkoloss"] = "IGNORE", -- Underbog Colossus
       ["Wasserbeschw\195\182rer der Gezeitenwandler"] = "IGNORE", -- Tidewalker Hydromancer
       ["Zertr\195\188mmerer des Echsenkessels"] = "IGNORE", -- Coilfang Shatterer
-      
+
       -- SSC Trashmobs without loot
 			["Echsenkesselfrenzy"] = "IGNORE", -- Coilfang Frenzy
 			["Gezeitenrufer des Schlangenschreins"] = "IGNORE", -- Serpentshrine Tidecaller
@@ -1004,8 +1007,8 @@ if (GetLocale() == "deDE") then
 			["Tiefensumpfpilz"] = "IGNORE", -- Underbog Mushroom
 			["Totem des Wasserelementars"] = "IGNORE", -- Water Elemental Totem
 			["Zauberbinder der Grauherzen"] = "IGNORE", -- Greyheart Spellbinder
-			["Geist einer Priesterin"] = "IGNORE", -- Priestess Spirit		
-		
+			["Geist einer Priesterin"] = "IGNORE", -- Priestess Spirit
+
 		--Black Temple
 		["Oberster Kriegsf\195\188rst Naj'entus"] = "High Warlord Naj'entus",
 		["Supremus"] = "Supremus",
@@ -1023,12 +1026,12 @@ if (GetLocale() == "deDE") then
 		["Lady Malande"] = "Illidari Council",
 		["Veras Schwarzschatten"] = "Illidari Council",
 		["Illidan Sturmgrimm"] = "Illidan Stormrage",
-		["F\195\188rst Illidan Sturmgrimm"] = "Lord Illidan Stormrage", 		
+		["F\195\188rst Illidan Sturmgrimm"] = "Lord Illidan Stormrage",
 
 		--Tempest Keep: The Eye
 		["Al'ar"] = "Al'ar",
-		["Hochastromant Solarian"] = "High Astromancer Solarian",	
-		["Hochastronom Solarian"] = "High Astromancer Solarian",	
+		["Hochastromant Solarian"] = "High Astromancer Solarian",
+		["Hochastronom Solarian"] = "High Astromancer Solarian",
 		["Leerh\195\164scher"] = "Void Reaver",
 		["Kael'thas Sonnenwanderer"] = "Kael'thas Sunstrider", --todo
 			-- Bossadds
@@ -1039,7 +1042,7 @@ if (GetLocale() == "deDE") then
 			["Solarispriester"] = "IGNORE", -- Solarium Priest
 			-- Kael'thas Adds
 			["F\195\188rst Blutdurst"] = "IGNORE", -- Lord Sanguinar
-			["Großastronom Capernian"] = "IGNORE", -- Grand Astromancer Capernian  
+			["Großastronom Capernian"] = "IGNORE", -- Grand Astromancer Capernian
 			["Meisteringenieur Telonicus"] = "IGNORE", -- Master Engineer Telonicus
 			["Ph\195\182nixei"] = "IGNORE", -- Phoenix Egg
 			["Ph\195\182nix"] = "IGNORE", -- Phoenix
@@ -1074,33 +1077,33 @@ if (GetLocale() == "deDE") then
 			["Sternenseherlehrling"] = "IGNORE", -- Apprentice Star Scryer
 			["Verteidiger der Blutw\195\164rter"] = "IGNORE", -- Bloodwarder Vindicator
 			["Zenturio der Purpurhand"] = "IGNORE", -- Crimson Hand Centurion
-		
+
 		--Battle of Mount Hyjal
 		["Furor Winterfrost"] = "Rage Winterchill",
 		["Anetheron"] = "Anetheron",
 		["Kaz'rogal"] = "Kaz'rogal",
 		["Azgalor"] = "Azgalor",
 		["Archimonde"] = "Archimonde",
-   
+
 		--Sunwell Plateau
 		["Kalecgos"] =  "IGNORE", -- Kalecgos
 			["Sathrovarr the Corruptor"] = "Sathrovarr the Corruptor",
 			["Sathrovarr the Corruptor"] = "Kalecgos",
 		["Brutallus"] = "Brutallus",
-			["Madrigosa"] = "IGNORE", -- Madrigosa	
+			["Madrigosa"] = "IGNORE", -- Madrigosa
 		["Teufelsruch"] = "Felmyst",
 		["Lady Sacrolash"] = "Eredar Twins",
 		["Grand Warlock Alythess"] = "Eredar Twins",
 		["Entropius"] = "Entropius",
-		["Kil'jaeden"] = "Kil'jaeden",	
+		["Kil'jaeden"] = "Kil'jaeden",
 		["M'uru"] = "IGNORE",
 		["Shadowsword Berserker"] = "IGNORE", -- Shadowsword Berserker
 		["Shadowsword Fury Mage"] = "IGNORE", -- Shadowsword Fury Mage
 		["Void Sentinel"] = "IGNORE", -- Void Sentinel
-		["Void Spawn"] = "IGNORE", -- Void Spawn	
+		["Void Spawn"] = "IGNORE", -- Void Spawn
 		-- EN TBC
 		-- Wotlk
-		
+
 		-- Eye of Eternity
 		["Malygos"] = "Malygos",
 		-- Obsidian Sanctum
@@ -1147,7 +1150,7 @@ if (GetLocale() == "deDE") then
 
 		["DEFAULTBOSS"] = "Trash mob",
 	};
-	
+
 	CT_RaidTracker_lang_BossKills_Majordomo_Yell = "Unm\195\182glich! Haltet ein, Sterbliche... Ich gebe auf! Ich gebe auf!";
 	CT_RaidTracker_lang_BossKills_Majordomo_BossName = "Majordomus Executus";
 	CT_RaidTracker_lang_BossKills_Ignore_Razorgore_Yell = "Ich bin frei! Dieses Ger\195\164t wird mich niemals wieder qu\195\164len!";
@@ -1169,7 +1172,7 @@ elseif (GetLocale() == "frFR") then
 	CT_RaidTracker_lang_ReceivesLoot3 = "([^%s]+) re\195\167oit le butin.+: "..CT_ITEMREG_MULTI..".";
 	CT_RaidTracker_lang_ReceivesLoot4 = "Vous recevez le butin.+: "..CT_ITEMREG_MULTI..".";
 	CT_RaidTracker_lang_ReceivesLootYou = "Vous";
-	
+
 	CT_RaidTracker_ZoneTriggers = {
 		["C\197\147ur du Magma"] = "Molten Core",
 		["Repaire de l'Aile noire"] = "Blackwing Lair",
@@ -1178,7 +1181,7 @@ elseif (GetLocale() == "frFR") then
 		["Ruines d'Ahn'Qiraj"] = "Ahn'Qiraj Ruins",
 		["Ahn'Qiraj"] = "Ahn'Qiraj Temple",
 		["Naxxramas"] = "Naxxramas",
-		
+
 		-- TBC
 			["Karazhan"] = "Karazhan",
 			["Repaire de Gruul"] = "Gruul's Lair",
@@ -1190,9 +1193,9 @@ elseif (GetLocale() == "frFR") then
 		        ["Sommet d'Hyjal"] = "Battle of Mount Hyjal",  -- Working
 			["Zul'Aman"] = "Zul'Aman",
 			["Sonnenbrunnenplateau"] = "Sunwell Plateau",
-		-- TBC		
+		-- TBC
 	};
-	
+
 	CT_RaidTracker_BossUnitTriggers = {
 		["Lucifron"] = "Lucifron",
 		["Magmadar"] = "Magmadar",
@@ -1210,7 +1213,7 @@ elseif (GetLocale() == "frFR") then
 		["Soigneur Flamewaker"] = "IGNORE",
 		["Elite Flamewaker"] = "IGNORE",
 		["Fils des flammes"] = "IGNORE",
-		
+
 		["Razorgore l'Indompt\195\169"] = "Razorgore the Untamed",
 		["Caelastrasz le Corrumpu"] = "Vaelastrasz the Corrupt",
 		["Seigneur des couv\195\169es Lashslayer"] = "Broodlord Lashlayer",
@@ -1240,7 +1243,7 @@ elseif (GetLocale() == "frFR") then
 		["Eveilleur Griffemort"] = "IGNORE",
 		["Contrema\195\174tre de l'Aile noire"] = "IGNORE",
 		["Nuage toxique"] = "IGNORE",
-		
+
 		["Grande pr\195\170tresse Jeklik"] = "High Priestess Jeklik",
 		["Grand pr\195\170tre Venoxis"] =	"High Priest Venoxis",
 		["Grande pr\195\170tresse Mar'li"] =	"High Priestess Mar'li",
@@ -1260,7 +1263,7 @@ elseif (GetLocale() == "frFR") then
 		["Rejetons de Mar'li"] = "IGNORE",
 		["Ohgan"] = "IGNORE",
 		["Chauve-souris sanguinaire fr\195\169n\195\169tique"] = "IGNORE",
-		
+
 		["Kurinnaxx"] = "Kurinnaxx",
 		["G\195\169n\195\169ral Rajaxx"] = "General Rajaxx",
 		["Ayamiss le Chasseur"] = "Ayamiss the Hunter",
@@ -1273,7 +1276,7 @@ elseif (GetLocale() == "frFR") then
 		["Nourrisseur silicieux"] = "IGNORE",
 		["Jeune de la Ruche'Zara"] = "IGNORE",
 		["Larve de la Ruche'Zara"] = "IGNORE",
-				
+
 		["Le Proph\195\168te Skeram"] = "The Prophet Skeram",
 		["Fankriss l'Inflexible"] = "Fankriss the Unyielding",
 		["Garde de guerre Sartura"] = "Battleguard Sartura",
@@ -1298,7 +1301,7 @@ elseif (GetLocale() == "frFR") then
 		["Nuage empoisonn\195\169"] = "IGNORE",
 		["Bourdon vekniss"] = "IGNORE",
 		["Globule de Viscidus"] = "IGNORE",
-		
+
 		["Le Recousu"] = "Patchwerk",
 		["Grobbulus"] = "Grobbulus",
 		["Gluth"] = "Gluth",
@@ -1333,7 +1336,7 @@ elseif (GetLocale() == "frFR") then
 		["Asticot pourrissant"] = "IGNORE",
 		["Poison vivant"] = "IGNORE",
 		["Spore"] = "IGNORE",
-		
+
 		["Onyxia"] = "Onyxia",
 		["Seigneur Kazzak"] = "Lord Kazzak",
 		["Azuregos"] = "Azuregos",
@@ -1341,13 +1344,13 @@ elseif (GetLocale() == "frFR") then
 		["Taerar"] = "Taerar",
 		["Emeriss"] = "Emeriss",
 		["L\195\169thon"] = "Lethon",
-		
+
 		["Dragonnet d'onyx"] = "IGNORE",
 		["Gardien d'onyx"] = "IGNORE",
 		["Ombre de Taerar"] = "IGNORE",
 		["Ombre spirituelle"] = "IGNORE",
 		["Esprit de druide d\195\169ment"] = "IGNORE",
-		
+
 		["Tache de lumi\195\168re"] = "IGNORE",
 		["Blatte"] = "IGNORE",
 		["Serpent"] = "IGNORE",
@@ -1366,8 +1369,8 @@ elseif (GetLocale() == "frFR") then
 		["Crapaud de la jungle"] = "IGNORE",
 		["Robot r\195\169parateur 74A"] = "IGNORE",
 		-- tbc
-		["G\195\169n\195\169eralissime Kruul"] = "Highlord Kruul",			
-		
+		["G\195\169n\195\169eralissime Kruul"] = "Highlord Kruul",
+
 		-- TBC : Karazhan
 		["Attumen le Veneur"]="Attumen the Huntsman",
 		["Doroth\195\169e"]="Dorothee",
@@ -1394,23 +1397,23 @@ elseif (GetLocale() == "frFR") then
 		["Shadikith le glisseur"]="Shadikith the Glider",
 		["Julianne"]="Romulo and Julianne",
 		["Romulo"]="IGNORE",
-		
+
 		["Chess Event"]="Chess Event", -- translation needed
 		-- Zul'Aman
-		["Nalorakk"] = "Nalorakk",	
-		["Akil'Zon"] = "Akil'zon",	
-		["Jan'Alai"] = "Jan'alai",	
-		["Halazzi"] = "Halazzi",	
-		["Witch Doctor"] = "Witch Doctor",	
-		["Seigneur des mal\195\169fices Malacrass"] = "Hex Lord Malacrass",	
-		["Zul'jin"] = "Zul'jin",			
+		["Nalorakk"] = "Nalorakk",
+		["Akil'Zon"] = "Akil'zon",
+		["Jan'Alai"] = "Jan'alai",
+		["Halazzi"] = "Halazzi",
+		["Witch Doctor"] = "Witch Doctor",
+		["Seigneur des mal\195\169fices Malacrass"] = "Hex Lord Malacrass",
+		["Zul'jin"] = "Zul'jin",
 		-- TBC : Grull
 		["Haut Roi Maulgar"]="High King Maulgar",
 		["Gruul le Tue-dragon"]="Gruul the Dragonkiller",
 		["Oeillaveugle le Voyant"]="IGNORE", -- maulgar add
 		["Kiggler le Cingl\195\169"]="IGNORE", -- maulgar add
 		["Krosh Brasemain"]="IGNORE", -- maulgar add
-		["Olm l'Invocateur"]="IGNORE", -- maulgar add		
+		["Olm l'Invocateur"]="IGNORE", -- maulgar add
 
     -- Magtheridon
 	  ["Magtheridon"] = "Magtheridon",
@@ -1418,8 +1421,8 @@ elseif (GetLocale() == "frFR") then
     ["Gardien des flammes infernales"] = "IGNORE",
 
 		["Seigneur funeste Kazzak"] = "Doom Lord Kazzak",
-		["Marche-funeste"] = "Doomwalker",	
-		
+		["Marche-funeste"] = "Doomwalker",
+
 		--Serpentshrine Cavern
 		["Hydross l'Instable"] = "Hydross the Unstable",
 		["Le R\195\180deur d'En-bas"] = "The Lurker Below",
@@ -1427,7 +1430,7 @@ elseif (GetLocale() == "frFR") then
 		["Seigneur des fonds Karathress"] = "Fathom-Lord Karathress",
 		["Morogrim Marcheur-des-flots"] = "Morogrim Tidewalker",
 		["Dame Vashj"] = "Lady Vashj",
-		
+
 		--Black Temple
     ["Grand seigneur de guerre Naj'entus"] = "High Warlord Naj'entus",
     ["Supremus"] = "Supremus",
@@ -1438,43 +1441,43 @@ elseif (GetLocale() == "frFR") then
     ["M\195\168re Shahraz"] = "Mother Shahraz",
     ["Conseil illidari"] = "Illidari Council", -- need translation
     ["Illidan Hurlorage"] = "Illidan Stormrage",
-    ["Seigneur Illidan Hurlorage"] = "Lord Illidan Stormrage",      
-		
+    ["Seigneur Illidan Hurlorage"] = "Lord Illidan Stormrage",
+
 		--Tempest Keep: The Eye
 		["Al'ar"] = "Al'ar",
 		["Grande astromancienne Solarian"] = "High Astromancer Solarian",
 		["Saccageur du Vide"] = "Void Reaver", --todo
 		["Kael'thas Haut-soleil"] = "Kael'thas Sunstrider", --todo
-	
+
 		--Battle of Mount Hyjal
     ["Rage Froidhiver"] = "Rage Winterchill",
     ["Anetheron"] = "Anetheron",
     ["Kaz'rogal"] = "Kaz'rogal",
     ["Azgalor"] = "Azgalor",
     ["Archimonde"] = "Archimonde",
-			
+
 		--Sunwell Plateau
 		["Kalecgos"] =  "IGNORE", -- Kalecgos
 			["Sathrovarr the Corruptor"] = "Sathrovarr the Corruptor",
 			["Sathrovarr the Corruptor"] = "Kalecgos",
 		["Brutallus"] = "Brutallus",
-			["Madrigosa"] = "IGNORE", -- Madrigosa	
+			["Madrigosa"] = "IGNORE", -- Madrigosa
 		["Felmyst"] = "Felmyst",
 		["Lady Sacrolash"] = "Eredar Twins",
 		["Grand Warlock Alythess"] = "Eredar Twins",
 		["Entropius"] = "Entropius",
-		["Kil'jaeden"] = "Kil'jaeden",	
+		["Kil'jaeden"] = "Kil'jaeden",
 		["M'uru"] = "IGNORE",
 		["Shadowsword Berserker"] = "IGNORE", -- Shadowsword Berserker
 		["Shadowsword Fury Mage"] = "IGNORE", -- Shadowsword Fury Mage
 		["Void Sentinel"] = "IGNORE", -- Void Sentinel
 		["Void Spawn"] = "IGNORE", -- Void Spawn
 
-		
+
 		-- tbc
 		["DEFAULTBOSS"] = "Trash mob",
 	};
-	
+
 	CT_RaidTracker_lang_BossKills_Majordomo_Yell = "Impossible ! Arr\195\170tez votre attaque, mortels... Je me rends ! Je me rends !";
 	CT_RaidTracker_lang_BossKills_Majordomo_BossName = "Majordome Executus";
 	CT_RaidTracker_lang_BossKills_Chess_Event_Yell = "Als sich der Fluch, der auf den T\195\188ren der Halle der Spiele lastete, l\195\182st, beginnen die Mauern von Karazhan zu beben."; -- need france translation
@@ -1482,21 +1485,21 @@ elseif (GetLocale() == "frFR") then
 	CT_RaidTracker_lang_BossKills_Chess_Event_BossName = "Chess Event";
 	CT_RaidTracker_lang_BossKills_Ignore_Razorgore_Yell = "Je suis libre ! Cet instrument ne me torturera plus jamais !";
 	CT_RaidTracker_lang_BossKills_Julianne_Die_Yell = "O willkommener Dolch! Dies werde deine Scheide. Roste da und lass mich sterben!"; -- need english translation
-	CT_RaidTracker_lang_BossKills_Julianne_BossName = "Julianne";	
+	CT_RaidTracker_lang_BossKills_Julianne_BossName = "Julianne";
 --	CT_RaidTracker_lang_BossKills_Ignore_Julianne_Yell = "Ich komme, Romulo! Oh... dies trink' ich dir!"; -- need france translation
 --	CT_RaidTracker_lang_BossKills_Ignore_Romulo_Yell = "Und du l\195\164chelst zu dem Streich, der mich ermordet.";	-- need france translation
 	CT_RaidTracker_lang_BossKills_Sathrovarr_Yell = "I'm... never on... the losing... side..."; -- need france translation
 	CT_RaidTracker_lang_BossKills_Sathrovarr_BossName = "Sathrovarr the Corruptor"; -- need france translation
 
 elseif (GetLocale() == "esES") then
-	CT_RaidTracker_lang_LeftGroup = "([^%s]+) se ha marchado de la banda."; 
-	CT_RaidTracker_lang_JoinedGroup = "([^%s]+) se ha unido a la banda."; 
-	CT_RaidTracker_lang_ReceivesLoot1 = "([^%s]+) recibe el bot\195\173n: "..CT_ITEMREG.."."; 
-	CT_RaidTracker_lang_ReceivesLoot2 = "Recibes bot\195\173n: "..CT_ITEMREG.."."; 
-	CT_RaidTracker_lang_ReceivesLoot3 = "([^%s]+) recibe el bot\195\173n: "..CT_ITEMREG_MULTI.."."; 
-	CT_RaidTracker_lang_ReceivesLoot4 = "Recibes bot\195\173n: "..CT_ITEMREG_MULTI.."."; 
-	CT_RaidTracker_lang_ReceivesLootYou = "Recibes";	
-	
+	CT_RaidTracker_lang_LeftGroup = "([^%s]+) se ha marchado de la banda.";
+	CT_RaidTracker_lang_JoinedGroup = "([^%s]+) se ha unido a la banda.";
+	CT_RaidTracker_lang_ReceivesLoot1 = "([^%s]+) recibe el bot\195\173n: "..CT_ITEMREG..".";
+	CT_RaidTracker_lang_ReceivesLoot2 = "Recibes bot\195\173n: "..CT_ITEMREG..".";
+	CT_RaidTracker_lang_ReceivesLoot3 = "([^%s]+) recibe el bot\195\173n: "..CT_ITEMREG_MULTI..".";
+	CT_RaidTracker_lang_ReceivesLoot4 = "Recibes bot\195\173n: "..CT_ITEMREG_MULTI..".";
+	CT_RaidTracker_lang_ReceivesLootYou = "Recibes";
+
 	CT_RaidTracker_ZoneTriggers = {
 		["NÃºcleo de Magma"] = "Molten Core",
 		["Guarida Alanegra"] = "Blackwing Lair",
@@ -1505,7 +1508,7 @@ elseif (GetLocale() == "esES") then
 		["Ruinas de Ahn'Qiraj"] = "Ahn'Qiraj Ruins",
 		["Ahn'Qiraj"] = "Ahn'Qiraj Temple",
 		["Naxxramas"] = "Naxxramas",
-		
+
 		-- TBC
 			["Karazhan"] = "Karazhan",
 			["Guarida de Gruul"] = "Gruul's Lair",
@@ -1516,9 +1519,9 @@ elseif (GetLocale() == "esES") then
 			["El Templo Oscuro"] = "Black Temple",
 			["Hyjal"] = "Battle of Mount Hyjal",
 			["Zul'Aman"] = "Zul'Aman";
-		-- TBC		
+		-- TBC
 	};
-	
+
 	CT_RaidTracker_lang_BossKills_Majordomo_Yell = "Impossible ! Arr\195\170tez votre attaque, mortels... Je me rends ! Je me rends !";
 	CT_RaidTracker_lang_BossKills_Majordomo_BossName = "Majordome Executus";
 	CT_RaidTracker_lang_BossKills_Chess_Event_Yell = "Als sich der Fluch, der auf den T\195\188ren der Halle der Spiele lastete, l\195\182st, beginnen die Mauern von Karazhan zu beben."; -- need france translation
@@ -1579,7 +1582,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Flamewaker Healer"] = "IGNORE",
 	["Flamewaker Elite"] = "IGNORE",
 	["Son of Flame"] = "IGNORE",
-	
+
 	["Razorgore the Untamed"] = "Razorgore the Untamed",
 	["Vaelastrasz the Corrupt"] = "Vaelastrasz the Corrupt",
 	["Broodlord Lashlayer"] = "Broodlord Lashlayer",
@@ -1608,7 +1611,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Corrupted Bronze Whelp"] = "IGNORE",
 	["Death Talon Hatcher"] = "IGNORE",
 	["Blackwing Taskmaster"] = "IGNORE",
-	
+
 	["High Priestess Jeklik"] = "High Priestess Jeklik",
 	["High Priest Venoxis"] =	"High Priest Venoxis",
 	["High Priestess Mar'li"] =	"High Priestess Mar'li",
@@ -1629,7 +1632,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Ohgan"] = "IGNORE",
 	["Frenzied Bloodseeker Bat"] = "IGNORE",
 	["Poisonous Cloud"] = "IGNORE",
-	
+
 	["Onyxia"] = "Onyxia",
 	["Lord Kazzak"] = "Lord Kazzak",
 	["Azuregos"] = "Azuregos",
@@ -1637,13 +1640,13 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Taerar"] = "Taerar",
 	["Emeriss"] = "Emeriss",
 	["Lethon"] = "Lethon",
-	
+
 	["Onyxian Whelp"] = "IGNORE",
 	["Onyxian Warder"] = "IGNORE",
 	["Shade of Taerar"] = "IGNORE",
 	["Spirit Shade"] = "IGNORE",
 	["Demented Druid Spirit"] = "IGNORE",
-	
+
 	["Kurinnaxx"] = "Kurinnaxx",
 	["General Rajaxx"] = "General Rajaxx",
 	["Ayamiss the Hunter"] = "Ayamiss the Hunter",
@@ -1658,7 +1661,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Hive'Zara Larva"] = "IGNORE",
 	["Vekniss Hatchling"] = "IGNORE",
 	["Anubisath Warrior"] = "IGNORE",
-	
+
 	["The Prophet Skeram"] = "The Prophet Skeram",
 	["Fankriss the Unyielding"] = "Fankriss the Unyielding",
 	["Battleguard Sartura"] = "Battleguard Sartura",
@@ -1682,7 +1685,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Poison Cloud"] = "IGNORE",
 	["Vekniss Drone"] = "IGNORE",
 	["Glob of Viscidus"] = "IGNORE",
-	
+
 	["Patchwerk"] = "Patchwerk",
 	["Grobbulus"] = "Grobbulus",
 	["Gluth"] = "Gluth",
@@ -1704,7 +1707,7 @@ CT_RaidTracker_BossUnitTriggers = {
 
 		["Fangnetz"] = "IGNORE",
 		["Verstrahlter Br\195\188hschleimer"] = "IGNORE",
-		
+
 	["Crypt Guard"] = "IGNORE",
 	["Grobbulus Cloud"] = "IGNORE",
 	["Deathknight Understudy"] = "IGNORE",
@@ -1721,7 +1724,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Rotting Maggot"] = "IGNORE",
 	["Living Poison"] = "IGNORE",
 	["Spore"] = "IGNORE",
-	
+
 	["Spotlight"] = "IGNORE",
 	["Roach"] = "IGNORE",
 	["Snake"] = "IGNORE",
@@ -1739,7 +1742,7 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Rat"] = "IGNORE",
 	["Jungle Toad"] = "IGNORE",
 	["Field Repair Bot 74A"] = "IGNORE",
-	
+
 	-- TBC
 	--Karazhan
 	["Каззак Владыка Рока"] = "Doom Lord Kazzak",
@@ -1777,13 +1780,13 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Echo of Medivh"] = "Echo of Medivh",
 	["Image of Medivh"] = "Image of Medivh",
 	-- Zul'Aman
-	["Nalorakk"] = "Nalorakk",	
-	["Akil'Zon"] = "Akil'zon",	
-	["Jan'Alai"] = "Jan'alai",	
-	["Halazzi"] = "Halazzi",	
-	["Witch Doctor"] = "Witch Doctor",	
-	["Hex Lord Malacrass"] = "Hex Lord Malacrass",	
-	["Zul'jin"] = "Zul'jin",	
+	["Nalorakk"] = "Nalorakk",
+	["Akil'Zon"] = "Akil'zon",
+	["Jan'Alai"] = "Jan'alai",
+	["Halazzi"] = "Halazzi",
+	["Witch Doctor"] = "Witch Doctor",
+	["Hex Lord Malacrass"] = "Hex Lord Malacrass",
+	["Zul'jin"] = "Zul'jin",
 	--Gruul
 	["High King Maulgar"] = "High King Maulgar",
 	["Gruul the Dragonkiller"] = "Gruul the Dragonkiller",
@@ -1807,11 +1810,11 @@ CT_RaidTracker_BossUnitTriggers = {
       ["Pure Spawn of Hydross"] = "IGNORE", -- Pure Spawn of Hydross
       ["Tainted Spawn of Hydross"] = "IGNORE", -- Tainted Spawn of Hydross
       ["Tainted Water Elemental"] = "IGNORE", -- Tainted Water Elemental
-      ["Purified Water Elemental"] = "IGNORE", -- Purified Water Elemental  
-      
+      ["Purified Water Elemental"] = "IGNORE", -- Purified Water Elemental
+
       -- Morogrim Adds
       ["Tidewalker Lurker"] = "IGNORE", -- Tidewalker Lurker
-      ["Water Globule"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%) 
+      ["Water Globule"] = "IGNORE", -- Water Globule (Waterbubbles Tidewalker summons at 25%)
 
 			-- Fathom-Lord Karathress Adds
 			["Spitfire Totem"] = "IGNORE", -- Spitfire Totem
@@ -1822,21 +1825,21 @@ CT_RaidTracker_BossUnitTriggers = {
 			["Fathom-Guard Caribdis"] = "IGNORE", -- Fathom-Guard Caribdis
 			["Fathom-Guard Tidalvess"] = "IGNORE", -- Fathom-Guard Tidalvess
 			["Fathom-Guard Sharkkis"] = "IGNORE", -- Fathom-Guard Sharkkis
-			
+
 			-- The Lurker Below Adds
 			["Coilfang Guardian"] = "IGNORE", -- Coilfang Guardian
 			["Coilfang Ambusher"] = "IGNORE", -- Coilfang Ambusher
-			
+
 			-- Leotheras the Blind Adds
 			["Inner Demon"] = "IGNORE", -- Inner Demon
-			
+
       -- Vashj Adds
       ["Toxic Spore Bat"] = "IGNORE",  -- Toxic Spore Bat
       ["Tainted Elemental"] = "IGNORE", -- Tainted Elemental
       ["Coilfang Elite"] = "IGNORE", -- Coilfang Elite
       ["Coilfang Strider"] = "IGNORE", -- Coilfang Strider
-      ["Enchanted Elemental"] = "IGNORE", -- Enchanted Elemental			
-      -- SSC Trashmobs 
+      ["Enchanted Elemental"] = "IGNORE", -- Enchanted Elemental
+      -- SSC Trashmobs
       ["Coilfang Beast-Tamer"] = "IGNORE",	-- Coilfang Beast-Tamer
       ["Vashj'ir Honor Guard"] = "IGNORE",	-- Vashj'ir Honor Guard
       ["Greyheart Tidecaller"] = "IGNORE", -- Greyheart Tidecaller
@@ -1866,7 +1869,7 @@ CT_RaidTracker_BossUnitTriggers = {
 			["Underbog Mushroom"] = "IGNORE", -- Underbog Mushroom
 			["Water Elemental Totem"] = "IGNORE", -- Water Elemental Totem
 			["Greyheart Spellbinder"] = "IGNORE", -- Greyheart Spellbinder
-			["Priestess Spirit"] = "IGNORE", -- Priestess Spirit	
+			["Priestess Spirit"] = "IGNORE", -- Priestess Spirit
 	--Black Temple
 	["Великий полководец Наджентус"] = "High Warlord Naj'entus",
 	["Супремус"] = "Supremus",
@@ -1878,11 +1881,11 @@ CT_RaidTracker_BossUnitTriggers = {
 	 ["Гатиос Раскольщик"] = "Illidari Council",
 	 ["Верховный хаомант Зеревор"] = "Illidari Council",
 	 ["Леди Маланда"] = "Illidari Council",
-	 ["Верас Черная Тень"] = "Illidari Council",	
-	["Иллидан Грозовая Ярость"] = "Illidan Stormrage",	
+	 ["Верас Черная Тень"] = "Illidari Council",
+	["Иллидан Грозовая Ярость"] = "Illidan Stormrage",
 	--Tempest Keep: The Eye
 	["Al'ar"] = "Al'ar",
-	["High Astromancer Solarian"] = "High Astromancer Solarian",	
+	["High Astromancer Solarian"] = "High Astromancer Solarian",
 	["Void Reaver"] = "Void Reaver",
 	["Kael'thas Sunstrider"] = "Kael'thas Sunstrider",
     -- Bossadds
@@ -1893,7 +1896,7 @@ CT_RaidTracker_BossUnitTriggers = {
     ["Solarium Priest"] = "IGNORE", -- Solarium Priest
     -- Kael'thas Adds
     ["Lord Sanguinar"] = "IGNORE", -- Lord Sanguinar
-    ["Grand Astromancer Capernian"] = "IGNORE", -- Grand Astromancer Capernian  
+    ["Grand Astromancer Capernian"] = "IGNORE", -- Grand Astromancer Capernian
     ["Master Engineer Telonicus"] = "IGNORE", -- Master Engineer Telonicus
     ["Phoenix Egg"] = "IGNORE", -- Phoenix Egg
     ["Phoenix"] = "IGNORE", -- Phoenix
@@ -1930,7 +1933,7 @@ CT_RaidTracker_BossUnitTriggers = {
 		["Crimson Hand Centurion"] = "IGNORE", -- Crimson Hand Centurion
 
 	["Lord Illidan Stormrage"] = "Lord Illidan Stormrage",
-	["Highlord Kruul"] = "Highlord Kruul",	
+	["Highlord Kruul"] = "Highlord Kruul",
 
 	--Battle of Mount Hyjal
 	["Лютый Хлад"] = "Rage Winterchill",
@@ -1938,26 +1941,26 @@ CT_RaidTracker_BossUnitTriggers = {
 	["Каз'рогал"] = "Kaz'rogal",
 	["Азгалор"] = "Azgalor",
 	["Архимонд"] = "Archimonde",
-	
+
   --Sunwell Plateau
 	["Калецгос"] =  "IGNORE", -- Kalecgos
 		["Сатроварр Осквернитель"] = "Sathrovarr the Corruptor",
 		["Сатроварр Осквернитель"] = "Kalecgos",
 	["Бруталл"] = "Brutallus",
-		["Madrigosa"] = "IGNORE", -- Madrigosa	
+		["Madrigosa"] = "IGNORE", -- Madrigosa
 	["Сквернотуман"] = "Felmyst",
 	["Lady Sacrolash"] = "Eredar Twins",
 	["Grand Warlock Alythess"] = "Eredar Twins",
 	["Энтропий"] = "Entropius",
-	["Kil'jaeden"] = "Kil'jaeden",	
+	["Kil'jaeden"] = "Kil'jaeden",
 	["М'ару"] = "IGNORE",
 	["Shadowsword Berserker"] = "IGNORE", -- Shadowsword Berserker
 	["Shadowsword Fury Mage"] = "IGNORE", -- Shadowsword Fury Mage
 	["Void Sentinel"] = "IGNORE", -- Void Sentinel
 	["Void Spawn"] = "IGNORE", -- Void Spawn
-	
-	-- TBC	
-	
+
+	-- TBC
+
 	["DEFAULTBOSS"] = "Trash mob",
 };
 
