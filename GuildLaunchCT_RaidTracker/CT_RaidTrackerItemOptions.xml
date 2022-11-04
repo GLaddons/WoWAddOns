@@ -78,7 +78,7 @@
 		<Size>
 			<AbsDimension x="410" y="400"/>
 		</Size>
-		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
 				<AbsInset left="11" right="12" top="12" bottom="11" />
 				<Size>
@@ -91,7 +91,7 @@
 			<EdgeSize>
 				<AbsValue val="32" />
 			</EdgeSize>
-		</Backdrop>
+		</Backdrop> -->
 		<Layers>
 			<Layer level="ARTWORK">
 				<!-- Frame header background texture -->
@@ -136,7 +136,10 @@
 				<Size>
 					<AbsDimension x="185" y="357"/>
 				</Size>
-				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<KeyValues>
+					<KeyValue key="backdropInfo" value="CT_RaidTracker_ItemOptions_ScrollFrameTemplate" />
+				</KeyValues>
+				<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
 					<EdgeSize>
 						<AbsValue val="16"/>
 					</EdgeSize>
@@ -146,7 +149,7 @@
 					<BackgroundInsets>
 						<AbsInset left="5" right="5" top="5" bottom="5"/>
 					</BackgroundInsets>
-				</Backdrop>
+				</Backdrop> -->
 				<Frames>
 		      <ScrollFrame name="CT_RaidTracker_ItemOptions_ScrollBar" inherits="FauxScrollFrameTemplate">
 		        <Anchors>
@@ -306,7 +309,10 @@
 				<Size>
 					<AbsDimension x="200" y="357"/>
 				</Size>
-				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<KeyValues>
+					<KeyValue key="backdropInfo" value="CT_RaidTracker_ItemOptions_EditFrameTemplate" />
+				</KeyValues>
+				<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
 					<EdgeSize>
 						<AbsValue val="16"/>
 					</EdgeSize>
@@ -316,7 +322,7 @@
 					<BackgroundInsets>
 						<AbsInset left="5" right="5" top="5" bottom="5"/>
 					</BackgroundInsets>
-				</Backdrop>
+				</Backdrop> -->
 				<Layers>
 					<Layer level="ARTWORK">
 						<FontString name="CT_RaidTracker_ItemOptions_EditFrame_Item" inherits="GameFontNormalSmall" justifyH="CENTER" justifyV="TOP" text="Unknown Item">

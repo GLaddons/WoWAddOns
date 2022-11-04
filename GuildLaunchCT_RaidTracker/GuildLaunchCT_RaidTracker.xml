@@ -47,7 +47,10 @@
 		<Size>
 			<AbsDimension x="300" y="18"/>
 		</Size>
-		<NormalFont inherits="GameFontNormal"/>
+		<!-- <KeyValues>
+			<KeyValue key="backdropInfo" value="CT_RaidTrackerPlayerLineTemplateTemplate" />
+		</KeyValues> -->
+		<!-- <NormalFont inherits="GameFontNormal"/> -->
 		<Layers>
 			<Layer level="ARTWORK">
 				<FontString name="$parentNumber" justifyH="LEFT">
@@ -723,6 +726,9 @@
 		<Size>
 			<AbsDimension x="300" y="16"/>
 		</Size>
+		<!-- <KeyValues>
+			<KeyValue key="backdropInfo" value="CT_RaidTrackerTitleButtonTemplateTemplate" />
+		</KeyValues> -->
 		<ButtonText name="$parentButtonText" inherits="GameFontNormal" justifyH="LEFT" nonspacewrap="true">
 			<Size>
 				<AbsDimension x="300" y="10"/>
@@ -1934,7 +1940,10 @@
         <Anchors>
             <Anchor point="CENTER" relativeTo="UIParent"/>
         </Anchors>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+        <KeyValues>
+        	<KeyValue key="backdropInfo" value="CT_RaidTrackerAcceptDeleteFrameTemplate" />
+        </KeyValues>
+        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
             <BackgroundInsets>
                 <AbsInset left="11" right="12" top="12" bottom="11"/>
             </BackgroundInsets>
@@ -1944,7 +1953,7 @@
             <EdgeSize>
                 <AbsValue val="32"/>
             </EdgeSize>
-        </Backdrop>
+        </Backdrop> -->
         <Layers>
             <Layer level="ARTWORK">
                 <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2043,7 +2052,10 @@
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
-		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="CT_RaidTrackerEditNoteFrameTemplate" />
+		</KeyValues>
+		<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
 				<AbsInset left="11" right="12" top="12" bottom="11"/>
 			</BackgroundInsets>
@@ -2053,7 +2065,7 @@
 			<EdgeSize>
 				<AbsValue val="32"/>
 			</EdgeSize>
-		</Backdrop>
+		</Backdrop> -->
 		<Layers>
 			<Layer level="ARTWORK">
 				<Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2212,7 +2224,10 @@
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
-		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="URLFrameTemplate" />
+		</KeyValues>
+		<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
 				<AbsInset left="11" right="12" top="12" bottom="11"/>
 			</BackgroundInsets>
@@ -2222,7 +2237,7 @@
 			<EdgeSize>
 				<AbsValue val="32"/>
 			</EdgeSize>
-		</Backdrop>
+		</Backdrop> -->
 		<Layers>
 			<Layer level="ARTWORK">
 				<Texture name="URLFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2315,7 +2330,7 @@
 					</OnEscapePressed>
 				</Scripts>
 			</EditBox>
-			<Button name="URLFrameDone" inherits="OptionsButtonTemplate" text="Close">
+			<Button name="URLFrameDone" inherits="UIPanelButtonTemplate" text="Close">
 				<Anchors>
 					<Anchor point="BOTTOM">
 						<Offset>
@@ -2348,7 +2363,10 @@
         <Anchors>
             <Anchor point="CENTER"/>
         </Anchors>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+        <KeyValues>
+        	<KeyValue key="backdropInfo" value="CT_RaidTrackerJoinLeaveFrameTemplate" />
+        </KeyValues>
+        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
             <BackgroundInsets>
                 <AbsInset left="11" right="12" top="12" bottom="11"/>
             </BackgroundInsets>
@@ -2358,7 +2376,7 @@
             <EdgeSize>
                 <AbsValue val="32"/>
             </EdgeSize>
-        </Backdrop>
+        </Backdrop> -->
         <Layers>
             <Layer level="ARTWORK">
                 <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2685,7 +2703,10 @@
 	<Anchors>
 	    <Anchor point="CENTER" relativeTo="UIParent"/>
 	</Anchors>
-	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<KeyValues>
+		<KeyValue key="backdropInfo" value="CT_RaidTrackerAcceptWipeFrameTemplate" />
+	</KeyValues>
+	<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 	    <BackgroundInsets>
 	        <AbsInset left="11" right="12" top="12" bottom="11"/>
 	    </BackgroundInsets>
@@ -2695,7 +2716,7 @@
 	    <EdgeSize>
 	        <AbsValue val="32"/>
 	    </EdgeSize>
-	</Backdrop>
+	</Backdrop> -->
 	<Layers>
 	  <Layer level="ARTWORK">
 	    <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2812,7 +2833,10 @@
 	<Anchors>
 	    <Anchor point="CENTER" relativeTo="UIParent"/>
 	</Anchors>
-	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<KeyValues>
+		<KeyValue key="backdropInfo" value="CT_RaidTrackerNextBossFrameTemplate" />
+	</KeyValues>
+	<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 	    <BackgroundInsets>
 	        <AbsInset left="11" right="12" top="12" bottom="11"/>
 	    </BackgroundInsets>
@@ -2822,7 +2846,7 @@
 	    <EdgeSize>
 	        <AbsValue val="32"/>
 	    </EdgeSize>
-	</Backdrop>
+	</Backdrop> -->
 	<Layers>
 	  <Layer level="ARTWORK">
 	    <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2932,7 +2956,7 @@
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
-		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
 				<AbsInset left="11" right="12" top="12" bottom="11"/>
 			</BackgroundInsets>
@@ -2942,7 +2966,7 @@
 			<EdgeSize>
 				<AbsValue val="32"/>
 			</EdgeSize>
-		</Backdrop>
+		</Backdrop> -->
 		<Layers>
 			<Layer level="ARTWORK">
 				<Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -3151,7 +3175,10 @@
         <Anchors>
             <Anchor point="CENTER"/>
         </Anchors>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+        <KeyValues>
+        	<KeyValue key="backdropInfo" value="CT_RaidTrackerAddEventFrameTemplate" />
+        </KeyValues>
+        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
             <BackgroundInsets>
                 <AbsInset left="11" right="12" top="12" bottom="11"/>
             </BackgroundInsets>
@@ -3161,7 +3188,7 @@
             <EdgeSize>
                 <AbsValue val="32"/>
             </EdgeSize>
-        </Backdrop>
+        </Backdrop> -->
         <Layers>
             <Layer level="ARTWORK">
                 <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">

@@ -1,4 +1,122 @@
-﻿function CT_RaidTracker_OptionsFrame_OnShow()
+﻿parentExportFormatSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentMaxLevelSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentTimeZoneSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentWaitlistAttendanceTypeTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentGroupItemsSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentGetDKPValueSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentAskCostSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentMinQualitySliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentLogAttendeesSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentAutoBossChangeMinTimeSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentAutoBossSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+parentAskWipeSliderTemplate = {
+    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+    tile = true,
+    tileSize = 8,
+    edgeSize = 8,
+    insets = { left = 3, right = 3, top = 6, bottom = 6 },
+}
+
+CT_RaidTrackerOptionsFrameTemplate = {
+    bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+    edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+    tile = true,
+    tileEdge = true,
+    tileSize = 32,
+    edgeSize = 32,
+    insets = { left = 11, right = 12, top = 12, bottom = 11 },
+}
+
+function CT_RaidTracker_OptionsFrame_OnShow()
     -- auto config = 1 tab 1
     -- zone
     CT_RaidTrackerOptionsFrameTabPage2AutoZoneCB:SetChecked(CT_RaidTracker_Options["AutoZone"]);

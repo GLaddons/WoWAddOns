@@ -1390,9 +1390,9 @@ local function AcquireFrame(self, registration, data, detachedData)
 			self.scrollFrame:SetScrollChild(self.scrollChild)
 			local val = self.scrollFrame:GetVerticalScroll()
 			local max = self.scrollChild:GetHeight() - self:GetHeight()
-			--if max <= 0 then
-			--	max = 1
-			--end
+			if max <= 0 then
+				max = 1
+			end
 			if val > max then
 				val = max
 			end
@@ -2440,7 +2440,7 @@ function Tablet:Open(fakeParent, parent)
 	local offsetx = 0
 	local offsety = 0
 	frame:SetClampedToScreen(1)
-	frame:SetClampedToScreen(nil)
+	-- frame:SetClampedToScreen(nil)
 	if frame:GetBottom() and frame:GetLeft() then
 		if frame:GetRight() > GetScreenWidth() then
 			offsetx = frame:GetRight() - GetScreenWidth()

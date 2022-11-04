@@ -36,7 +36,9 @@
        movable="true"
        enableMouse="true"
        hidden="true"
-       parent="UIParent">
+       parent="UIParent"
+       setAllPoints="true"
+       virtual="true">
        <Size>
            <AbsDimension x="550" y="450"/>
        </Size>
@@ -45,7 +47,10 @@
                <Offset><AbsDimension x="-200" y="200"/></Offset>
            </Anchor>
        </Anchors>
-       <Backdrop
+       <KeyValues>
+       	<KeyValue key="backdropInfo" value="CT_RaidTrackerOptionsFrameTemplate" />
+       </KeyValues>
+       <!-- <Backdrop
            bgFile="Interface\DialogFrame\UI-DialogBox-Background"
            edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
            tile="true"
@@ -61,7 +66,7 @@
            <EdgeSize>
                <AbsValue val="32"/>
            </EdgeSize>
-       </Backdrop>
+       </Backdrop> -->
        <Layers>
            <Layer level="ARTWORK">
                <Texture name="myFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -470,7 +475,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskWipeCB">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentAskWipeSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -480,7 +488,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -587,7 +595,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentSaveExtendedPlayerInfoCB">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentAutoBossSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -597,7 +608,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -657,7 +668,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossSlider">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentAutoBossChangeMinTimeSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -667,7 +681,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -721,7 +735,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossChangeMinTimeSlider">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentLogAttendeesSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -731,7 +748,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -816,7 +833,10 @@
                                 </Offset>
                             </Anchor>
                         </Anchors>
-                        <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+                        <KeyValues>
+                        	<KeyValue key="" value="parentMinQualitySliderTemplate" />
+                        </KeyValues>
+                        <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
                             <BackgroundInsets>
                                 <AbsInset left="3" right="3" top="6" bottom="6" />
                             </BackgroundInsets>
@@ -826,7 +846,7 @@
                             <EdgeSize>
                                 <AbsValue val="8" />
                             </EdgeSize>
-                        </Backdrop>
+                        </Backdrop> -->
                         <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
                             <Size>
                                 <AbsDimension x="32" y="32" />
@@ -890,7 +910,10 @@
                             <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentMinQualitySlider">
                             </Anchor>
                         </Anchors>
-                        <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+                        <KeyValues>
+                        	<KeyValue key="backdropInfo" value="parentAskCostSliderTemplate" />
+                        </KeyValues>
+                        <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
                             <BackgroundInsets>
                                 <AbsInset left="3" right="3" top="6" bottom="6" />
                             </BackgroundInsets>
@@ -900,7 +923,7 @@
                             <EdgeSize>
                                 <AbsValue val="8" />
                             </EdgeSize>
-                        </Backdrop>
+                        </Backdrop> -->
                         <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
                             <Size>
                                 <AbsDimension x="32" y="32" />
@@ -964,7 +987,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskCostSlider">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentGetDKPValueSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -974,7 +1000,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1038,7 +1064,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGetDKPValueSlider">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentGroupItemsSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -1048,7 +1077,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1254,7 +1283,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentEnableListme">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentWaitlistAttendanceTypeTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -1264,7 +1296,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1431,7 +1463,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentTimeSyncCB">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentTimeZoneSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -1441,7 +1476,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1523,7 +1558,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentUse24hFormat">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentMaxLevelSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -1533,7 +1571,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1616,7 +1654,10 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGuildSnapshotCB">
 			                </Anchor>
 			            </Anchors>
-			            <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			            <KeyValues>
+			            	<KeyValue key="backdropInfo" value="parentExportFormatSliderTemplate" />
+			            </KeyValues>
+			            <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
 			                <BackgroundInsets>
 			                    <AbsInset left="3" right="3" top="6" bottom="6" />
 			                </BackgroundInsets>
@@ -1626,7 +1667,7 @@
 			                <EdgeSize>
 			                    <AbsValue val="8" />
 			                </EdgeSize>
-			            </Backdrop>
+			            </Backdrop> -->
 			            <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
 			                <Size>
 			                    <AbsDimension x="32" y="32" />
@@ -1844,6 +1885,7 @@
                 PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
             </OnLoad>
             <OnShow>
+            	self:SetFrameLevel(self:GetParent():GetFrameLevel())
                 PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);
                 CT_RaidTracker_OptionsFrame_OnShow();
                 PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
