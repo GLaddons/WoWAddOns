@@ -2,7 +2,8 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
     <Script file="CT_RaidTrackerOptions.lua"/>
-    <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+    <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+    	<Size x="100" y="20" />
 		<Scripts>
 			<OnClick>
 				CT_RaidTracker_OptionsFrame_TabClick(self:GetName());
@@ -29,7 +30,7 @@
             </OnLeave>
         </Scripts>
     </Button>
-    <Frame
+    <!-- <Frame
        name="CT_RaidTrackerOptionsFrame"
        toplevel="true"
        frameStrata="DIALOG"
@@ -38,7 +39,8 @@
        hidden="true"
        parent="UIParent"
        setAllPoints="true"
-       virtual="true">
+       virtual="true"> -->
+       <Frame name="CT_RaidTrackerOptionsFrame" hidden="true" enableMouse="true" movable="true" parent="UIParent">
        <Size>
            <AbsDimension x="550" y="450"/>
        </Size>
@@ -48,7 +50,7 @@
            </Anchor>
        </Anchors>
        <KeyValues>
-       	<KeyValue key="backdropInfo" value="CT_RaidTrackerOptionsFrameTemplate" />
+			<KeyValue key="backdropInfo" value="CT_RaidTrackerOptionsFrameTemplate" />
        </KeyValues>
        <!-- <Backdrop
            bgFile="Interface\DialogFrame\UI-DialogBox-Background"
@@ -242,7 +244,7 @@
                </Layers>
                <Frames>
                	<!-- tab 2 contents -->
-               		<CheckButton name="$parentAutoZoneCB" inherits="OptionsCheckButtonTemplate" checked="false">
+               		<CheckButton name="$parentAutoZoneCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -273,7 +275,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentNewRaidOnNewZoneCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentNewRaidOnNewZoneCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -301,7 +303,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentAutoCreateRaidCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentAutoCreateRaidCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -329,7 +331,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentLogGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentLogGroupCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -357,7 +359,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentAutoGroupCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentAutoGroupCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -385,7 +387,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentLogBattlefieldCB" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentLogBattlefieldCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -435,7 +437,7 @@
                </Layers>
                <Frames>
                	<!-- tab 3 contents -->
-               			<CheckButton name="$parentAskWipeCB" inherits="OptionsCheckButtonTemplate" checked="false">
+               			<CheckButton name="$parentAskWipeCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -531,7 +533,7 @@
 			                </OnUpdate>
 			            </Scripts>
 			        </Slider>
-					<CheckButton name="$parentAskNextBossCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentAskNextBossCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -559,7 +561,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-                	<CheckButton name="$parentSaveExtendedPlayerInfoCB" inherits="OptionsCheckButtonTemplate" checked="false">
+                	<CheckButton name="$parentSaveExtendedPlayerInfoCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1133,7 +1135,7 @@
 			                </OnValueChanged>
 			            </Scripts>
 			        </Slider>
-					<CheckButton name="$parentSaveTooltipsCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentSaveTooltipsCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1162,7 +1164,7 @@
 			            </Frames>
 			        </CheckButton>
 					<!-- oberan added to auto record epgp costs -->
-			        <CheckButton name="$parentAutoSetEPGPCost" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentAutoSetEPGPCost" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1190,7 +1192,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentBonusLoot" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentBonusLoot" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1244,7 +1246,7 @@
                </Layers>
                <Frames>
                	<!-- tab 3 contents -->
-               		<CheckButton name="$parentEnableListme" inherits="OptionsCheckButtonTemplate" checked="false">
+               		<CheckButton name="$parentEnableListme" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1369,7 +1371,7 @@
                <Frames>
                	<!-- tab 5 contents -->
 					<!-- Guild Launch "logging" mode for DKPmon -->
-			        <CheckButton name="$parentDKPmonLoggingMode" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentDKPmonLoggingMode" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1424,7 +1426,7 @@
                </Layers>
                <Frames>
                		<!-- tab 6 contents -->
-					<CheckButton name="$parentTimeSyncCB" inherits="OptionsCheckButtonTemplate" checked="false">
+					<CheckButton name="$parentTimeSyncCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1522,7 +1524,7 @@
 			                </OnValueChanged>
 			            </Scripts>
 			        </Slider>
-			        <CheckButton name="$parentUse24hFormat" inherits="OptionsCheckButtonTemplate" checked="false">
+			        <CheckButton name="$parentUse24hFormat" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1617,7 +1619,7 @@
 			                </OnValueChanged>
 			            </Scripts>
 			        </Slider>
-               		<CheckButton name="$parentGuildSnapshotCB" inherits="OptionsCheckButtonTemplate" checked="false">
+               		<CheckButton name="$parentGuildSnapshotCB" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1741,8 +1743,6 @@
                        </FontString>
                    </Layer>
                </Layers>
-               <Frames>
-               </Frames>
            </Frame>
            <Button name="$parentTab1" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="1" text="Auto Config">
                <Anchors>
@@ -1780,7 +1780,7 @@
                    </Anchor>
                </Anchors>
            </Button>
-            <Button name="$parentTab8" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="8" text="Attendance">
+            <Button name="$parentTab5" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="5" text="Attendance">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab4" relativePoint="RIGHT">
                        <Offset>
@@ -1789,16 +1789,7 @@
                    </Anchor>
                </Anchors>
            </Button>
-            <Button name="$parentTab5" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="5" text="DKPmon">
-               <Anchors>
-                   <Anchor point="LEFT" relativeTo="$parentTab8" relativePoint="RIGHT">
-                       <Offset>
-                           <AbsDimension x="-16" y="0"/>
-                       </Offset>
-                   </Anchor>
-               </Anchors>
-           </Button>
-            <Button name="$parentTab6" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="6" text="Misc.">
+            <Button name="$parentTab6" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="6" text="DKPmon">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab5" relativePoint="RIGHT">
                        <Offset>
@@ -1807,9 +1798,18 @@
                    </Anchor>
                </Anchors>
            </Button>
-            <Button name="$parentTab7" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="7" text="Help">
+            <Button name="$parentTab7" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="7" text="Misc.">
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab6" relativePoint="RIGHT">
+                       <Offset>
+                           <AbsDimension x="-16" y="0"/>
+                       </Offset>
+                   </Anchor>
+               </Anchors>
+           </Button>
+            <Button name="$parentTab8" inherits="CT_RaidTrackerOptionsFrameTabTemplate" id="8" text="Help">
+               <Anchors>
+                   <Anchor point="LEFT" relativeTo="$parentTab7" relativePoint="RIGHT">
                        <Offset>
                            <AbsDimension x="-16" y="0"/>
                        </Offset>
@@ -1881,7 +1881,7 @@
        <Scripts>
             <OnLoad>
                 <!--self.elapsed = 0;-->
-                PanelTemplates_SetNumTabs(CT_RaidTrackerOptionsFrame, 8);
+                PanelTemplates_SetNumTabs(CT_RaidTrackerOptionsFrame, 0);
                 PanelTemplates_SetTab(CT_RaidTrackerOptionsFrame, 1);
             </OnLoad>
             <OnShow>
@@ -1892,12 +1892,12 @@
                 CT_RaidTracker_OptionsFrame_ShowTabHelp(1)
                 CT_RaidTrackerOptionsFrameTabPage1:Show()
                 CT_RaidTrackerOptionsFrameTabPage2:Hide()
-                CT_RaidTrackerOptionsFrameTabPage8:Hide()
                 CT_RaidTrackerOptionsFrameTabPage3:Hide()
                 CT_RaidTrackerOptionsFrameTabPage4:Hide()
                 CT_RaidTrackerOptionsFrameTabPage5:Hide()
                 CT_RaidTrackerOptionsFrameTabPage6:Hide()
                 CT_RaidTrackerOptionsFrameTabPage7:Hide()
+                CT_RaidTrackerOptionsFrameTabPage8:Hide()
             </OnShow>
             <OnHide>
                 PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);

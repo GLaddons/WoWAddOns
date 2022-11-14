@@ -1522,13 +1522,19 @@ function MinimapContainer:AddPlugin(plugin)
 		plugin.minimapIcon = icon
 		local path = plugin:GetIcon() or (plugin.iconFrame and plugin.iconFrame:GetTexture()) or "Interface\\Icons\\INV_Misc_QuestionMark"
 		icon:SetTexture(path)
-		if path:sub(1, 16) == "Interface\\Icons\\" then
-			icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-		else
+		-- if path:sub(1, 16) == "Interface\\Icons\\" then
+		-- 	icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+		-- else
 			icon:SetTexCoord(0, 1, 0, 1)
-		end
+		-- end
 		icon:SetWidth(20)
 		icon:SetHeight(20)
+		-- local vRadius = 100
+
+		-- local vCenterX = math.sin(vAngle) * vRadius
+		-- local vCenterY = math.cos(vAngle) * vRadius
+
+		-- OutfitterMinimapButton:SetPoint("CENTER", Minimap, "CENTER", vCenterX - 1, vCenterY - 1)
 		icon:SetPoint("TOPLEFT", frame, "TOPLEFT", 7, -5)
 		local overlay = frame:CreateTexture(frame:GetName() .. "Overlay","OVERLAY")
 		overlay:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
@@ -1727,20 +1733,20 @@ function MinimapContainer:ReadjustLocation(plugin)
 		end
 
 		if round then
-			x = cos * 80
-			y = sin * 80
+			x = cos * 100
+			y = sin * 100
 		else
-			x = 80 * 2^0.5 * cos
-			y = 80 * 2^0.5 * sin
-			if x < -80 then
-				x = -80
-			elseif x > 80 then
-				x = 80
+			x = 100 * 2^0.5 * cos
+			y = 100 * 2^0.5 * sin
+			if x < -100 then
+				x = -100
+			elseif x > 100 then
+				x = 100
 			end
-			if y < -80 then
-				y = -80
-			elseif y > 80 then
-				y = 80
+			if y < -100 then
+				y = -100
+			elseif y > 100 then
+				y = 100
 			end
 		end
 		frame:SetPoint("CENTER", Minimap, "CENTER", x, y)

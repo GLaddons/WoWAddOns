@@ -741,7 +741,7 @@
 				</Anchor>
 			</Anchors>
 		</ButtonText>
-		<HighlightText name="$parentHighlightText" inherits="GameFontHighlight" justifyH="LEFT" nonspacewrap="true">
+		<!-- <HighlightText name="$parentHighlightText" inherits="GameFontHighlight" justifyH="LEFT" nonspacewrap="true">
 			<Size>
 				<AbsDimension x="300" y="10"/>
 			</Size>
@@ -764,7 +764,7 @@
 					</Offset>
 				</Anchor>
 			</Anchors>
-		</DisabledText>
+		</DisabledText> -->
 		<Scripts>
 			<OnLoad>
 				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");

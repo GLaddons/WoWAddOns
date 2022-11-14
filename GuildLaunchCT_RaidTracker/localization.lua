@@ -6,6 +6,8 @@ CT_ITEMREG_MULTI = "(|c(%x+)|Hitem:([-%d:]+)|h%[(.-)%]|h|r)x(%d+)%";
 CT_PLAYER_FACTION, localizedPlayerFaction = UnitFactionGroup("player")
 
 CT_RaidTracker_Zones = {
+	"---Dragonflight---",
+	"Vault of the Incarnates",
 	"---Shadowlands---",
 	"Castle Nathria",
 	"Sanctum of Domination",
@@ -45,6 +47,17 @@ CT_RaidTracker_Zones = {
 };
 
 CT_RaidTracker_Bosses = {
+	--Dragonflight
+	["Vault of the Incarnates"] = {
+		"Eranog",
+		"Terros",
+		"The Primal Council",
+		"Sennarth, the Cold Breath",
+		"Dathea, Ascended",
+		"Kurog Grimtotem",
+		"Broodkeeper Diurna",
+		"Raszageth the Storm-Eater"
+	},
 	--Shadowlands
 	["Castle Nathria"] = {
 		"Shriekwing",
@@ -356,6 +369,8 @@ CT_RaidTracker_lang_ReceivesLoot6 = "You receive bonus loot: "..CT_ITEMREG..".";
 CT_RaidTracker_lang_ReceivesLootYou = "You";
 
 CT_RaidTracker_ZoneTriggers = {
+	--Dragonflight
+	["Vault of the Incarnates"]		= "Vault of the Incarnates",
 	--Shadowlands
 	["Castle Nathria"]				= "Castle Nathria",
 	["Sanctum of Domination"]		= "Sanctum of Domination",
@@ -406,6 +421,16 @@ CT_RaidTracker_ZoneTriggers = {
 	end
 
 CT_RaidTracker_BossUnitTriggers = {
+	--Dragonflight
+	--Vault of the Incarnates
+	["Eranog"] = "Eranog",
+	["Terros"] = "Terros",
+	["The Primal Council"] = "The Primal Council", --multiboss
+	["Sennarth"] = "Sennarth, the Cold Breath",
+	["Dathea, Ascended"] = "Dathea, Ascended",
+	["Kurog Grimtotem"] = "Kurog Grimtotem",
+	["Broodkeeper Diurna"] = "Broodkeeper Diurna",
+	["Raszageth the Storm-Eater"] = "Raszageth the Storm-Eater", --no footage
 	--Shadowlands
 	--Castle Nathria
 	["Shriekwing"] = "Shriekwing",
@@ -839,6 +864,14 @@ CT_RaidTracker_lang_BossKills_LordsofDread_KinTessa_BossName = "Kin'tessa";
 CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_Yell = "The pattern is restored. My purpose resumes.";
 CT_RaidTracker_lang_BossKills_HalondrustheReclaimer_BossName = "Halondrus the Reclaimer";
 
+--The Primal Council
+CT_RaidTracker_lang_BossKills_PrimalCouncil_BossName = "The Primal Council";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_EmbarFirepath_BossName = "Embar Firepath";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_EmbarFirepath_Yell = "My rage... burns... on...";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_Opalfang_BossName = "Opalfang";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_Opalfang_Yell = "I... never... break...";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_KadrosIcewrath_BossName = "Kadros Icewrath";
+CT_RaidTracker_lang_BossKills_PrimalCouncil_KadrosIcewrath_Yell = "Cold... so... cold...";
 
 --Remnant of Ner'zhul
 -- CT_RaidTracker_lang_BossKills_RemnantofNerzhul_BossName = "Remnant of Ner'zhul";

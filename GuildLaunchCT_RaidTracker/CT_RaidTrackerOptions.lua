@@ -113,7 +113,7 @@ CT_RaidTrackerOptionsFrameTemplate = {
     tileEdge = true,
     tileSize = 32,
     edgeSize = 32,
-    insets = { left = 11, right = 12, top = 12, bottom = 11 },
+    insets = { left = 11, right = 12, top = 12, bottom = 11 }
 }
 
 function CT_RaidTracker_OptionsFrame_OnShow()
@@ -165,6 +165,7 @@ function CT_RaidTracker_OptionsFrame_OnShow()
 
     local config_help = CT_RaidTracker_Options["ShowConfigHelp"];
     local mod_frame = getglobal("CT_RaidTrackerOptionsFrame");
+    -- local mod_frame = CreateFrame("CT_RaidTrackerOptionsFrame", "Tablet20Frame", UIParent, BackdropTemplateMixin and "BackdropTemplate")
     local toggle_help_button = getglobal("CT_RaidTrackerOptionsFrameToggleHelpButton");
 
     if (config_help == 0) then
