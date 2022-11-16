@@ -61,14 +61,14 @@ parentAskCostSliderTemplate = {
     insets = { left = 3, right = 3, top = 6, bottom = 6 },
 }
 
-parentMinQualitySliderTemplate = {
-    bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
-    edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
-    tile = true,
-    tileSize = 8,
-    edgeSize = 8,
-    insets = { left = 3, right = 3, top = 6, bottom = 6 },
-}
+-- parentMinQualitySliderTemplate = {
+--     bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
+--     edgeFile = "Interface\\Buttons\\UI-SliderBar-Border",
+--     tile = true,
+--     tileSize = 8,
+--     edgeSize = 8,
+--     insets = { left = 3, right = 3, top = 6, bottom = 6 },
+-- }
 
 parentLogAttendeesSliderTemplate = {
     bgFile = "Interface\\Buttons\\UI-SliderBar-Background",
@@ -115,6 +115,15 @@ CT_RaidTrackerOptionsFrameTemplate = {
     edgeSize = 32,
     insets = { left = 11, right = 12, top = 12, bottom = 11 }
 }
+
+function HideLowHighSlider_OnLoad(self)
+    self:SetObeyStepOnDrag(true)
+    local name = self:GetName()
+    _G[name .. "Low"]:Hide()
+    _G[name .. "High"]:Hide()
+    -- Registering it here prevents OnValueChanged from triggering when the default value is set
+    self:SetScript("OnValueChanged", LevelTimingsUI_SetFromLevel)
+end
 
 function CT_RaidTracker_OptionsFrame_OnShow()
     -- auto config = 1 tab 1

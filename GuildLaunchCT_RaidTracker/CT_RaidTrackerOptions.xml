@@ -2,8 +2,8 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
     <Script file="CT_RaidTrackerOptions.lua"/>
-    <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="UIPanelButtonTemplate" virtual="true">
-    	<Size x="100" y="20" />
+    <Button name="CT_RaidTrackerOptionsFrameTabTemplate" inherits="PanelTabButtonTemplate" virtual="true">
+    	<!-- <Size x="100" y="20" /> -->
 		<Scripts>
 			<OnClick>
 				CT_RaidTracker_OptionsFrame_TabClick(self:GetName());
@@ -244,7 +244,7 @@
                </Layers>
                <Frames>
                	<!-- tab 2 contents -->
-               		<CheckButton name="$parentAutoZoneCB" checked="false">
+               		<CheckButton name="$parentAutoZoneCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -275,7 +275,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentNewRaidOnNewZoneCB" checked="false">
+			        <CheckButton name="$parentNewRaidOnNewZoneCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -303,7 +303,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentAutoCreateRaidCB" checked="false">
+					<CheckButton name="$parentAutoCreateRaidCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -331,7 +331,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentLogGroupCB" checked="false">
+					<CheckButton name="$parentLogGroupCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -359,7 +359,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<CheckButton name="$parentAutoGroupCB" checked="false">
+					<CheckButton name="$parentAutoGroupCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -387,7 +387,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentLogBattlefieldCB" checked="false">
+			        <CheckButton name="$parentLogBattlefieldCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -437,7 +437,7 @@
                </Layers>
                <Frames>
                	<!-- tab 3 contents -->
-               			<CheckButton name="$parentAskWipeCB" checked="false">
+               			<CheckButton name="$parentAskWipeCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -469,7 +469,7 @@
 			            </Frames>
 			        </CheckButton>
 
-			        <Slider name="$parentAskWipeSlider" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.8" valueStep=".01" orientation="HORIZONTAL">
+			        <Slider name="$parentAskWipeSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="1" defaultValue="0.8" valueStep=".01" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -477,6 +477,12 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskWipeCB">
 			                </Anchor>
 			            </Anchors>
+						<Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()*100));
+			                </OnUpdate>
+						</Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentAskWipeSliderTemplate" />
 			            </KeyValues>
@@ -527,13 +533,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()*100));
-			                </OnUpdate>
-			            </Scripts>
 			        </Slider>
-					<CheckButton name="$parentAskNextBossCB" checked="false">
+					<CheckButton name="$parentAskNextBossCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -561,7 +562,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-                	<CheckButton name="$parentSaveExtendedPlayerInfoCB" checked="false">
+                	<CheckButton name="$parentSaveExtendedPlayerInfoCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -589,7 +590,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<Slider name="$parentAutoBossSlider" enableMouse="true" minValue="0" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+					<Slider name="$parentAutoBossSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -597,6 +598,20 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentSaveExtendedPlayerInfoCB">
 			                </Anchor>
 			            </Anchors>
+						<Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffOff",
+			                    "|c00ffffffOn mouseover",
+			                    "|c00ffffffOn boss kill",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+						</Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentAutoBossSliderTemplate" />
 			            </KeyValues>
@@ -647,22 +662,9 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    local colors = {
-			                    "|c00ffffffOff",
-			                    "|c00ffffffOn mouseover",
-			                    "|c00ffffffOn boss kill",
-			                    };
-			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
 
-			        <Slider name="$parentAutoBossChangeMinTimeSlider" enableMouse="true" minValue="1" maxValue="20" defaultValue="10" valueStep="1" orientation="HORIZONTAL">
+			        <Slider name="$parentAutoBossChangeMinTimeSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="1" maxValue="20" defaultValue="10" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -670,6 +672,15 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossSlider">
 			                </Anchor>
 			            </Anchors>
+						<Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()));
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+						</Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentAutoBossChangeMinTimeSliderTemplate" />
 			            </KeyValues>
@@ -720,16 +731,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    getglobal(self:GetName() .. "Value"):SetText(math.ceil(self:GetValue()));
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
-			        <Slider name="$parentLogAttendeesSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="3" valueStep="1" orientation="HORIZONTAL">
+			        <Slider name="$parentLogAttendeesSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="3" defaultValue="3" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -737,6 +740,21 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAutoBossChangeMinTimeSlider">
 			                </Anchor>
 			            </Anchors>
+						<Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    local text = {
+			                    "|c00ffffffOff",
+			                    "|c00ffffffOn boss kill",
+			                    "|c00ffffffOn loot",
+			                    "|c00ffffffOn boss kill (same Zone)",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(text[self:GetValue()+1]);
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+						</Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentLogAttendeesSliderTemplate" />
 			            </KeyValues>
@@ -787,20 +805,6 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    local text = {
-			                    "|c00ffffffOff",
-			                    "|c00ffffffOn boss kill",
-			                    "|c00ffffffOn loot",
-			                    "|c00ffffffOn boss kill (same Zone)",
-			                    };
-			                    getglobal(self:GetName() .. "Value"):SetText(text[self:GetValue()+1]);
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
                </Frames>
            </Frame>
@@ -824,7 +828,7 @@
                </Layers>
                <Frames>
                		<!-- tab 4 contents -->
-					<Slider name="$parentMinQualitySlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+					<Slider name="$parentMinQualitySlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
                         <Size>
                             <AbsDimension x="128" y="20"/>
                         </Size>
@@ -835,9 +839,28 @@
                                 </Offset>
                             </Anchor>
                         </Anchors>
-                        <KeyValues>
-                        	<KeyValue key="" value="parentMinQualitySliderTemplate" />
-                        </KeyValues>
+                        <Scripts>
+                        	<OnLoad function="HideLowHighSlider_OnLoad"/>
+                            <OnUpdate>
+                                local colors = {
+                                "|c00ffffffOff",
+                                "|c009d9d9dPoor",
+                                "|c00ffffffCommon",
+                                "|c001eff00Uncommon",
+                                "|c000070ddRare",
+                                "|c00a335eeEpic",
+                                "|c00ff8000Legendary",
+                                "|c00e6cc80Artifact",
+                                };
+                                getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+                            </OnUpdate>
+                            <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+                        </Scripts>
+                        <!-- <KeyValues>
+                        	<KeyValue key="backdropInfo" value="parentMinQualitySliderTemplate" />
+                        </KeyValues> -->
                         <!-- <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
                             <BackgroundInsets>
                                 <AbsInset left="3" right="3" top="6" bottom="6" />
@@ -885,7 +908,17 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
+                    </Slider>
+                    <Slider name="$parentAskCostSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+                        <Size>
+                            <AbsDimension x="128" y="20"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentMinQualitySlider">
+                            </Anchor>
+                        </Anchors>
                         <Scripts>
+                        	<OnLoad function="HideLowHighSlider_OnLoad"/>
                             <OnUpdate>
                                 local colors = {
                                 "|c00ffffffOff",
@@ -903,15 +936,6 @@
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
                         </Scripts>
-                    </Slider>
-                    <Slider name="$parentAskCostSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
-                        <Size>
-                            <AbsDimension x="128" y="20"/>
-                        </Size>
-                        <Anchors>
-                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentMinQualitySlider">
-                            </Anchor>
-                        </Anchors>
                         <KeyValues>
                         	<KeyValue key="backdropInfo" value="parentAskCostSliderTemplate" />
                         </KeyValues>
@@ -962,26 +986,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-                        <Scripts>
-                            <OnUpdate>
-                                local colors = {
-                                "|c00ffffffOff",
-                                "|c009d9d9dPoor",
-                                "|c00ffffffCommon",
-                                "|c001eff00Uncommon",
-                                "|c000070ddRare",
-                                "|c00a335eeEpic",
-                                "|c00ff8000Legendary",
-                                "|c00e6cc80Artifact",
-                                };
-                                getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
-                            </OnUpdate>
-                            <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-                        </Scripts>
                     </Slider>
-					<Slider name="$parentGetDKPValueSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+					<Slider name="$parentGetDKPValueSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -989,6 +995,25 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAskCostSlider">
 			                </Anchor>
 			            </Anchors>
+			            <Scripts>
+			            	<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffOff",
+			                    "|c009d9d9dPoor",
+			                    "|c00ffffffCommon",
+			                    "|c001eff00Uncommon",
+			                    "|c000070ddRare",
+			                    "|c00a335eeEpic",
+			                    "|c00ff8000Legendary",
+			                    "|c00e6cc80Artifact",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			               	<OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+			            </Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentGetDKPValueSliderTemplate" />
 			            </KeyValues>
@@ -1039,7 +1064,17 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
+			        </Slider>
+			        <Slider name="$parentGroupItemsSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+			            <Size>
+			                <AbsDimension x="128" y="20"/>
+			            </Size>
+			            <Anchors>
+			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGetDKPValueSlider">
+			                </Anchor>
+			            </Anchors>
 			            <Scripts>
+			            	<OnLoad function="HideLowHighSlider_OnLoad"/>
 			                <OnUpdate>
 			                    local colors = {
 			                    "|c00ffffffOff",
@@ -1053,19 +1088,10 @@
 			                    };
 			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
 			                </OnUpdate>
-			               	<OnValueChanged>
+			                <OnValueChanged>
 			                	self:SetValue(floor(self:GetValue()));
 			                </OnValueChanged>
 			            </Scripts>
-			        </Slider>
-			        <Slider name="$parentGroupItemsSlider" enableMouse="true" minValue="0" maxValue="7" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
-			            <Size>
-			                <AbsDimension x="128" y="20"/>
-			            </Size>
-			            <Anchors>
-			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGetDKPValueSlider">
-			                </Anchor>
-			            </Anchors>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentGroupItemsSliderTemplate" />
 			            </KeyValues>
@@ -1116,26 +1142,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    local colors = {
-			                    "|c00ffffffOff",
-			                    "|c009d9d9dPoor",
-			                    "|c00ffffffCommon",
-			                    "|c001eff00Uncommon",
-			                    "|c000070ddRare",
-			                    "|c00a335eeEpic",
-			                    "|c00ff8000Legendary",
-			                    "|c00e6cc80Artifact",
-			                    };
-			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
-					<CheckButton name="$parentSaveTooltipsCB" checked="false">
+					<CheckButton name="$parentSaveTooltipsCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1164,7 +1172,7 @@
 			            </Frames>
 			        </CheckButton>
 					<!-- oberan added to auto record epgp costs -->
-			        <CheckButton name="$parentAutoSetEPGPCost" checked="false">
+			        <CheckButton name="$parentAutoSetEPGPCost" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1192,7 +1200,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <CheckButton name="$parentBonusLoot" checked="false">
+			        <CheckButton name="$parentBonusLoot" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1246,7 +1254,7 @@
                </Layers>
                <Frames>
                	<!-- tab 3 contents -->
-               		<CheckButton name="$parentEnableListme" checked="false">
+               		<CheckButton name="$parentEnableListme" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1277,7 +1285,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-					<Slider name="$parentWaitlistAttendanceType" enableMouse="true" minValue="1" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
+					<Slider name="$parentWaitlistAttendanceType" inherits="OptionsSliderTemplate" enableMouse="true" minValue="1" maxValue="2" defaultValue="0" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -1285,6 +1293,19 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentEnableListme">
 			                </Anchor>
 			            </Anchors>
+			            <Scripts>
+			            	<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffCombined",
+			                    "|c00ffffffSeperate Event",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()]);
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+			            </Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentWaitlistAttendanceTypeTemplate" />
 			            </KeyValues>
@@ -1335,18 +1356,6 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    local colors = {
-			                    "|c00ffffffCombined",
-			                    "|c00ffffffSeperate Event",
-			                    };
-			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()]);
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
 				</Frames>
            </Frame>
@@ -1371,7 +1380,7 @@
                <Frames>
                	<!-- tab 5 contents -->
 					<!-- Guild Launch "logging" mode for DKPmon -->
-			        <CheckButton name="$parentDKPmonLoggingMode" checked="false">
+			        <CheckButton name="$parentDKPmonLoggingMode" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1426,7 +1435,7 @@
                </Layers>
                <Frames>
                		<!-- tab 6 contents -->
-					<CheckButton name="$parentTimeSyncCB" checked="false">
+					<CheckButton name="$parentTimeSyncCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1457,7 +1466,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <Slider name="$parentTimeZoneSlider" valueStep="1" enableMouse="true" minValue="-12" maxValue="12" defaultValue="0" orientation="HORIZONTAL">
+			        <Slider name="$parentTimeZoneSlider" inherits="OptionsSliderTemplate" valueStep="1" enableMouse="true" minValue="-12" maxValue="12" defaultValue="0" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -1465,6 +1474,15 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentTimeSyncCB">
 			                </Anchor>
 			            </Anchors>
+			            <Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+			            </Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentTimeZoneSliderTemplate" />
 			            </KeyValues>
@@ -1515,16 +1533,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
-			        <CheckButton name="$parentUse24hFormat" checked="false">
+			        <CheckButton name="$parentUse24hFormat" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1552,7 +1562,7 @@
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
 			        </CheckButton>
-			        <Slider name="$parentMaxLevelSlider" enableMouse="true" minValue="0" maxValue="100" defaultValue="100" valueStep="1" orientation="HORIZONTAL">
+			        <Slider name="$parentMaxLevelSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="100" defaultValue="100" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -1560,6 +1570,15 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentUse24hFormat">
 			                </Anchor>
 			            </Anchors>
+			            <Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
+			                </OnUpdate>
+			                	<OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+			            </Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentMaxLevelSliderTemplate" />
 			            </KeyValues>
@@ -1610,16 +1629,8 @@
 			            <Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    getglobal(self:GetName() .. "Value"):SetText(self:GetValue());
-			                </OnUpdate>
-			                	<OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
-               		<CheckButton name="$parentGuildSnapshotCB" checked="false">
+               		<CheckButton name="$parentGuildSnapshotCB" inherits="UICheckButtonTemplate" checked="false">
 			            <Size>
 			                <AbsDimension x="20" y="20"/>
 			            </Size>
@@ -1648,7 +1659,7 @@
 		            	</Frames>
 			        </CheckButton>
 					<!-- ExportFormat Silder -->
-			        <Slider name="$parentExportFormatSlider" enableMouse="true" minValue="0" maxValue="3" defaultValue="1" valueStep="1" orientation="HORIZONTAL">
+			        <Slider name="$parentExportFormatSlider" inherits="OptionsSliderTemplate" enableMouse="true" minValue="0" maxValue="3" defaultValue="1" valueStep="1" orientation="HORIZONTAL">
 			            <Size>
 			                <AbsDimension x="128" y="20"/>
 			            </Size>
@@ -1656,6 +1667,21 @@
 			                <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentGuildSnapshotCB">
 			                </Anchor>
 			            </Anchors>
+			            <Scripts>
+							<OnLoad function="HideLowHighSlider_OnLoad"/>
+			                <OnUpdate>
+			                    local colors = {
+			                    "|c00ffffffMLdkp 1.1/EQdkp Plugin",
+			                    "|c00ffffffEQdkp Unknown",
+			                    "|c00ffffffMLdkp 1.5",
+			                    "|c00ffffffGuild Launch",
+			                    };
+			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
+			                </OnUpdate>
+			                <OnValueChanged>
+			                	self:SetValue(floor(self:GetValue()));
+			                </OnValueChanged>
+			            </Scripts>
 			            <KeyValues>
 			            	<KeyValue key="backdropInfo" value="parentExportFormatSliderTemplate" />
 			            </KeyValues>
@@ -1706,20 +1732,6 @@
 		            	<Frames>
 			               <Button name="$parentHelp" inherits="CT_RaidTrackerOptionsHelpButtonTemplate" text="?"></Button>
 			            </Frames>
-			            <Scripts>
-			                <OnUpdate>
-			                    local colors = {
-			                    "|c00ffffffMLdkp 1.1/EQdkp Plugin",
-			                    "|c00ffffffEQdkp Unknown",
-			                    "|c00ffffffMLdkp 1.5",
-			                    "|c00ffffffGuild Launch",
-			                    };
-			                    getglobal(self:GetName() .. "Value"):SetText(colors[self:GetValue()+1]);
-			                </OnUpdate>
-			                <OnValueChanged>
-			                	self:SetValue(floor(self:GetValue()));
-			                </OnValueChanged>
-			            </Scripts>
 			        </Slider>
 					<!-- ExportFormat Slider end -->
                		<!-- end tab 6 contents -->
@@ -1748,7 +1760,7 @@
                <Anchors>
                    <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
                        <Offset>
-                           <AbsDimension x="60" y="-10"/>
+                           <AbsDimension x="40" y="-10"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1757,7 +1769,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1766,7 +1778,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab2" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1775,7 +1787,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab3" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1784,7 +1796,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab4" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1793,7 +1805,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab5" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1802,7 +1814,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab6" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
@@ -1811,7 +1823,7 @@
                <Anchors>
                    <Anchor point="LEFT" relativeTo="$parentTab7" relativePoint="RIGHT">
                        <Offset>
-                           <AbsDimension x="-16" y="0"/>
+                           <AbsDimension x="0" y="0"/>
                        </Offset>
                    </Anchor>
                </Anchors>
